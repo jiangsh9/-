@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Deploy to Tencent CloudBase
+      - name: Tencent CloudBase Github Action
         uses: TencentCloudBase/cloudbase-action@v2.0.1
         with:
           secretId: ${{secrets.SECRET_ID}}
