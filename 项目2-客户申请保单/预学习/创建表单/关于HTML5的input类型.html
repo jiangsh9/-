@@ -1,0 +1,51 @@
+<html>
+
+  <!-- Email -->
+  <input type="email" id="email" name="email">
+  <input type="email" id="email" name="email" multiple>
+
+  <!-- 查询字段 -->
+  <input type="search" id="search" name="search">
+
+  <!-- 电话号码字段-->
+  <input type="tel" id="tel" name="tel">
+
+  <!-- URL字段 -->
+  <input type="url" id="url" name="url">
+
+  <!-- 数字字段 -->
+  <input type="number" name="age" id="age" min="1" max="10" step="2">
+  <input type="number" name="change" id="pennies" min="0" max="1" step="0.01">
+
+  <!-- 滑块控件 -->
+  <label for="price">Choose a maximum house price: </label>
+  <input type="range" name="price" id="price" min="50000" max="500000" step="100" value="250000">
+  <output class="price-output" for="price"></output>
+
+  <script>
+    const price = document.querySelector('#price');
+    const output = document.querySelector('.price-output');
+
+    output.textContent = price.value;
+
+    price.addEventListener('input', () => {
+      output.textContent = price.value;
+    });
+  </script>
+
+  <!-- 日期和时间选择器 -->
+  <input type="datetime-local" name="datetime" id="datetime"> <!-- datetime-local -->
+  <input type="month" name="month" id="month"> <!-- month -->
+  <input type="time" name="time" id="time"> <!-- time -->
+  <input type="week" name="week" id="week"> <!-- week -->
+
+  <!-- 限制日期/时间值 -->
+  <label for=""myDate">When are you available this summer?</label>
+  <input type="date" name="myDate" min="2013-06-01" max="2013-08-31" step="7" id="myDate">
+
+  <!-- 颜色选择器控件 -->
+  <input type="color" name="color" id="color">
+
+  
+
+</html>

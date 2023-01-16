@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .select {
+            /* 这将为选项列表创建一个上下文定位 */
+            position: relative;
+
+            /* 这将使我们的组件称为文本流的一部分，同时又可以调整大小 */
+            display : inline-block;
+        }
+        .select .active,
+        .select:focus {
+            outline: none;
+
+            /* 这里的 box-shadow 属性并非必须，但确保活动状态能看出来非常重要---我们
+            将其作为一个默认值，你可以随意地覆盖掉它。*/
+            box-shadow: 0 0 3px 1px #227755;
+        }
+        /* 这里的.select 选择器是一个糖衣语法，用来确保我们定义的类是
+           在我们的组件里的那个。  */
+        .select .optList {
+            /* 这里可以确保我们的选项列表将会显示在值的下面，并且会处在
+               HTML 流之外*/
+            position : absolute;
+            top      : 100%;
+            left     :0;
+        }
+        .select .optList.hidden {
+            /* 这是一个可以访问形式隐藏列表的简单方法，
+               对无障碍我们将在最后进一步拓展  */
+            max-height: 0;
+            visibility: hidden;
+        }
+        .select {
+            /* 出于无障碍方面的原因，所有尺寸都会由 em 值表示
+               (用来确保用户在文本模式下使用浏览器缩放时组件的可缩放性)。
+               在大多数浏览器下的默认换算是 1em == 16px.
+               如果你对 em 和 px 的转换感到疑惑，请参考 http://riddle.pl/emcalc/ */
+            font-size   : 0.625em; /*这个 (=10px) 是以 em 方式表达的这个环境里的字体大小 */
+            font-family : Verdana, Arial, sans-serif;
+
+            -moz-box-sizing : border-box;
+            box-sizing : border-box;
+
+            /* 我们需要为将要添加的向下箭头准备一些额外的空间 */
+            padding : .1em 2.5em .2em .5em; /* 1px 25px 2px 5px */
+            width   : 10em; /* 100px */
+
+            border        : .2em solid #000; /* 2px*/
+            border-radius : .4em; /* 4px */
+            box-shadow    : 0 .1em .2em rgba(0,0,0,.45); /* 0 1px 2px */
+
+            /* 第一段声明是为了不支持线性梯度填充的浏览器准备的。
+               第二段声明是因为基于 WebKit 的浏览器没有预先定义它。
+               如果你想为过时的浏览器提供支持，请参阅 http://www.colorzilla.com/gradient-editor/ */
+            background : #F0F0F0;
+            background : -webkit-linear-gradient(90deg, #E3E3E3, #fcfcfc 50%, #f0f0f0);
+            background : linear-gradient(0 def, #E3E3E3, #fcfcfc 50%, #f0f0f0);
+        }
+
+        .select .value {
+            /* 因为值的宽度可能超过组件的宽度，我们需要确保他不会改变组件的宽度 */
+            display  : inline-block;
+            width    : 100%;
+            overflow : hidden;
+
+            vertical-align: top;
+
+            /* 如果内容溢出了，最好有一个恰当的缩写。 */
+            white-space  : nowrap;
+            text-overflow: ellipsis;
+        }
+        .select:after {
+            content : "▼"; /* 我们使用了 unicode 编码的字符 U+25BC; 参阅 http://www.utf8-chartable.de */
+            position: absolute;
+            z-index : 1; /* 这对于防止箭头覆盖选项列表很重要 */
+            top     : 0;
+            right   : 0;
+
+            -moz-box-sizing : border-box;
+            box-sizing : border-box;
+
+            height  : 100%;
+            width   : 2em;   /* 20px */
+            padding-top : .1em; /* 1px */
+
+            border-left  : .2em solid #000; /* 2px */
+            border-radius: 0 .1em .1em 0;   /* 0 1px 1px 0 */
+
+            background-color : #000;
+            color : #FFF;
+            text-align : center;
+        }
+
+        .select .optList {
+            z-index : 2; /* 我们明确的表示选项列表会始终与向下箭头重叠 */
+
+            /* 这会重置 ul 元素的默认样式 */
+            list-style: none;
+            margin : 0;
+            padding: 0;
+
+            -moz-box-sizing : border-box;
+            box-sizing : border-box;
+
+            /* 这会确保即使数值比组件小，选项列表仍能变得跟组件自身一样大*/
+            min-width : 100%;
+
+            /* 万一列表太长了，它的内容会从垂直方向溢出（会自动添加一个竖向滚动条）
+               但是水平方向不会（因为我们没有设定宽度，列表会自适应宽度。如果不能的话，内容会被截断） */
+               max-height: 10em; /* 100px */
+               overflow-y: auto;
+               overflow-x: hidden;
+
+               border: .2em solid #000; /* 2px */
+               border-top-width : .1em; /* 1px */
+               border-radius: 0 0 .4em .4em; /* 0 0 4px 4px */
+
+               box-shadow: 0 .2em .4em rgba(0,0,0,.4); /* 0 2px 4px */
+               background: #f0f0f0;
+        }
+
+        .select .option {
+            padding: .2em .3em; /* 2px 3px */
+        }
+
+        .select .highlight {
+            background: #000;
+            color: #FFFFFF;
+        }
+
+        .widget select,
+        .no-widget .select {
+            /* 这个 CSS 选择器大体上说的是：
+               - 要么我们将 body 的 class 设置为“widget”， 隐藏真实的<select>元素
+               - 或是我们没有改变 body 的 class，这样 body 的 class 还是“no-widget”，
+                 因此 class 为“select”的元素需要被隐藏  */
+            position : absolute;
+            left     : -5000em;
+            height   : 0;
+            overflow : hidden;
+        }
+        
+    </style>
+</head>
+
+
+
+<body class="no-widget">
+
+    <!-- GET 方法 -->
+    <!-- <form action="http://foo.com" method="get">
+        <div>
+            <label for="say">What greeting do you want to say?</label>
+            <input name="say" id="say" value="Hi">
+        </div>
+        <div>
+            <label for="to">Who do you want to say it to?</label>
+            <input name="to" id="to" value="Mom">
+        </div>
+        <div>
+            <button>Send my greetings</button>
+        </div>
+    </form> -->
+
+
+    <!-- POST 方法 -->
+    <!-- <form action="http://foo.com" mehtod="post">
+        <div>
+            <label for="say">What greeting do you want to say?</label>
+            <input name="say" id="say" value="Hi">
+        </div>
+        <div>
+            <label for="to">Who do you want to say it to?</label>
+            <input name="to" id="to" value="Mom">
+        </div>
+        <div>
+            <button>Send my greetings</button>
+        </div>
+    </form> -->
+
+
+    <!-- enctype 属性 -->
+    <!-- <form method="post" enctype="multipart/form-data">
+        <div>
+            <label for="file">Choose a file</label>
+            <input type="file" id="file" name="myFile">
+        </div>
+        <div>
+            <button>Send the file</button>
+        </div>
+    </form> -->
+
+    
+    <!-- 定义语义化的 HTML 结构-->
+    <!-- 这是我们小部件的主要容器。
+         tabindex 属性是用来让用户聚焦在小部件上的。
+         稍后我们会发现最好通过 JavaScript 来设定它的值。-->
+    <!-- <div class="select" tabindex="0">
+
+        这个容器用来显示组件现在的值
+        <span class="value">Cherry</span>-->
+
+        <!-- 这个容器包含我们的组件的所用可用选项。
+             因为他是一个列表，用 ul 元素是有意义的。-->
+        <!-- <ul class="optList">-->
+            <!-- 每个选项只包含用来显示的值，
+                 稍后我们会知道如何处理和表单一起发送的真实值 -->
+            <!-- <li class="option">Cherry</li>
+            <li class="option">Lemon</li>
+            <li class="option">Banana</li>
+            <li class="option">Strawberry</li>
+            <li class="option">Apple</li>
+        </ul> 
+
+
+    </div>  -->
+
+    <form>
+        <select name="myFruit">
+            <option>Cherry</option>
+            <option>Lemon</option>
+            <option>Banana</option>
+            <option>Strawberry</option>
+            <option>Apple</option>
+        </select>
+
+        <div class="select">
+            <span class="value">Cherry</span>
+            <ul class="optList hidden">
+                <li class="option">Cherry</li>
+                <li class="option">Lemon</li>
+                <li class="option">Banana</li>
+                <li class="option">Strawberry</li>
+                <li class="option">Apple</li>
+            </ul>
+        </div>
+    </form>
+
+    <script>
+        window.addEventListener("load", function () {
+            document.body.classList.remove("no-widget");
+            document.body.classList.add("widget");
+        })
+
+    </script>
+
+    <!-- 构造事件回调 -->
+
+    <script>
+        // 这个函数会用在每当我们想要停用一个自定义组件的时候 
+        // 它需要一个参数:
+        // select :要停用的带有 'select' 类的节点
+        function deactivateSelect(select) {
+
+            // 如果组件没有运行，不用进行任何操作 
+            if (!select.classList.contains('active')) return;
+
+            // 我们需要获取自定义组件的选项列表
+            var optList = select.querySelector('.optList');
+
+            // 关闭选项列表
+            optList.classList.add('hidden');
+
+            // 然后停用组件本身
+            select.classList.remove('active');
+
+            // 每当用户想要激活（或停用）这个组件的时候，会调用这个函数 
+            // 它需要 2 个参数:
+            // select : 要激活的带有'select'类的 DOM 节点 
+            // selectList : 包含所有带'select'类的 DOM 节点的列表
+            function activeSelect(select, selectList) {
+
+                // 如果组件已经激活了，不进行任何操作
+                if (select.classList.contains('active')) return;
+
+                // 我们需要关闭所有自定义组件的活动状态
+                // 因为 deactiveselect 函数满足 forEach 回调函数的所有请求，
+                // 我们直接使用它，不适用中间匿名函数 
+                selectList.forEach(deactivateSelect);
+
+                // 然后我们激活特定的组件
+                select.classList.add('active');
+            }
+
+            // 每当用户想要打开/关闭选项列表的时候，会调用这个函数 
+            // 他需要一个参数：
+            // select : 要触发的列表的 DOM 节点
+            function toggleOptList(select) {
+
+                // 该列表不包含在组件中
+                var optList = select.querySelector('.optList');
+
+                // 我们改变列表的class去显示/隐藏它
+                optList.classList.toggle('hidden');
+            }
+
+            // 每当我们要高亮一个选项的时候，会调用该函数 
+            // 它需要两个参数：
+            // select : 带有'select'类的 DOM 节点，包含了需要高亮强调的选项
+            // option : 需要高亮强调的带有'option'类的 DOM 节点
+            function highlightOption(select, option) {
+
+                // 为我们的自定义 select 元素获取所有有效选项的列表 
+                var optionList = select.querySelectorAll('.option');
+
+                // 我们移除所有选项的高亮强调
+                optionList.forEach(function (other) {
+                    other.classList.remove('highlight');
+                });
+
+                // 我们高亮强调正确的选项
+                option.classList.add('highlight');
+            };
+        }
+    </script>
+
+
+    <!-- 接下来，我们将这些函数绑定到合适的事件上： -->
+    <script>
+        // 我们处理文档加载时的事件绑定。
+        window.addEventListener('load', function() {
+            var selectList = document.querySelectorAll('.select');
+
+            // 每个自定义组件都需要初始化
+            selectList.forEach(function (select) {
+
+                // 它的'option'元素也需要
+                var optionList = select.querySelectorAll('.option');
+
+                // 每当用户的鼠标悬停在一个选项上时，我们高亮这个指定的选项
+                optList.forEach(function (option) {
+                    option.addEventListener('mouseover', function() {
+                        // 注意:'select'和'option'变量是我们函数调用范围内有效的闭包。
+                        hgihlightOption(select, option);
+                    });
+                });
+
+                // 每当用户点击一个自定义的 select 元素时
+                select.addEventLitener('click', function (event) {
+                    // 注意:/select'变量是我们函数调用范围内有效的闭包。
+
+                    // 我们改变选项列表的可见性 
+                    toggleOptList(select);
+                });
+
+                // 如果组件获得了焦点
+                // 每当用户点击它或是用 tab 键访问这个组件时，组件获得焦点
+                select.addEventListener('focus', function (event) {
+                    // 注意:'select'和'selectlist'变量是我们函数调用范围内有效的闭包。
+
+                    // 我们激活这个组件
+                    activeSelect(select, selectList);
+                });
+
+                // 如果组件失去焦点
+                select.addEventListener('blue', function (event) {
+                    // 注意:'select'变量是我们函数调用范围内有效的闭包。
+
+                    // 我们关闭这个组件
+                    deactivateSelect(select);
+                });
+            });
+        })
+    </script>
+
+
+</body>
+
+
+
+
+</html>
