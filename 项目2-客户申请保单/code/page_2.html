@@ -9,30 +9,35 @@
       <script type="text/javascript" src="js/app.js"></script>
     </header>
     
+    <input type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_1.html'" value="上一页">
+    <input type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="下一页">
+    
+    <br><br>
+
     <div>
-      <label class="desc" id="title1" for="Field1">受保人姓名（与护照英文呢一致）</label>
+      <label class="desc" id="insured-name-label" for="insured-name">受保人姓名（与护照英文呢一致）</label>
       <div>
-        <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+        <input id="insured-name" name="insured-name" type="text" class="insured" value="" size="50" tabindex="1">
       </div>
     </div>
 
     <br><br>
 
     <div>
-      <label class="desc" id="title1" for="Field1">受保人性别（改成选项）</label>
+      <label class="desc" id="insured-sex-label" for="insured-sex">受保人性别</label>
       <div>
-        <input id="radioDefault_5" name="Field5" type="hidden" value="">
+        <input id="insured-sex" name="insured-sex" type="hidden" value="">
         <div>
-            <input id="Field5_0" name="Field5" type="radio" value="First Choice" tabindex="5" checked="checked">
-            <label class="choice" for="Field5_0">男</label>
+            <input id="insured-sex-male" name="insured-sex-choice" type="radio" value="First Choice" tabindex="5" checked="checked">
+            <label class="insured" for="insured-sex-male">男</label>
         </div>
         <div>
-            <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
-            <label class="choice" for="Field5_1">女</label>
+            <input id="insured-sex-female" name="insured-sex-choice" type="radio" value="Second Choice" tabindex="6">
+            <label class="insured" for="insured-sex-female">女</label>
         </div>
         <div>
-          <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
-          <label class="choice" for="Field5_1">不想回答</label>
+          <input id="insured-sex-none" name="insured-sex-choice" type="radio" value="Second Choice" tabindex="6">
+          <label class="insured" for="insured-sex-none">不想回答</label>
         </div>
       </div>
     </div>
@@ -40,56 +45,56 @@
     <br><br>
 
     <div>
-      <label class="desc" id="title1" for="Field1">受保人生日（改成日期格式）</label>
+      <label class="desc" id="insured-birthdate-label" for="insured-birthdate">受保人生日（改成日期格式）</label>
       <div>
-        <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+        <input id="insured-birthdate" name="insured-birthdate" type="text" class="insured" value="" size="50" tabindex="1">
       </div>
     </div>
 
     <br><br>
 
     <div>
-      <label class="desc" id="title1" for="Field1">加拿大地址（改成？）</label>
+      <label class="desc" id="insured-address-1-label" for="insured-address-1">加拿大地址（改成？）</label>
       <div>
-        <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+        <input id="insured-address-1" name="insured-address" type="text" class="insured" value="" size="50" tabindex="1">
       </div>
     </div>
 
     <br><br>
 
     <div>
-      <label class="desc" id="title1" for="Field1">加拿大电话（改成电话格式）</label>
+      <label class="desc" id="insured-tel-1-label" for="insured-tel-1">加拿大电话（改成电话格式）</label>
       <div>
-        <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+        <input id="insured-tel-1" name="insured-tel" type="text" class="insured" value="" size="50" tabindex="1">
       </div>
     </div>
 
     <br><br>
       
     <div>
-      <label class="desc" id="title3" for="Field3">
+      <label class="desc" id="insured-mail-1-label" for="insured-mail-1">
         联系邮箱
       </label>
       <div>
-        <input id="Field3" name="Field3" type="email" spellcheck="false" value="" maxlength="255" tabindex="3"> 
+        <input id="insured-mail-1" name="insured-mail" type="email" spellcheck="false" size="50" value="" maxlength="255" tabindex="3"> 
      </div>
     </div>
 
     <br><br>
 
     <div>
-      <label class="desc" id="title1" for="Field1">身故受益人（和姓名一样）</label>
+      <label class="desc" id="deceased-beneficiary-1-label" for="deceased-beneficiary-1">身故受益人（和姓名一样）</label>
       <div>
-        <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+        <input id="deceased-beneficiary-1" name="deceased-beneficiary" type="text" size="50" class="deceased-beneficiary" value="" size="8" tabindex="1">
       </div>
     </div>
 
     <br><br>
 
     <div>
-      <label class="desc" id="title1" for="Field1">与受保人关系（和姓名一样，可以长一点？）</label>
+      <label class="desc" id="relationship-insured-1-label" for="relationship-insured-1">与受保人关系（和姓名一样，可以长一点？）</label>
       <div>
-        <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+        <input id="relationship-insured-1" name="relationship-insured" type="text" class="deceased-beneficiary" value="" size="50" tabindex="1">
       </div>
     </div>
 
@@ -97,18 +102,20 @@
       
     <div>
         <legend id="title5" class="desc">
-          是否添加其他受保人？（重要！！！在选“是”后在下方显示额外信息）
+          是否添加其他受保人？（重要！！！在选“是”后在下方显示额外信息）(可能不止一个)
         </legend>
         
+        // 从这里继续
+
         <div>
-            <input id="radioDefault_5" name="Field5" type="hidden" value="">
+            <input id="add-insured" name="add-insured" type="hidden" value="">
             <div>
-                <input id="Field5_0" name="Field5" type="radio" value="First Choice" tabindex="5" checked="checked">
-                <label class="choice" for="Field5_0">是</label>
+                <input id="add-insured-yes" name="add-insured-choice" type="radio" value="First Choice" tabindex="5" checked="checked">
+                <label class="insured" for="add-insured-yes">是</label>
             </div>
           <div>
-              <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
-              <label class="choice" for="Field5_1">否</label>
+              <input id="add-insured-no" name="add-insured-choice" type="radio" value="Second Choice" tabindex="6">
+              <label class="insured" for="add-insured-no">否</label>
           </div>
         </div>
     </div>
