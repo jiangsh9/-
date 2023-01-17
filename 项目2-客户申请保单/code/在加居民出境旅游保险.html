@@ -4,6 +4,7 @@
     <h2>旅游保险信息表</h2>
     <div>登录 即可保存进度。</div>
     
+    
     <!-- 新加 -->
     <link rel="stylesheet" href="css/geeks.css">
     <script type="text/javascript" src="js/app.js"></script>
@@ -24,24 +25,30 @@
 
   <br>
   
-  <div>
-    <label class="desc" id="title1" for="Field1">请确保受保人是否满足以下条件：</label>
-    <ol>
-      <li>年龄在15-89岁</li>
-      <li>持有有效加拿大公共医保(MSP)</li>
-      <li>
+  <div id="insured-condition" class="insured" name="insured-condition">
+    <label class="desc" id="insured-condition-list-label" for="insured-condition-list">
+      请确保受保人是否满足以下条件：
+    </label>
+    <ol id="insured-condition-list" class="insured" name="insured-condition">
+      <li id="insured-condition-1" class="insured" name="insured-condition">
+        年龄在15-89岁
+      </li>
+      <li id="insured-condition-2" class="insured" name="insured-condition">
+        持有有效加拿大公共医保(MSP)
+      </li>
+      <li id="insured-condition-3" class="insured" name="insured-condition">
         在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
       </li>
-      <li>
+      <li id="insured-condition-4" class="insured" name="insured-condition">
         未被诊断为晚期病症
       </li>
-      <li>
+      <li id="insured-condition-5" class="insured" name="insured-condition">
         未被诊断为癌症3期/4期
       </li>
-      <li>
+      <li id="insured-condition-6" class="insured" name="insured-condition">
         在过去三个月内未接受过 针对癌症的治疗
       </li>
-      <li>
+      <li id="insured-condition-7" class="insured" name="insured-condition">
         日常生活无需因健康状况 导致的护理辅助
       </li>
     </ol>
@@ -49,20 +56,20 @@
 
   <br>
 
-  <div>
-    <legend id="title5" class="desc">
+  <div id="insured-elder" class="insured" name="insured-elder">
+    <legend id="insured-elder-label" class="desc">
       受保人是否超过60岁（重要！！！在选“是”后在下方显示额外信息）
     </legend>
     
-    <div>
-      <input id="radioDefault_5" name="Field5" type="hidden" value="">
+    <div id="insured-elder-list" class="insured" name="insured-elder-list">
+      <input id="insured-elder-check" name="insured-elder-check" type="hidden" value="">
       <div>
-          <input id="Field5_0" name="Field5" type="radio" value="First Choice" tabindex="5" checked="checked">
-          <label class="choice" for="Field5_0">是</label>
+          <input id="insured-elder-yes" name="insured-elder-choice" type="radio" value="First Choice" tabindex="1" checked="checked">
+          <label class="choice" for="insured-elder-yes">是</label>
       </div>
       <div>
-        <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
-        <label class="choice" for="Field5_1">否</label>
+        <input id="insured-elder-no" name="insured-elder-choice" type="radio" value="Second Choice" tabindex="2">
+        <label class="choice" for="insured-elder-no">否</label>
       </div>
     </div>
   </div>
@@ -70,65 +77,67 @@
   <br><br>
 
   <div>
-    <label class="desc" id="title1" for="Field1">请勾选以下符合的选线（此标题和下方几行内容需要隐藏，在上面选“是”以后才显示）</label><br>
-    <ul style="list-style: none;">
-      <li><input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-      <label for="vehicle1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
-      <li><input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-      <label for="vehicle3">问是否同时具有糖尿病和心脏病</label></li>
-      <li><input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-      <label for="vehicle2">是否有器官移植</label></li>
-      <li><input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-      <label for="vehicle3">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
-      <li><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-      <label for="vehicle1">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
-      <li><input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-      <label for="vehicle2">是否确诊癌症，或者接受化疗/放疗</label></li>
-      <li><input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-      <label for="vehicle3">是否因为消化道疾病入院超过24小时</label></li>
+    <label class="desc" id="insured-elder-history-label" for="insured-elder-history">
+      请勾选以下符合的选线（此标题和下方几行内容需要隐藏，在上面选“是”以后才显示）
+    </label><br>
+    <ul id="insured-elder-history" name="insured-elder-history" class="insured" style="list-style: none;">
+      <li><input type="checkbox" id="insured-elder-history-1" name="insured-elder-history" value="history-1">
+      <label for="insured-elder-history-1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
+      <li><input type="checkbox" id="insured-elder-history-2" name="insured-elder-history" value="history-2">
+      <label for="insured-elder-history-2">问是否同时具有糖尿病和心脏病</label></li>
+      <li><input type="checkbox" id="insured-elder-history-3" name="insured-elder-history" value="history-3">
+      <label for="insured-elder-history-3">是否有器官移植</label></li>
+      <li><input type="checkbox" id="insured-elder-history-4" name="insured-elder-history" value="history-4">
+      <label for="insured-elder-history-4">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
+      <li><input type="checkbox" id="insured-elder-history-5" name="insured-elder-history" value="history-5">
+      <label for="insured-elder-history-5">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
+      <li><input type="checkbox" id="insured-elder-history-6" name="insured-elder-history" value="history-6">
+      <label for="insured-elder-history-6">是否确诊癌症，或者接受化疗/放疗</label></li>
+      <li><input type="checkbox" id="insured-elder-history-7" name="insured-elder-history" value="history-7">
+      <label for="insured-elder-history-7">是否因为消化道疾病入院超过24小时</label></li>
     </ul>
   </div>
 
   <br><br>
     
   <div>
-    <label class="desc" id="title1" for="Field1">离开加拿大日期（改成日期格式）</label>
+    <label class="desc" id="departure-date-label" for="departure-date">离开加拿大日期（改成日期格式）</label>
     <div>
-      <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="20" tabindex="1">
+      <input id="departure-date" name="departure-date" type="text" class="date" value="" size="20" tabindex="1">
     </div>
   </div>
 
   <br><br>
 
   <div>
-    <label class="desc" id="title1" for="Field1">保险生效日期（改成日期格式）</label>
+    <label class="desc" id="effective-date-label" for="effective-date">保险生效日期（改成日期格式）</label>
     <div>
-      <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="20" tabindex="1">
+      <input id="effective-date" name="effective-date" type="text" class="insurance" value="" size="20" tabindex="1">
     </div>
   </div>
 
   <br><br>
 
   <div>
-    <label class="desc" id="title1" for="Field1">保险结束日期（改成日期格式）</label>
+    <label class="desc" id="end-date-label" for="end-date">保险结束日期（改成日期格式）</label>
     <div>
-      <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="20" tabindex="1">
+      <input id="end-date" name="end-date" type="text" class="insurance" value="" size="20" tabindex="1">
     </div>
   </div>
 
   <br><br>
 
   <div>
-    <label class="desc" id="title1" for="Field1">目的地是否在美国？</label>
+    <label class="desc" id="america-or-not-label" for="america-or-not">目的地是否在美国？</label>
     <div>
-      <input id="radioDefault_5" name="Field5" type="hidden" value="">
+      <input id="america-or-not" name="america-or-not" type="hidden" value="">
       <div>
-          <input id="Field5_0" name="Field5" type="radio" value="First Choice" tabindex="5" checked="checked">
-          <label class="choice" for="Field5_0">是</label>
+          <input id="america-yes" name="america-or-not" type="radio" value="First Choice" tabindex="5" checked="checked">
+          <label class="insurance" for="america-yes">是</label>
       </div>
       <div>
-          <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
-          <label class="choice" for="Field5_1">否</label>
+          <input id="america-no" name="america-or-not" type="radio" value="Second Choice" tabindex="6">
+          <label class="insurance" for="america-no">否</label>
       </div>
     </div>
   </div>
@@ -136,6 +145,7 @@
   <br><br>
 
   <div>
+    // 从这里继续
     <label class="desc" id="title1" for="Field1">在美国哪个州 (如果上面目的地选择"是"，弹出此内容)</label>
     <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
   </div>
