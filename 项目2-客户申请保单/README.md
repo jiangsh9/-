@@ -26,7 +26,14 @@
 3. 数据要加密
 4. 有后台，后台可看到客户填写的进度
 5. 更改id, name, tag等
-6. 更改一些input格式：如日期
+6. Web 表单
+   1.  每一页的 "登录" 字体可链接登录页面
+   2.  page_2最下方，写隐藏信息
+   3.  更改一些input格式：如日期
+   4.  数据要加密
+   5.  优化"提交"按钮
+   6.  一些input的value (如"First choice", "Second choice" 等)
+   7.  访加客户保险-166页 是什么: "<input id="radioDefault_5" name="Field5" type="hidden" value="">"
 
 <br>
 
