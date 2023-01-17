@@ -1,0 +1,163 @@
+<form action="#">
+
+  <header>
+    <h2>旅游保险信息表</h2>
+    <div>登录 即可保存进度。</div>
+    
+    <!-- 新加 -->
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/app.js"></script>
+  </header>
+  
+  <h3>访加旅客保险</h3>
+  <div>
+    <label class="desc" id="title1" for="Field1">请确保受保人是否满足以下条件：</label>
+    <ol>
+      <li>年龄在15-89岁</li>
+      <li>未受保于加拿大公共医保(MSP)下</li>
+      <li>
+        在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
+      </li>
+      <li>
+        未被诊断为晚期病症
+      </li>
+      <li>
+        未被诊断为癌症3期/4期
+      </li>
+      <li>
+        在过去三个月内未接受过 针对癌症的治疗
+      </li>
+      <li>
+        日常生活无需因健康状况 导致的护理辅助
+      </li>
+    </ol>
+  </div>
+
+  <div>
+    <legend id="title5" class="desc">
+      受保人是否超过60岁（重要！！！在选“是”后在下方显示额外信息）
+    </legend>
+    
+    <div>
+      <input id="radioDefault_5" name="Field5" type="hidden" value="">
+      <div>
+          <input id="Field5_0" name="Field5" type="radio" value="First Choice" tabindex="5" checked="checked">
+          <label class="choice" for="Field5_0">是</label>
+      </div>
+      <div>
+        <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+        <label class="choice" for="Field5_1">否</label>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label class="desc" id="title1" for="Field1">请勾选以下符合的选线（此标题和下方几行内容需要隐藏，在上面选“是”以后才显示）</label><br><br>
+    <ul style="list-style: none;">
+      <li><input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+      <label for="vehicle1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
+      <li><input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+      <label for="vehicle3">问是否同时具有糖尿病和心脏病</label></li>
+      <li><input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+      <label for="vehicle2">是否有器官移植</label></li>
+      <li><input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+      <label for="vehicle3">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
+      <li><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+      <label for="vehicle1">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
+      <li><input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+      <label for="vehicle2">是否确诊癌症，或者接受化疗/放疗</label></li>
+      <li><input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+      <label for="vehicle3">是否因为消化道疾病入院超过24小时</label></li>
+    </ul>
+  </div>
+    
+  <div>
+    <label class="desc" id="title1" for="Field1">到达加拿大日期（改成日期格式）</label>
+    <div>
+      <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+    </div>
+  </div>
+
+  <div>
+    <label class="desc" id="title1" for="Field1">保险生效日期（改成日期格式）</label>
+    <div>
+      <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+    </div>
+  </div>
+
+  <div>
+    <label class="desc" id="title1" for="Field1">保险结束日期（改成日期格式）</label>
+    <div>
+      <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+    </div>
+  </div>
+
+  <div>
+    <label class="desc" id="title1" for="Field1">保额选择</label>
+    <div>
+      <input id="radioDefault_5" name="Field5" type="hidden" value="">
+      <div>
+          <input id="Field5_0" name="Field5" type="radio" value="First Choice" tabindex="5" checked="checked">
+          <label class="choice" for="Field5_0">$10,000</label>
+      </div>
+      <div>
+          <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+          <label class="choice" for="Field5_1">$25,000</label>
+      </div>
+      <div>
+        <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+        <label class="choice" for="Field5_1">$50,000</label>
+      </div>
+      <div>
+        <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+        <label class="choice" for="Field5_1">$100,000</label>
+      </div>
+      <div>
+        <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+        <label class="choice" for="Field5_1">$150,000</label>
+      </div>
+      <div>
+        <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+        <label class="choice" for="Field5_1">$300,000</label>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label class="desc" id="title1" for="Field1">起付额</label>
+    <div>
+      <input id="radioDefault_5" name="Field5" type="hidden" value="">
+      <div>
+          <input id="Field5_0" name="Field5" type="radio" value="First Choice" tabindex="5" checked="checked">
+          <label class="choice" for="Field5_0">$0</label>
+      </div>
+      <div>
+          <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+          <label class="choice" for="Field5_1">$100 (约等于省5%)</label>
+      </div>
+      <div>
+        <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+        <label class="choice" for="Field5_1">$250 (约等于省10%)</label>
+      </div>
+      <div>
+        <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+        <label class="choice" for="Field5_1">$1000 (约等于省20%)</label>
+      </div>
+      <div>
+        <input id="Field5_1" name="Field5" type="radio" value="Second Choice" tabindex="6">
+        <label class="choice" for="Field5_1">$3000 (约等于省30%)</label>
+      </div>
+      <div>
+        <p>(例如起付额$100，指少于$100的部分自付，超出$100的部分可索赔)</p>
+      </div>
+    </div>
+  </div>
+  
+  <div>
+    <div>
+      <input type="button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
+      <input id="saveForm" name="saveForm" type="submit" value="提交"">
+    </div>
+  </div>
+  
+</form>
