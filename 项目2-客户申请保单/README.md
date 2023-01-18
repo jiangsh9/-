@@ -35,6 +35,8 @@
    6.  一些input的value (如"First choice", "Second choice" 等)
    7.  访加客户保险-166行 是什么: "<input id="radioDefault_5" name="Field5" type="hidden" value="">"
    8.  在加居民出境-179行 是什么：“<input id="radioDefault_5" name="Field5" type="hidden" value="">”
+   9.  优化input人性化：如日期
+   10. 更改tabindex
 
 <br>
 
