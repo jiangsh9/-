@@ -132,12 +132,12 @@
     <div>
       <input id="america-or-not" name="america-or-not" type="hidden" value="">
       <div>
-          <input id="america-yes" name="america-or-not" type="radio" value="First Choice" tabindex="5" checked="checked">
-          <label class="insurance" for="america-yes">是</label>
+          <input id="america-yes" name="america-or-not-choice" type="radio" value="First Choice" tabindex="5" checked="checked">
+          <label class="travel" for="america-yes">是</label>
       </div>
       <div>
-          <input id="america-no" name="america-or-not" type="radio" value="Second Choice" tabindex="6">
-          <label class="insurance" for="america-no">否</label>
+          <input id="america-no" name="america-or-not-choice" type="radio" value="Second Choice" tabindex="6">
+          <label class="travel" for="america-no">否</label>
       </div>
     </div>
   </div>
@@ -145,42 +145,59 @@
   <br><br>
 
   <div>
-    // 从这里继续
-    <label class="desc" id="title1" for="Field1">在美国哪个州 (如果上面目的地选择"是"，弹出此内容)</label>
-    <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+    <label class="desc" id="america-state-label" for="america-state">
+      在美国哪个州 (如果上面目的地选择"是"，弹出此内容)
+    </label>
+    <input id="america-state" name="america-state" type="text" class="travel" value="" size="8" tabindex="1">
   </div>
 
   <br><br>
 
   <div>
-    <label class="desc" id="title1" for="Field1">在美国停留天数（如果不停留，选择0） (如果上面目的地选择"是"，弹出此内容)</label>
-    <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+    <label class="desc" id="america-stay-label" for="america-stay">
+      在美国停留天数（如果不停留，选择0） (如果上面目的地选择"是"，弹出此内容)
+    </label>
+    <input id="america-stay" name="america-stay" type="text" class="travel" value="" size="8" tabindex="2">
   </div>
 
   <br><br>
 
   <div>
-    <label class="desc" id="title1" for="Field1">在哪个国家 (如果上面目的地选择"否"，弹出此内容：可改为下拉菜单)</label>
-    <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+    <label class="desc" id="country-label" for="country">
+      在哪个国家 (如果上面目的地选择"否"，弹出此内容：可改为下拉菜单)
+    </label>
+    <input id="country" name="country" type="text" class="travel" value="" size="8" tabindex="3">
   </div>
 
   <br><br>
 
   <div>
-    <label class="desc" id="title1" for="Field1">保险类型</label>
+    <label class="desc" id="insurance-type-label" for="insurance-type">
+      保险类型
+    </label>
     <div>
       <input id="radioDefault_5" name="Field5" type="hidden" value="">
-      <ul style="list-style: none;">
+      <ul id="insurance-type" name="insurance-type" class="insurance" style="list-style: none;">
         <li>
-          <input type="checkbox" id="option"><label for="option">医疗保险，仅包含紧急/意外医疗费用</label>
+          <input type="checkbox" id="medical-insurance">
+          <label for="medical-insurance">医疗保险，仅包含紧急/意外医疗费用</label>
         </li>
         <li>
-          <input type="checkbox" id="option"><label for="option">添加附加险：</label>
-          <ul style="list-style: none;">
-            <li><label><input type="checkbox" class="subOption">航空事故($20万/$50万)</label></li>
-            <li><label><input type="checkbox" class="subOption">意外身故($2万5千/$10万/$25万)</label></li>
-            <li><label><input type="checkbox" class="subOption">旅途中断($800/$1500/$2000)</label></li>
-            <li><label><input type="checkbox" class="subOption">旅途取消($100~$15000,每$100一个档位)</label></li>
+          <input type="checkbox" id="additional-insurance">
+          <label for="additional-insurance">添加附加险：</label>
+          <ul id="additional-insurance-list" name="additional-insurance-list" class="insurance" style="list-style: none;">
+            <li><label>
+              <input type="checkbox" id="air-accident-insurance" name="additional-insurance" class="insurance">航空事故($20万/$50万)
+            </label></li>
+            <li><label>
+              <input type="checkbox" id="accidental-death-insurance" name="additional-insurance" class="insurance">意外身故($2万5千/$10万/$25万)
+            </label></li>
+            <li><label>
+              <input type="checkbox" id="trip-interruption-insurance" name="additional-insurance" class="insurance">旅途中断($800/$1500/$2000)
+            </label></li>
+            <li><label>
+              <input type="checkbox" id="trip-cancellation-insurance" name="additional-insurance" class="insurance">旅途取消($100~$15000,每$100一个档位)
+            </label></li>
           </ul>
         </li>
       </ul>

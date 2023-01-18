@@ -33,7 +33,8 @@
    4.  数据要加密
    5.  优化"提交"按钮
    6.  一些input的value (如"First choice", "Second choice" 等)
-   7.  访加客户保险-166页 是什么: "<input id="radioDefault_5" name="Field5" type="hidden" value="">"
+   7.  访加客户保险-166行 是什么: "<input id="radioDefault_5" name="Field5" type="hidden" value="">"
+   8.  在加居民出境-179行 是什么：“<input id="radioDefault_5" name="Field5" type="hidden" value="">”
 
 <br>
 
