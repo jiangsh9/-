@@ -58,27 +58,28 @@
 
   <div id="insured-elder" class="insured" name="insured-elder">
     <legend id="insured-elder-label" class="desc">
-      受保人是否超过60岁（重要！！！在选“是”后在下方显示额外信息）
+      受保人是否超过60岁
     </legend>
     
     <div id="insured-elder-list" class="insured" name="insured-elder-list">
       <input id="insured-elder-check" name="insured-elder-check" type="hidden" value="">
       <div>
-          <input id="insured-elder-yes" name="insured-elder-choice" type="radio" value="First Choice" tabindex="1" checked="checked">
+          <input id="insured-elder-yes" name="insured-elder-choice" type="radio" value="First Choice" tabindex="1" onclick="unhide_60()">
           <label class="choice" for="insured-elder-yes">是</label>
       </div>
       <div>
-        <input id="insured-elder-no" name="insured-elder-choice" type="radio" value="Second Choice" tabindex="2">
+        <input id="insured-elder-no" name="insured-elder-choice" type="radio" value="Second Choice" tabindex="2" onclick="rehide_60()">
         <label class="choice" for="insured-elder-no">否</label>
       </div>
     </div>
   </div>
 
-  <br><br>
+  
 
-  <div>
+  <div id="insured-elder-yes-after" style="display:none;">
+    <br><br>
     <label class="desc" id="insured-elder-history-label" for="insured-elder-history">
-      请勾选以下符合的选线（此标题和下方几行内容需要隐藏，在上面选“是”以后才显示）
+      请勾选以下符合的选线
     </label><br>
     <ul id="insured-elder-history" name="insured-elder-history" class="insured" style="list-style: none;">
       <li><input type="checkbox" id="insured-elder-history-1" name="insured-elder-history" value="history-1">
@@ -132,11 +133,11 @@
     <div>
       <input id="america-or-not" name="america-or-not" type="hidden" value="">
       <div>
-          <input id="america-yes" name="america-or-not-choice" onclick="unhiderehide1()" type="radio" value="First Choice" tabindex="5">
+          <input id="america-yes" name="america-or-not-choice" onclick="unhiderehide1()" type="radio" value="First Choice" tabindex="1">
           <label class="travel" for="america-yes" >是</label>
       </div>
       <div>
-          <input id="america-no" name="america-or-not-choice" onclick="unhiderehide2()" type="radio" value="Second Choice" tabindex="6">
+          <input id="america-no" name="america-or-not-choice" onclick="unhiderehide2()" type="radio" value="Second Choice" tabindex="2">
           <label class="travel" for="america-no" >否</label>
       </div>
     </div>
@@ -154,7 +155,7 @@
 
     <div id="america_stay">
       <label class="desc" id="america-stay-label" for="america-stay">
-        在美国停留天数（如果不停留，选择0） (如果上面目的地选择"是"，弹出此内容)
+        在美国停留天数 
       </label><br>
       <input id="america-stay" name="america-stay" type="text" class="travel" value="" size="8" tabindex="2">
     </div><br><br>
@@ -164,9 +165,9 @@
 
   <div id="america-no-after" style="display:none;">
     <label class="desc" id="country-label" for="country">
-      在哪个国家 (如果上面目的地选择"否"，弹出此内容：可改为下拉菜单)
+      在哪个国家
     </label><br>
-    <input id="country" name="country" type="text" class="travel" value="" size="8" tabindex="3">
+    <input id="country" name="country" type="text" class="travel" value="" size="8" tabindex="1">
     <br><br>
   </div>
 
@@ -184,7 +185,7 @@
         </li>
         <li>
           <div id="additional-insurance-check">
-            <input type="checkbox" id="additional-insurance">
+            <input type="checkbox" id="additional-insurance_1" name="additional_insurance_1" onclick="additional_insurance()">
             <label for="additional-insurance">添加附加险：</label>
           </div>
           <div id="additional-insurance-after" style="display:none;">
@@ -219,6 +220,19 @@
 </form>
 
 <script>
+  // 针对 "受保人是否超过60岁" 下方的额外选项进行unhide
+  function unhide_60(){
+    var insured_elder_yes_after=document.getElementById("insured-elder-yes-after")
+    insured_elder_yes_after.style.display="block";
+  }
+
+  // 
+  function rehide_60(){
+    var insured_elder_yes_after=document.getElementById("insured-elder-yes-after")
+    insured_elder_yes_after.style.display="none";
+  }
+
+  // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
   function unhiderehide1(){
     var america_yes_after=document.getElementById("america-yes-after");
     var america_no_after=document.getElementById("america-no-after");
@@ -226,14 +240,18 @@
     america_no_after.style.display="none";
 
   }
+
+  // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
   function unhiderehide2(){
     var america_yes_after=document.getElementById("america-yes-after");
     var america_no_after=document.getElementById("america-no-after");
     america_yes_after.style.display="none";
     america_no_after.style.display="block";
   }
+
+  // // 针对 "添加附加险" 下方的额外选项进行隐藏和重现
   function additional_insurance(){
-    var checkbox = document.getElementById("additional-insurance");
+    var checkbox = document.getElementById("additional-insurance_1");
     var additional_insurance_after = document.getElementById("additional-insurance-after");
     checkbox.addEventListener( "change", () => {
       if ( checkbox.checked ){

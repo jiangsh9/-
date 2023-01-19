@@ -58,26 +58,25 @@
 
   <div id="insured-elder" class="insured" name="insured-elder">
     <legend id="insured-elder-label" class="desc">
-      受保人是否超过60岁（重要！！！在选“是”后在下方显示额外信息）
+      受保人是否超过60岁
     </legend>
     
     <div id="insured-elder-list" class="insured" name="insured-elder-list">
       <input id="insured-elder-check" name="insured-elder-check" type="hidden" value="">
       <div>
-          <input id="insured-elder-yes" name="insured-elder-choice" type="radio" value="First Choice" tabindex="1" checked="checked">
+          <input id="insured-elder-yes" name="insured-elder-choice" type="radio" value="First Choice" tabindex="1" onclick="unhide_60()">
           <label class="choice" for="insured-elder-yes">是</label>
       </div>
       <div>
-        <input id="insured-elder-no" name="insured-elder-choice" type="radio" value="Second Choice" tabindex="2">
+        <input id="insured-elder-no" name="insured-elder-choice" type="radio" value="Second Choice" tabindex="2" onclick="rehide_60()">
         <label class="choice" for="insured-elder-no">否</label>
       </div>
     </div>
   </div>
 
-  <br><br>
-
-  <div>
-    <label class="desc" id="insured-elder-history-label" for="insured-elder-history">请勾选以下符合的选线（此标题和下方几行内容需要隐藏，在上面选“是”以后才显示）</label>
+  <div id="insured-elder-yes-after" style="display:none;">
+    <br><br>
+    <label class="desc" id="insured-elder-history-label" for="insured-elder-history">请勾选以下符合的选线</label>
     <ul id="insured-elder-history" name="insured-elder-history" class="insured" style="list-style: none;">
       <li><input type="checkbox" id="insured-elder-history-1" name="insured-elder-history" value="history-1">
       <label for="insured-elder-history-1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
@@ -133,3 +132,17 @@
   </div>
   
 </form>
+
+<script>
+  // 针对 "受保人是否超过60岁" 下方的额外选项进行unhide
+  function unhide_60(){
+    var insured_elder_yes_after=document.getElementById("insured-elder-yes-after")
+    insured_elder_yes_after.style.display="block";
+  }
+
+  // 
+  function rehide_60(){
+    var insured_elder_yes_after=document.getElementById("insured-elder-yes-after")
+    insured_elder_yes_after.style.display="none";
+  }
+</script>

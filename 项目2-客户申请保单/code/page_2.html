@@ -36,7 +36,7 @@
             <label class="insured" for="insured-sex-female">女</label>
         </div>
         <div>
-          <input id="insured-sex-none" name="insured-sex-choice" type="radio" value="Second Choice" tabindex="3">
+          <input id="insured-sex-none" name="insured-sex-choice" type="radio" value="Third Choice" tabindex="3">
           <label class="insured" for="insured-sex-none">不想回答</label>
         </div>
       </div>
@@ -53,15 +53,17 @@
 
     <br><br>
 
-    <div>
-      <label class="desc" id="insured-addres-label" for="insured-address">加拿大地址</label>
+    <div id="insured-address-group" name="insured-address-group" class="insured">
+      <label class="desc" id="insured-address-label" for="insured-address">加拿大地址</label>
       <div>
         <label>Street Address</label><br>
         <input id="insured-street-address" name="insured-street-address" type="text" class="insured" value="" size="50" tabindex="1"><br>
         <label>ZIP or postal code (optional)</label><br>
-        <input id="insured-zip" name="insured-zip" type="text" class="insured" value="" size="20" tabindex="1"><br>
+        <input id="insured-zip" name="insured-zip" type="text" class="insured" value="" size="20" tabindex="2"><br>
+        <label>Province</label><br>
+        <input id="insured-city" name="insured-city" type="text" class="insured" value="" size="50" tabindex="3"><br>
         <label>City</label><br>
-        <input id="insured-city" name="insured-city" type="text" class="insured" value="" size="50" tabindex="1"><br>
+        <input id="insured-city" name="insured-city" type="text" class="insured" value="" size="50" tabindex=""><br>
       </div>
     </div>
 
@@ -88,7 +90,7 @@
     <br><br>
 
     <div>
-      <label class="desc" id="deceased-beneficiary-label" for="deceased-beneficiary">身故受益人（和姓名一样）</label>
+      <label class="desc" id="deceased-beneficiary-label" for="deceased-beneficiary">身故受益人</label>
       <div>
         <input id="deceased-beneficiary" name="deceased-beneficiary" type="text" size="50" class="deceased-beneficiary" value="" size="8" tabindex="1">
       </div>
@@ -97,9 +99,9 @@
     <br><br>
 
     <div>
-      <label class="desc" id="relationship-insured-label" for="relationship-insured">与受保人关系（和姓名一样，可以长一点？）</label>
+      <label class="desc" id="relationship-insured-label" for="relationship-insured">与受保人关系</label>
       <div>
-        <input id="relationship-insured" name="relationship-insured" type="text" class="deceased-beneficiary" value="" size="50" tabindex="1">
+        <input id="relationship-insured" name="relationship-insured" placeholder="例：父母、子女、配偶" type="text" class="deceased-beneficiary" value="" size="50" tabindex="1">
       </div>
     </div>
 
@@ -107,7 +109,7 @@
       
     <div>
         <legend id="title5" class="desc">
-          是否添加其他受保人？（重要！！！额外信息已隐藏，请在选“是”后在下方显示）(可能不止一个)
+          是否添加其他受保人？(现在不删除：可能不止一个受保人)
         </legend>
 
         <div>
@@ -140,7 +142,7 @@
         <div>
           <input id="added-insured-sex" name="added-insured-sex" type="hidden" value="">
           <div>
-              <input id="added-insured-sex-male" name="added-insured-sex-choice" type="radio" value="First Choice" tabindex="1" checked="checked">
+              <input id="added-insured-sex-male" name="added-insured-sex-choice" type="radio" value="First Choice" tabindex="1">
               <label class="added-insured" for="added-insured-sex-male">男</label>
           </div>
           <div>
@@ -148,7 +150,7 @@
               <label class="added-insured" for="added-insured-sex-female">女</label>
           </div>
           <div>
-            <input id="added-insured-sex-none" name="added-insured-sex-choice" type="radio" value="Second Choice" tabindex="3">
+            <input id="added-insured-sex-none" name="added-insured-sex-choice" type="radio" value="Third Choice" tabindex="3">
             <label class="added-insured" for="added-insured-sex-none">不想回答</label>
           </div>
         </div>

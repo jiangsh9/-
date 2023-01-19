@@ -27,20 +27,34 @@
 4. 有后台，后台可看到客户填写的进度
 5. 更改id, name, tag等
 6. Web 表单
-   1.  每一页的 "登录" 字体可链接登录页面
-   2.  page_2最下方，写隐藏信息
-   3.  更改一些input格式：如日期
-   4.  数据要加密
-   5.  优化"提交"按钮
-   6.  一些input的value (如"First choice", "Second choice" 等)
-   7.  访加客户保险-166行 是什么: "<input id="radioDefault_5" name="Field5" type="hidden" value="">"
-   8.  在加居民出境-179行 是什么：“<input id="radioDefault_5" name="Field5" type="hidden" value="">”
-   9.  优化input人性化：如日期
-   10. 更改tabindex
-   11. “加拿大地址”中添加id，name，class等
-   12. "受保人是否超过60岁"的下方隐藏(所有部分放在一个div中)
-   13. 数据库：用Cpanel而不是mysql
-   14. (未成功，正在进行) "在加居民出境旅游保险"中，下方的“添加附加险”下面可以做隐藏和onclick
+   1.  更改一些input格式：如日期
+   2.  删除多余标签（一般在括号内）
+   3.  信用卡信息
+   4.  每一页的 "登录" 字体可链接登录页面
+   5.  数据库：用Cpanel而不是mysql
+   6.  优化"提交"按钮
+       1.  (最后做也可以)按"提交"后，保存信息，显示给用户，问用户是否Edit
+   7.  数据要加密
+   8.  优化input人性化：如日期
+       1.  "page_2" 等文件中的 "受保人姓名"（有一个在地下被隐藏了）改成first name, middle name (optional), last name
+       2.  "page_2" 等文件中的 "身故受益人"（有一个在地下被隐藏了）改成first name, middle name (optional), last name
+       3.  "page_2" 等文件中的 "受保人生日"（有一个在地下被隐藏了）更人性化（现在输入和删除不好用）
+       4.  "page_2" 中的 "加拿大电话" 
+           1.  限制格式，保证格式准确
+           2.  （上面选项实现后）可以一次性全输入和删除
+       5.  "page_2" 中的 "ZIP or postal code (optional)" 限制格式
+       6.  一些选项检查格式（如"联系邮箱"）
+       7.  一些选项标明 "必填*"
+   9.  访加客户保险-166行 是什么: "<input id="radioDefault_5" name="Field5" type="hidden" value="">"
+   10. 在加居民出境-179行 是什么："<input id="radioDefault_5" name="Field5" type="hidden" value="">”
+   11. 优化"在加居民出境旅游保险" 中的 "在美国哪个州"和 "在哪个国家" 选项
+       1.  "在美国哪个州" 连接美国数据，可搜索
+       2.  "在哪个国家" 连接所有国家数据，可搜索
+       3.  改成下拉
+   12. （高阶）"page_2" 中的 "Province" 和 "City":
+       1.  连接加拿大的数据
+       2.  做成下拉菜单
+   13. 
 
 <br>
 
