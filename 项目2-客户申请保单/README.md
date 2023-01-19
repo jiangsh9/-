@@ -37,6 +37,8 @@
    8.  在加居民出境-179行 是什么：“<input id="radioDefault_5" name="Field5" type="hidden" value="">”
    9.  优化input人性化：如日期
    10. 更改tabindex
+   11. “加拿大地址”中添加id，name，class等
+   12. 数据库：用Cpanel而不是mysql
 
 <br>
 
