@@ -101,27 +101,27 @@
   <br><br>
     
   <div>
-    <label class="desc" id="departure-date-label" for="departure-date">离开加拿大日期（改成日期格式）</label>
+    <label class="desc" id="departure-date-label" for="departure-date">离开加拿大日期</label>
     <div>
-      <input id="departure-date" name="departure-date" type="text" class="date" value="" size="20" tabindex="1">
+      <input id="departure-date" name="departure-date" type="date" class="date" value="" size="20" tabindex="1">
     </div>
   </div>
 
   <br><br>
 
   <div>
-    <label class="desc" id="effective-date-label" for="effective-date">保险生效日期（改成日期格式）</label>
+    <label class="desc" id="effective-date-label" for="effective-date">保险生效日期</label>
     <div>
-      <input id="effective-date" name="effective-date" type="text" class="insurance" value="" size="20" tabindex="1">
+      <input id="effective-date" name="effective-date" type="date" class="insurance" value="" size="20" tabindex="1">
     </div>
   </div>
 
   <br><br>
 
   <div>
-    <label class="desc" id="end-date-label" for="end-date">保险结束日期（改成日期格式）</label>
+    <label class="desc" id="end-date-label" for="end-date">保险结束日期</label>
     <div>
-      <input id="end-date" name="end-date" type="text" class="insurance" value="" size="20" tabindex="1">
+      <input id="end-date" name="end-date" type="date" class="insurance" value="" size="20" tabindex="1">
     </div>
   </div>
 
@@ -132,44 +132,44 @@
     <div>
       <input id="america-or-not" name="america-or-not" type="hidden" value="">
       <div>
-          <input id="america-yes" name="america-or-not-choice" type="radio" value="First Choice" tabindex="5" checked="checked">
-          <label class="travel" for="america-yes">是</label>
+          <input id="america-yes" name="america-or-not-choice" onclick="unhiderehide1()" type="radio" value="First Choice" tabindex="5">
+          <label class="travel" for="america-yes" >是</label>
       </div>
       <div>
-          <input id="america-no" name="america-or-not-choice" type="radio" value="Second Choice" tabindex="6">
-          <label class="travel" for="america-no">否</label>
+          <input id="america-no" name="america-or-not-choice" onclick="unhiderehide2()" type="radio" value="Second Choice" tabindex="6">
+          <label class="travel" for="america-no" >否</label>
       </div>
     </div>
   </div>
 
   <br><br>
 
-  <div>
-    <label class="desc" id="america-state-label" for="america-state">
-      在美国哪个州 (如果上面目的地选择"是"，弹出此内容)
-    </label>
-    <input id="america-state" name="america-state" type="text" class="travel" value="" size="8" tabindex="1">
+  <div id="america-yes-after" style="display:none;">
+    <div id="america_state" >
+      <label class="desc" id="america-state-label" for="america-state">
+        在美国哪个州 (如果上面目的地选择"是"，弹出此内容)
+      </label><br>
+      <input id="america-state" name="america-state" type="text" class="travel" value="" size="8" tabindex="1">
+    </div>
+
+    <div id="america_stay">
+      <label class="desc" id="america-stay-label" for="america-stay">
+        在美国停留天数（如果不停留，选择0） (如果上面目的地选择"是"，弹出此内容)
+      </label><br>
+      <input id="america-stay" name="america-stay" type="text" class="travel" value="" size="8" tabindex="2">
+    </div><br><br>
   </div>
 
-  <br><br>
+  
 
-  <div>
-    <label class="desc" id="america-stay-label" for="america-stay">
-      在美国停留天数（如果不停留，选择0） (如果上面目的地选择"是"，弹出此内容)
-    </label>
-    <input id="america-stay" name="america-stay" type="text" class="travel" value="" size="8" tabindex="2">
-  </div>
-
-  <br><br>
-
-  <div>
+  <div id="america-no-after" style="display:none;">
     <label class="desc" id="country-label" for="country">
       在哪个国家 (如果上面目的地选择"否"，弹出此内容：可改为下拉菜单)
-    </label>
+    </label><br>
     <input id="country" name="country" type="text" class="travel" value="" size="8" tabindex="3">
+    <br><br>
   </div>
 
-  <br><br>
 
   <div>
     <label class="desc" id="insurance-type-label" for="insurance-type">
@@ -183,22 +183,26 @@
           <label for="medical-insurance">医疗保险，仅包含紧急/意外医疗费用</label>
         </li>
         <li>
-          <input type="checkbox" id="additional-insurance">
-          <label for="additional-insurance">添加附加险：</label>
-          <ul id="additional-insurance-list" name="additional-insurance-list" class="insurance" style="list-style: none;">
-            <li><label>
-              <input type="checkbox" id="air-accident-insurance" name="additional-insurance" class="insurance">航空事故($20万/$50万)
-            </label></li>
-            <li><label>
-              <input type="checkbox" id="accidental-death-insurance" name="additional-insurance" class="insurance">意外身故($2万5千/$10万/$25万)
-            </label></li>
-            <li><label>
-              <input type="checkbox" id="trip-interruption-insurance" name="additional-insurance" class="insurance">旅途中断($800/$1500/$2000)
-            </label></li>
-            <li><label>
-              <input type="checkbox" id="trip-cancellation-insurance" name="additional-insurance" class="insurance">旅途取消($100~$15000,每$100一个档位)
-            </label></li>
-          </ul>
+          <div id="additional-insurance-check">
+            <input type="checkbox" id="additional-insurance">
+            <label for="additional-insurance">添加附加险：</label>
+          </div>
+          <div id="additional-insurance-after" style="display:none;">
+            <ul id="additional-insurance-list" name="additional-insurance-list" class="insurance" style="list-style: none;">
+              <li><label>
+                <input type="checkbox" id="air-accident-insurance" name="additional-insurance" class="insurance">航空事故($20万/$50万)
+              </label></li>
+              <li><label>
+                <input type="checkbox" id="accidental-death-insurance" name="additional-insurance" class="insurance">意外身故($2万5千/$10万/$25万)
+              </label></li>
+              <li><label>
+                <input type="checkbox" id="trip-interruption-insurance" name="additional-insurance" class="insurance">旅途中断($800/$1500/$2000)
+              </label></li>
+              <li><label>
+                <input type="checkbox" id="trip-cancellation-insurance" name="additional-insurance" class="insurance">旅途取消($100~$15000,每$100一个档位)
+              </label></li>
+            </ul>
+          </div>
         </li>
       </ul>
   </div>
@@ -213,3 +217,31 @@
   </div>
   
 </form>
+
+<script>
+  function unhiderehide1(){
+    var america_yes_after=document.getElementById("america-yes-after");
+    var america_no_after=document.getElementById("america-no-after");
+    america_yes_after.style.display="block";
+    america_no_after.style.display="none";
+
+  }
+  function unhiderehide2(){
+    var america_yes_after=document.getElementById("america-yes-after");
+    var america_no_after=document.getElementById("america-no-after");
+    america_yes_after.style.display="none";
+    america_no_after.style.display="block";
+  }
+  function additional_insurance(){
+    var checkbox = document.getElementById("additional-insurance");
+    var additional_insurance_after = document.getElementById("additional-insurance-after");
+    checkbox.addEventListener( "change", () => {
+      if ( checkbox.checked ){
+        additional_insurance_after.style.display="block";
+      }
+      else{
+        additional_insurance_after.style.display="none";
+      }
+    });
+  }
+</script>
