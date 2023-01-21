@@ -1,268 +1,273 @@
-<form action="#">
+<!DOCTYPE html>
+<html>
+  <form action="#">
 
-  <header>
-    <h2>旅游保险信息表</h2>
-    <div>登录 即可保存进度。</div>
+    <header>
+      <h2>旅游保险信息表</h2>
+      <div>登录 即可保存进度。</div>
+      
+      
+      <!-- 新加 -->
+      <link rel="stylesheet" href="css/geeks.css">
+      <script type="text/javascript" src="js/app.js"></script>
+    </header>
     
-    
-    <!-- 新加 -->
-    <link rel="stylesheet" href="css/geeks.css">
-    <script type="text/javascript" src="js/app.js"></script>
-  </header>
-  
-  <br>
+    <br>
 
-  <h3>在加居民出境旅游保险</h3>
+    <h3>在加居民出境旅游保险</h3>
 
-  <br>
+    <br>
 
-  <div>
     <div>
-      <input id="page-button-11" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
-      <input id="saveForm" name="saveForm" type="submit" value="提交">
-    </div>
-  </div>
-
-  <br>
-  
-  <div id="insured-condition" class="insured" name="insured-condition">
-    <label class="desc" id="insured-condition-list-label" for="insured-condition-list">
-      请确保受保人是否满足以下条件：
-    </label>
-    <ol id="insured-condition-list" class="insured" name="insured-condition">
-      <li id="insured-condition-1" class="insured" name="insured-condition">
-        年龄在15-89岁
-      </li>
-      <li id="insured-condition-2" class="insured" name="insured-condition">
-        持有有效加拿大公共医保(MSP)
-      </li>
-      <li id="insured-condition-3" class="insured" name="insured-condition">
-        在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
-      </li>
-      <li id="insured-condition-4" class="insured" name="insured-condition">
-        未被诊断为晚期病症
-      </li>
-      <li id="insured-condition-5" class="insured" name="insured-condition">
-        未被诊断为癌症3期/4期
-      </li>
-      <li id="insured-condition-6" class="insured" name="insured-condition">
-        在过去三个月内未接受过 针对癌症的治疗
-      </li>
-      <li id="insured-condition-7" class="insured" name="insured-condition">
-        日常生活无需因健康状况 导致的护理辅助
-      </li>
-    </ol>
-  </div>
-
-  <br>
-
-  <div id="insured-elder" class="insured" name="insured-elder">
-    <legend id="insured-elder-label" class="desc">
-      受保人是否超过60岁
-    </legend>
-    
-    <div id="insured-elder-list" class="insured" name="insured-elder-list">
-      <input id="insured-elder-check" name="insured-elder-check" type="hidden" value="">
       <div>
-          <input id="insured-elder-yes" name="insured-elder-choice" type="radio" value="First Choice" tabindex="1" onclick="unhide_60()">
-          <label class="choice" for="insured-elder-yes">是</label>
-      </div>
-      <div>
-        <input id="insured-elder-no" name="insured-elder-choice" type="radio" value="Second Choice" tabindex="2" onclick="rehide_60()">
-        <label class="choice" for="insured-elder-no">否</label>
+        <input id="page-button-11" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
+        <a href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/结束.html'>
+          <input id="saveForm" name="saveForm" type="submit" value="提交" >
+        </a>
       </div>
     </div>
-  </div>
 
-  
-
-  <div id="insured-elder-yes-after" style="display:none;">
-    <br><br>
-    <label class="desc" id="insured-elder-history-label" for="insured-elder-history">
-      请勾选以下符合的选线
-    </label><br>
-    <ul id="insured-elder-history" name="insured-elder-history" class="insured" style="list-style: none;">
-      <li><input type="checkbox" id="insured-elder-history-1" name="insured-elder-history" value="history-1">
-      <label for="insured-elder-history-1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
-      <li><input type="checkbox" id="insured-elder-history-2" name="insured-elder-history" value="history-2">
-      <label for="insured-elder-history-2">问是否同时具有糖尿病和心脏病</label></li>
-      <li><input type="checkbox" id="insured-elder-history-3" name="insured-elder-history" value="history-3">
-      <label for="insured-elder-history-3">是否有器官移植</label></li>
-      <li><input type="checkbox" id="insured-elder-history-4" name="insured-elder-history" value="history-4">
-      <label for="insured-elder-history-4">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
-      <li><input type="checkbox" id="insured-elder-history-5" name="insured-elder-history" value="history-5">
-      <label for="insured-elder-history-5">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
-      <li><input type="checkbox" id="insured-elder-history-6" name="insured-elder-history" value="history-6">
-      <label for="insured-elder-history-6">是否确诊癌症，或者接受化疗/放疗</label></li>
-      <li><input type="checkbox" id="insured-elder-history-7" name="insured-elder-history" value="history-7">
-      <label for="insured-elder-history-7">是否因为消化道疾病入院超过24小时</label></li>
-    </ul>
-  </div>
-
-  <br><br>
+    <br>
     
-  <div>
-    <label class="desc" id="departure-date-label" for="departure-date">离开加拿大日期</label>
-    <div>
-      <input id="departure-date" name="departure-date" type="date" class="date" value="" size="20" tabindex="1">
-    </div>
-  </div>
-
-  <br><br>
-
-  <div>
-    <label class="desc" id="effective-date-label" for="effective-date">保险生效日期</label>
-    <div>
-      <input id="effective-date" name="effective-date" type="date" class="insurance" value="" size="20" tabindex="1">
-    </div>
-  </div>
-
-  <br><br>
-
-  <div>
-    <label class="desc" id="end-date-label" for="end-date">保险结束日期</label>
-    <div>
-      <input id="end-date" name="end-date" type="date" class="insurance" value="" size="20" tabindex="1">
-    </div>
-  </div>
-
-  <br><br>
-
-  <div>
-    <label class="desc" id="america-or-not-label" for="america-or-not">目的地是否在美国？</label>
-    <div>
-      <input id="america-or-not" name="america-or-not" type="hidden" value="">
-      <div>
-          <input id="america-yes" name="america-or-not-choice" onclick="unhiderehide1()" type="radio" value="First Choice" tabindex="1">
-          <label class="travel" for="america-yes" >是</label>
-      </div>
-      <div>
-          <input id="america-no" name="america-or-not-choice" onclick="unhiderehide2()" type="radio" value="Second Choice" tabindex="2">
-          <label class="travel" for="america-no" >否</label>
-      </div>
-    </div>
-  </div>
-
-  <br><br>
-
-  <div id="america-yes-after" style="display:none;">
-    <div id="america_state" >
-      <label class="desc" id="america-state-label" for="america-state">
-        在美国哪个州 (如果上面目的地选择"是"，弹出此内容)
-      </label><br>
-      <input id="america-state" name="america-state" type="text" class="travel" value="" size="8" tabindex="1">
-    </div>
-
-    <div id="america_stay">
-      <label class="desc" id="america-stay-label" for="america-stay">
-        在美国停留天数 
-      </label><br>
-      <input id="america-stay" name="america-stay" type="text" class="travel" value="" size="8" tabindex="2">
-    </div><br><br>
-  </div>
-
-  
-
-  <div id="america-no-after" style="display:none;">
-    <label class="desc" id="country-label" for="country">
-      在哪个国家
-    </label><br>
-    <input id="country" name="country" type="text" class="travel" value="" size="8" tabindex="1">
-    <br><br>
-  </div>
-
-
-  <div>
-    <label class="desc" id="insurance-type-label" for="insurance-type">
-      保险类型
-    </label>
-    <div>
-      <input id="radioDefault_5" name="Field5" type="hidden" value="">
-      <ul id="insurance-type" name="insurance-type" class="insurance" style="list-style: none;">
-        <li>
-          <input type="checkbox" id="medical-insurance">
-          <label for="medical-insurance">医疗保险，仅包含紧急/意外医疗费用</label>
+    <div id="insured-condition" class="insured" name="insured-condition">
+      <label class="desc" id="insured-condition-list-label" for="insured-condition-list">
+        请确保受保人是否满足以下条件：
+      </label>
+      <ol id="insured-condition-list" class="insured" name="insured-condition">
+        <li id="insured-condition-1" class="insured" name="insured-condition">
+          年龄在15-89岁
         </li>
-        <li>
-          <div id="additional-insurance-check">
-            <input type="checkbox" id="additional-insurance_1" name="additional_insurance_1" onclick="additional_insurance()">
-            <label for="additional-insurance">添加附加险：</label>
-          </div>
-          <div id="additional-insurance-after" style="display:none;">
-            <ul id="additional-insurance-list" name="additional-insurance-list" class="insurance" style="list-style: none;">
-              <li><label>
-                <input type="checkbox" id="air-accident-insurance" name="additional-insurance" class="insurance">$0
-              </label></li>
-              <li><label>
-                <input type="checkbox" id="air-accident-insurance" name="additional-insurance" class="insurance">航空事故($20万/$50万)
-              </label></li>
-              <li><label>
-                <input type="checkbox" id="accidental-death-insurance" name="additional-insurance" class="insurance">意外身故($2万5千/$10万/$25万)
-              </label></li>
-              <li><label>
-                <input type="checkbox" id="trip-interruption-insurance" name="additional-insurance" class="insurance">旅途中断($800/$1500/$2000)
-              </label></li>
-              <li><label>
-                <input type="checkbox" id="trip-cancellation-insurance" name="additional-insurance" class="insurance">旅途取消($100~$15000,每$100一个档位)
-              </label></li>
-            </ul>
-          </div>
+        <li id="insured-condition-2" class="insured" name="insured-condition">
+          持有有效加拿大公共医保(MSP)
         </li>
+        <li id="insured-condition-3" class="insured" name="insured-condition">
+          在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
+        </li>
+        <li id="insured-condition-4" class="insured" name="insured-condition">
+          未被诊断为晚期病症
+        </li>
+        <li id="insured-condition-5" class="insured" name="insured-condition">
+          未被诊断为癌症3期/4期
+        </li>
+        <li id="insured-condition-6" class="insured" name="insured-condition">
+          在过去三个月内未接受过 针对癌症的治疗
+        </li>
+        <li id="insured-condition-7" class="insured" name="insured-condition">
+          日常生活无需因健康状况 导致的护理辅助
+        </li>
+      </ol>
+    </div>
+
+    <br>
+
+    <div id="insured-elder" class="insured" name="insured-elder">
+      <legend id="insured-elder-label" class="desc">
+        受保人是否超过60岁
+      </legend>
+      
+      <div id="insured-elder-list" class="insured" name="insured-elder-list">
+        <input id="insured-elder-check" name="insured-elder-check" type="hidden" value="">
+        <div>
+            <input id="insured-elder-yes" name="insured-elder-choice" type="radio" value="First Choice" tabindex="1" onclick="unhide_60()">
+            <label class="choice" for="insured-elder-yes">是</label>
+        </div>
+        <div>
+          <input id="insured-elder-no" name="insured-elder-choice" type="radio" value="Second Choice" tabindex="2" onclick="rehide_60()">
+          <label class="choice" for="insured-elder-no">否</label>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div id="insured-elder-yes-after" style="display:none;">
+      <br><br>
+      <label class="desc" id="insured-elder-history-label" for="insured-elder-history">
+        请勾选以下符合的选线
+      </label><br>
+      <ul id="insured-elder-history" name="insured-elder-history" class="insured" style="list-style: none;">
+        <li><input type="checkbox" id="insured-elder-history-1" name="insured-elder-history" value="history-1">
+        <label for="insured-elder-history-1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
+        <li><input type="checkbox" id="insured-elder-history-2" name="insured-elder-history" value="history-2">
+        <label for="insured-elder-history-2">问是否同时具有糖尿病和心脏病</label></li>
+        <li><input type="checkbox" id="insured-elder-history-3" name="insured-elder-history" value="history-3">
+        <label for="insured-elder-history-3">是否有器官移植</label></li>
+        <li><input type="checkbox" id="insured-elder-history-4" name="insured-elder-history" value="history-4">
+        <label for="insured-elder-history-4">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
+        <li><input type="checkbox" id="insured-elder-history-5" name="insured-elder-history" value="history-5">
+        <label for="insured-elder-history-5">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
+        <li><input type="checkbox" id="insured-elder-history-6" name="insured-elder-history" value="history-6">
+        <label for="insured-elder-history-6">是否确诊癌症，或者接受化疗/放疗</label></li>
+        <li><input type="checkbox" id="insured-elder-history-7" name="insured-elder-history" value="history-7">
+        <label for="insured-elder-history-7">是否因为消化道疾病入院超过24小时</label></li>
       </ul>
-  </div>
-
-  <br><br>
-
-  <div>
-    <div>
-      <input id="page-button-12" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
-      <input id="saveForm" name="saveForm" type="submit" value="提交">
     </div>
-  </div>
-  
-</form>
 
-<script>
-  // 针对 "受保人是否超过60岁" 下方的额外选项进行unhide
-  function unhide_60(){
-    var insured_elder_yes_after=document.getElementById("insured-elder-yes-after")
-    insured_elder_yes_after.style.display="block";
-  }
+    <br><br>
+      
+    <div>
+      <label class="desc" id="departure-date-label" for="departure-date">离开加拿大日期</label>
+      <div>
+        <input id="departure-date" name="departure-date" type="date" class="date" value="" size="20" tabindex="1">
+      </div>
+    </div>
 
-  // 
-  function rehide_60(){
-    var insured_elder_yes_after=document.getElementById("insured-elder-yes-after")
-    insured_elder_yes_after.style.display="none";
-  }
+    <br><br>
 
-  // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
-  function unhiderehide1(){
-    var america_yes_after=document.getElementById("america-yes-after");
-    var america_no_after=document.getElementById("america-no-after");
-    america_yes_after.style.display="block";
-    america_no_after.style.display="none";
+    <div>
+      <label class="desc" id="effective-date-label" for="effective-date">保险生效日期</label>
+      <div>
+        <input id="effective-date" name="effective-date" type="date" class="insurance" value="" size="20" tabindex="1">
+      </div>
+    </div>
 
-  }
+    <br><br>
 
-  // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
-  function unhiderehide2(){
-    var america_yes_after=document.getElementById("america-yes-after");
-    var america_no_after=document.getElementById("america-no-after");
-    america_yes_after.style.display="none";
-    america_no_after.style.display="block";
-  }
+    <div>
+      <label class="desc" id="end-date-label" for="end-date">保险结束日期</label>
+      <div>
+        <input id="end-date" name="end-date" type="date" class="insurance" value="" size="20" tabindex="1">
+      </div>
+    </div>
 
-  // // 针对 "添加附加险" 下方的额外选项进行隐藏和重现
-  function additional_insurance(){
-    var checkbox = document.getElementById("additional-insurance_1");
-    var additional_insurance_after = document.getElementById("additional-insurance-after");
-    checkbox.addEventListener( "change", () => {
-      if ( checkbox.checked ){
-        additional_insurance_after.style.display="block";
-      }
-      else{
-        additional_insurance_after.style.display="none";
-      }
-    });
-  }
-</script>
+    <br><br>
+
+    <div>
+      <label class="desc" id="america-or-not-label" for="america-or-not">目的地是否在美国？</label>
+      <div>
+        <input id="america-or-not" name="america-or-not" type="hidden" value="">
+        <div>
+            <input id="america-yes" name="america-or-not-choice" onclick="unhiderehide1()" type="radio" value="First Choice" tabindex="1">
+            <label class="travel" for="america-yes" >是</label>
+        </div>
+        <div>
+            <input id="america-no" name="america-or-not-choice" onclick="unhiderehide2()" type="radio" value="Second Choice" tabindex="2">
+            <label class="travel" for="america-no" >否</label>
+        </div>
+      </div>
+    </div>
+
+    <br><br>
+
+    <div id="america-yes-after" style="display:none;">
+      <div id="america_state" >
+        <label class="desc" id="america-state-label" for="america-state">
+          在美国哪个州 (如果上面目的地选择"是"，弹出此内容)
+        </label><br>
+        <input id="america-state" name="america-state" type="text" class="travel" value="" size="8" tabindex="1">
+      </div>
+
+      <div id="america_stay">
+        <label class="desc" id="america-stay-label" for="america-stay">
+          在美国停留天数 
+        </label><br>
+        <input id="america-stay" name="america-stay" type="text" class="travel" value="" size="8" tabindex="2">
+      </div><br><br>
+    </div>
+
+    
+
+    <div id="america-no-after" style="display:none;">
+      <label class="desc" id="country-label" for="country">
+        在哪个国家
+      </label><br>
+      <input id="country" name="country" type="text" class="travel" value="" size="8" tabindex="1">
+      <br><br>
+    </div>
+
+
+    <div>
+      <label class="desc" id="insurance-type-label" for="insurance-type">
+        保险类型
+      </label>
+      <div>
+        <input id="radioDefault_5" name="Field5" type="hidden" value="">
+        <ul id="insurance-type" name="insurance-type" class="insurance" style="list-style: none;">
+          <li>
+            <input type="checkbox" id="medical-insurance">
+            <label for="medical-insurance">医疗保险，仅包含紧急/意外医疗费用</label>
+          </li>
+          <li>
+            <div id="additional-insurance-check">
+              <input type="checkbox" id="additional-insurance_1" name="additional_insurance_1" onclick="additional_insurance()">
+              <label for="additional-insurance">添加附加险：</label>
+            </div>
+            <div id="additional-insurance-after" style="display:none;">
+              <ul id="additional-insurance-list" name="additional-insurance-list" class="insurance" style="list-style: none;">
+                <li><label>
+                  <input type="checkbox" id="air-accident-insurance" name="additional-insurance" class="insurance">$0
+                </label></li>
+                <li><label>
+                  <input type="checkbox" id="air-accident-insurance" name="additional-insurance" class="insurance">航空事故($20万/$50万)
+                </label></li>
+                <li><label>
+                  <input type="checkbox" id="accidental-death-insurance" name="additional-insurance" class="insurance">意外身故($2万5千/$10万/$25万)
+                </label></li>
+                <li><label>
+                  <input type="checkbox" id="trip-interruption-insurance" name="additional-insurance" class="insurance">旅途中断($800/$1500/$2000)
+                </label></li>
+                <li><label>
+                  <input type="checkbox" id="trip-cancellation-insurance" name="additional-insurance" class="insurance">旅途取消($100~$15000,每$100一个档位)
+                </label></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+    <br><br>
+
+    <div>
+      <div>
+        <input id="page-button-12" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
+        <input id="saveForm" name="saveForm" type="submit" value="提交">
+      </div>
+    </div>
+    
+  </form>
+
+  <script>
+    // 针对 "受保人是否超过60岁" 下方的额外选项进行unhide
+    function unhide_60(){
+      var insured_elder_yes_after=document.getElementById("insured-elder-yes-after")
+      insured_elder_yes_after.style.display="block";
+    }
+
+    // 
+    function rehide_60(){
+      var insured_elder_yes_after=document.getElementById("insured-elder-yes-after")
+      insured_elder_yes_after.style.display="none";
+    }
+
+    // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
+    function unhiderehide1(){
+      var america_yes_after=document.getElementById("america-yes-after");
+      var america_no_after=document.getElementById("america-no-after");
+      america_yes_after.style.display="block";
+      america_no_after.style.display="none";
+
+    }
+
+    // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
+    function unhiderehide2(){
+      var america_yes_after=document.getElementById("america-yes-after");
+      var america_no_after=document.getElementById("america-no-after");
+      america_yes_after.style.display="none";
+      america_no_after.style.display="block";
+    }
+
+    // // 针对 "添加附加险" 下方的额外选项进行隐藏和重现
+    function additional_insurance(){
+      var checkbox = document.getElementById("additional-insurance_1");
+      var additional_insurance_after = document.getElementById("additional-insurance-after");
+      checkbox.addEventListener( "change", () => {
+        if ( checkbox.checked ){
+          additional_insurance_after.style.display="block";
+        }
+        else{
+          additional_insurance_after.style.display="none";
+        }
+      });
+    }
+  </script>
+</html>
