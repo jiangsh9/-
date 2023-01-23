@@ -1,16 +1,16 @@
-<form action="#" class="regform" method="get">
+<form action="https://travelinsurance.weplusfinancial.ca/travelinsurance/结束.html" class="regform" method="get">
 
   <head>
-    <link rel="stylesheet" href="css/geeks.css">
-    <script type="text/javascript" src="js/app.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="css/geeks.css" rel="stylesheet" type="text/css">
+    <script src="js/multi_step_form.js"></script>
   </head>
   
   <body>
     <div class="content">
       <!-- Multistep Form -->
       <!-- page_1.html -->
-      <div class="tab">
+      <div class="tab" style="display:block;">
         <h2>旅游保险信息表</h2>
         <div>完成提交这份表格代表您已授权本人在保险申请过程中使用表格中的信息，使用过程遵循隐私保护条例。如有疑问，请在提交表格前与我联系。</div>
         <div>提交表单后我们会和您联系获取信用卡信息，谢谢！</div>
@@ -19,7 +19,7 @@
         
         <div>登录 即可保存信息</div></body><br>
         
-        <input id="page-button-1" name="page-button-forward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_2.html'" value="下一页">
+        <input id="page-button-1" name="page-button-forward" type="button" class="next_btn" value="下一页">
       </div>
 
 
@@ -34,8 +34,8 @@
         <div>登录 即可保存进度。</div><br><br>
        
         
-        <input id="page-button-2" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_1.html'" value="上一页">
-        <input id="page-button-3" name="page-button-forward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="下一页">
+        <input id="page-button-2" name="page-button-backward" type="button" class="pre_btn" value="上一页">
+        <input id="page-button-3" name="page-button-forward" type="button" class="next_btn" value="下一页">
         
         <br><br>
       
@@ -203,8 +203,8 @@
         <br><br>
         
         
-        <input id="page-button-4" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_1.html'" value="上一页">
-        <input id="page-button-5" name="page-button-forward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="下一页">
+        <input id="page-button-4" name="page-button-backward" type="button" class="pre_btn" value="上一页">
+        <input id="page-button-5" name="page-button-forward" type="button" class="next_btn" value="下一页">
       </div>
 
 
@@ -213,7 +213,7 @@
 
 
       <!-- page_3.html -->
-      <div class="tab">
+      <div class="tab" id="page_3">
         
         <h2>旅游保险信息表</h2>
         <div>登录 即可保存进度。</div><br>
@@ -226,34 +226,28 @@
         
         <div>
           <div id="insurance-type" name="insurance-type">
-            <input id="insurance-type-visitor" name="insurance-type-choice" type="button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/访加旅客保险.html'" value="访加旅客保险"> 
-            <input id="insurance-type-student-or-parent" name="insurance-type-choice" type="button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/留学生陪读父母保险.html'" value="留学生/陪读父母保险">  
-            <input id="insurance-type-travelor" name="insurance-type-choice" type="button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/在加居民出境旅游保险.html'" value="在加居民出境旅游保险">       
+            <input id="insurance-type-visitor" name="insurance-type-choice" type="button" value="访加旅客保险"> 
+            <input id="insurance-type-student-or-parent" name="insurance-type-choice" type="button" value="留学生/陪读父母保险">  
+            <input id="insurance-type-travelor" name="insurance-type-choice" type="button" value="在加居民出境旅游保险">       
           </div>
         </div>
     
-        <input id="page-button-6" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_2.html'" value="上一页">    
+        <input id="page-button-6" name="page-button-backward" type="button" class="pre_btn" value="上一页">    
       </div>
 
 
-
-
-
+      
 
 
 
       <!-- 访加旅客保险.html -->
-      <div class="tab">
-        <header>
-          <h2>旅游保险信息表</h2>
-          <div>登录 即可保存进度。</div>
-    
-          <br>
-          
-          <!-- 新加 -->
-          <link rel="stylesheet" href="css/geeks.css">
-          <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-        </header>
+      <div class="tab" id="visit">
+
+        <h2>旅游保险信息表</h2>
+        <div>登录 即可保存进度。</div>
+  
+        <br>
+
         
         <h3>访加旅客保险</h3>
     
@@ -261,7 +255,7 @@
         
         <div>
           <div>
-            <input id="page-button-7" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
+            <input id="page-button-7" name="page-button-backward" type="button" class="pre_btn_visit" value="上一页">
             <input id="saveForm" name="saveForm" type="submit" value="提交"">
           </div>
         </div>
@@ -298,45 +292,45 @@
     
         <br>
     
-        <div id="insured-elder" class="insured" name="insured-elder">
-          <legend id="insured-elder-label" class="desc">
+        <div id="insured-elder-visitor" class="insured" name="insured-elder-visitor">
+          <legend id="insured-elder-visitor-label" class="desc">
             受保人是否超过60岁
           </legend>
           
-          <div id="insured-elder-list" class="insured" name="insured-elder-list">
-            <input id="insured-elder-check" name="insured-elder-check" type="hidden" value="">
+          <div id="insured-elder-visitor-list" class="insured" name="insured-elder-visitor-list">
+            <input id="insured-elder-visitor-check" name="insured-elder-visitor-check" type="hidden" value="">
             <div>
-                <input id="insured-elder-yes" name="insured-elder-choice" type="radio" value="First Choice" tabindex="1" onclick="(unhide_60())">
-                <label class="choice" for="insured-elder-yes">是</label>
+                <input id="insured-elder-visitor-yes" name="insured-elder-visitor-choice" type="radio" value="First Choice" tabindex="1" onclick="unhide_60('insured-elder-visitor-yes-after')">
+                <label class="choice" for="insured-elder-visitor-yes">是</label>
             </div>
             <div>
-              <input id="insured-elder-no" name="insured-elder-choice" type="radio" value="Second Choice" tabindex="2" onclick="rehide_60()">
-              <label class="choice" for="insured-elder-no">否</label>
+              <input id="insured-elder-visitor-no" name="insured-elder-visitor-choice" type="radio" value="Second Choice" tabindex="2" onclick="rehide_60('insured-elder-visitor-yes-after')">
+              <label class="choice" for="insured-elder-visitor-no">否</label>
             </div>
           </div>
         </div>
     
         
     
-        <div id="insured-elder-yes-after" style="display:none;">
+        <div id="insured-elder-visitor-yes-after" style="display:none;">
           <br><br>
-          <label class="desc" id="insured-elder-history-label" for="insured-elder-history">
+          <label class="desc" id="insured-elder-visitor-history-label" for="insured-elder-visitor-history">
             请勾选以下符合的选线
           </label>
-          <ul id="insured-elder-history" name="insured-elder-history" class="insured" style="list-style: none;">
-            <li><input type="checkbox" id="insured-elder-history-1" name="insured-elder-history" value="history-1">
-            <label for="insured-elder-history-1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
-            <li><input type="checkbox" id="insured-elder-history-2" name="insured-elder-history" value="history-2">
-            <label for="insured-elder-history-2">问是否同时具有糖尿病和心脏病</label></li>
-            <li><input type="checkbox" id="insured-elder-history-3" name="insured-elder-history" value="history-3">
+          <ul id="insured-elder-visitor-history" name="insured-elder-visitor-history" class="insured" style="list-style: none;">
+            <li><input type="checkbox" id="insured-elder-visitor-history-1" name="insured-elder-visitor-history" value="visitor-history-1">
+            <label for="insured-elder-visitor-history-1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
+            <li><input type="checkbox" id="insured-elder-visitor-history-2" name="insured-elder-visitor-history" value="visitor-history-2">
+            <label for="insured-elder-visitor-history-2">问是否同时具有糖尿病和心脏病</label></li>
+            <li><input type="checkbox" id="insured-elder-visitor-history-3" name="insured-elder-visitor-history" value="visitor-history-3">
             <label for="insured-elder-history-3">是否有器官移植</label></li>
-            <li><input type="checkbox" id="insured-elder-history-4" name="insured-elder-history" value="history-4">
+            <li><input type="checkbox" id="insured-elder-visitor-history-4" name="insured-elder-visitor-history" value="visitor-history-4">
             <label for="insured-elder-history-4">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
-            <li><input type="checkbox" id="insured-elder-history-5" name="insured-elder-history" value="history-5">
+            <li><input type="checkbox" id="insured-elder-visitor-history-5" name="insured-elder-visitor-history" value="visitor-history-5">
             <label for="insured-elder-history-5">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
-            <li><input type="checkbox" id="insured-elder-history-6" name="insured-elder-history" value="history-6">
+            <li><input type="checkbox" id="insured-elder-visitor-history-6" name="insured-elder-visitor-history" value="visitor-history-6">
             <label for="insured-elder-history-6">是否确诊癌症，或者接受化疗/放疗</label></li>
-            <li><input type="checkbox" id="insured-elder-history-7" name="insured-elder-history" value="history-7">
+            <li><input type="checkbox" id="insured-elder-visitor-history-7" name="insured-elder-visitor-history" value="visitor-history-7">
             <label for="insured-elder-history-7">是否因为消化道疾病入院超过24小时</label></li>
           </ul>
         </div>
@@ -437,7 +431,7 @@
         
         <div>
           <div>
-            <input id="page-button-8" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
+            <input id="page-button-8" name="page-button-backward" type="button" class="pre_btn_visit" value="上一页">
             <input id="saveForm" name="saveForm" type="submit" value="提交"">
           </div>
         </div>
@@ -451,7 +445,7 @@
 
 
       <!-- 留学生/陪读父母保险.html -->
-      <div class="tab">
+      <div class="tab" id="study">
 
         <h2>旅游保险信息表</h2>
         <div>登录 即可保存进度。</div>
@@ -465,38 +459,38 @@
     
         <div>
           <div>
-            <input id="page-button-9" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
-            <input id="saveForm" name="saveForm" type="submit" value="提交" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/结束.html'">
+            <input id="page-button-9" name="page-button-backward" type="button" class="pre_btn_study" value="上一页">
+            <input id="saveForm" name="saveForm" type="submit" value="提交">
           </div>
         </div>
     
         <br>
         
         <div>
-          <label class="desc" id="insured-condition-list-label" for="insured-condition-list">请确保受保人是否满足以下条件：</label>
-          <ol id="insured-condition-list" class="insured" name="insured-condition">
-            <li id="insured-condition-1" class="insured" name="insured-condition">
+          <label class="desc" id="insured-condition-study-list-label" for="insured-condition-study-list">请确保受保人是否满足以下条件：</label>
+          <ol id="insured-condition-study-list" class="insured" name="insured-condition-study">
+            <li id="insured-condition-1-study" class="insured" name="insured-condition-study">
               年龄在15-89岁
             </li>
-            <li id="insured-condition-2" class="insured" name="insured-condition">
+            <li id="insured-condition-study-2" class="insured" name="insured-condition-study">
               未受保于加拿大公共医保(MSP)下
             </li>
-            <li id="insured-condition-3" class="insured" name="insured-condition">
+            <li id="insured-condition-study-3" class="insured" name="insured-condition-study">
               在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
             </li>
-            <li id="insured-condition-4" class="insured" name="insured-condition">
+            <li id="insured-condition-study-4" class="insured" name="insured-condition-study">
               未被诊断为晚期病症
             </li>
-            <li id="insured-condition-5" class="insured" name="insured-condition">
+            <li id="insured-condition-study-5" class="insured" name="insured-condition-study">
               未被诊断为癌症3期/4期
             </li>
-            <li id="insured-condition-6" class="insured" name="insured-condition">
+            <li id="insured-condition-study-6" class="insured" name="insured-condition-study">
               在过去三个月内未接受过针对癌症的治疗
             </li>
-            <li id="insured-condition-7" class="insured" name="insured-condition">
+            <li id="insured-condition-study-7" class="insured" name="insured-condition-study">
               日常生活无需因健康状况导致的护理辅助
             </li>
-            <li id="insured-condition-8" class="insured" name="insured-condition">
+            <li id="insured-condition-study-8" class="insured" name="insured-condition-study">
               在加拿大全职/兼职上学，或是其陪读父母
             </li>
           </ol>
@@ -504,42 +498,42 @@
     
         <br>
     
-        <div id="insured-elder" class="insured" name="insured-elder">
-          <legend id="insured-elder-label" class="desc">
+        <div id="insured-elder-study" class="insured" name="insured-elder-study">
+          <legend id="insured-elder-study-label" class="desc">
             受保人是否超过60岁
           </legend>
           
-          <div id="insured-elder-list" class="insured" name="insured-elder-list">
-            <input id="insured-elder-check" name="insured-elder-check" type="hidden" value="">
+          <div id="insured-elder-study-list" class="insured" name="insured-elder-study-list">
+            <input id="insured-elder-study-check" name="insured-elder-study-check" type="hidden" value="">
             <div>
-                <input id="insured-elder-yes" name="insured-elder-choice" type="radio" value="First Choice" tabindex="1" onclick="unhide_60()">
+                <input id="insured-elder-study-yes" name="insured-elder-study-choice" type="radio" value="First Choice" tabindex="1" onclick="unhide_60('insured-elder-study-yes-after')">
                 <label class="choice" for="insured-elder-yes">是</label>
             </div>
             <div>
-              <input id="insured-elder-no" name="insured-elder-choice" type="radio" value="Second Choice" tabindex="2" onclick="rehide_60()">
-              <label class="choice" for="insured-elder-no">否</label>
+              <input id="insured-elder-study-no" name="insured-elder-study-choice" type="radio" value="Second Choice" tabindex="2" onclick="rehide_60('insured-elder-study-yes-after')">
+              <label class="choice" for="insured-elder-study-no">否</label>
             </div>
           </div>
         </div>
     
-        <div id="insured-elder-yes-after" style="display:none;">
+        <div id="insured-elder-study-yes-after" style="display:none;">
           <br><br>
-          <label class="desc" id="insured-elder-history-label" for="insured-elder-history">请勾选以下符合的选线</label>
-          <ul id="insured-elder-history" name="insured-elder-history" class="insured" style="list-style: none;">
-            <li><input type="checkbox" id="insured-elder-history-1" name="insured-elder-history" value="history-1">
-            <label for="insured-elder-history-1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
-            <li><input type="checkbox" id="insured-elder-history-2" name="insured-elder-history" value="history-2">
-            <label for="insured-elder-history-2">问是否同时具有糖尿病和心脏病</label></li>
-            <li><input type="checkbox" id="insured-elder-history-3" name="insured-elder-history" value="history-3">
-            <label for="insured-elder-history-3">是否有器官移植</label></li>
-            <li><input type="checkbox" id="insured-elder-history-4" name="insured-elder-history" value="history-4">
-            <label for="insured-elder-history-4">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
-            <li><input type="checkbox" id="insured-elder-history-5" name="insured-elder-history" value="history-5">
-            <label for="insured-elder-history-5">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
-            <li><input type="checkbox" id="insured-elder-history-6" name="insured-elder-history" value="history-6">
-            <label for="insured-elder-history-6">是否确诊癌症，或者接受化疗/放疗</label></li>
-            <li><input type="checkbox" id="insured-elder-history-7" name="insured-elder-history" value="history-7">
-            <label for="insured-elder-history-7">是否因为消化道疾病入院超过24小时</label></li>
+          <label class="desc" id="insured-elder-study-history-label" for="insured-elder-study-history">请勾选以下符合的选线</label>
+          <ul id="insured-elder-study-history" name="insured-elder-study-history" class="insured" style="list-style: none;">
+            <li><input type="checkbox" id="insured-elder-study-history-1" name="insured-elder-study-history" value="study-history-1">
+            <label for="insured-elder-study-history-1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
+            <li><input type="checkbox" id="insured-elder-study-history-2" name="insured-elder-study-history" value="study-history-2">
+            <label for="insured-elder-study-history-2">问是否同时具有糖尿病和心脏病</label></li>
+            <li><input type="checkbox" id="insured-elder-study-history-3" name="insured-elder-study-history" value="study-history-3">
+            <label for="insured-elder-study-history-3">是否有器官移植</label></li>
+            <li><input type="checkbox" id="insured-elder-study-history-4" name="insured-elder-study-history" value="study-history-4">
+            <label for="insured-elder-study-history-4">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
+            <li><input type="checkbox" id="insured-elder-study-history-5" name="insured-elder-study-history" value="study-history-5">
+            <label for="insured-elder-study-history-5">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
+            <li><input type="checkbox" id="insured-elder-study-history-6" name="insured-elder-study-history" value="study-history-6">
+            <label for="insured-elder-study-history-6">是否确诊癌症，或者接受化疗/放疗</label></li>
+            <li><input type="checkbox" id="insured-elder-study-history-7" name="insured-elder-study-history" value="study-history-7">
+            <label for="insured-elder-study-history-7">是否因为消化道疾病入院超过24小时</label></li>
           </ul>
         </div>
     
@@ -574,7 +568,7 @@
     
         <div>
           <div>
-            <input id="page-button-10" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
+            <input id="page-button-10" name="page-button-backward" type="button" class="pre_btn_study" value="上一页">
             <input id="saveForm" name="saveForm" type="submit" value="提交">
           </div>
         </div>
@@ -586,7 +580,7 @@
 
 
       <!-- 在加居民出境旅游保险.html -->
-      <div class="tab">
+      <div class="tab" id="travel">
         <h2>旅游保险信息表</h2>
         <div>登录 即可保存进度。</div>       
         
@@ -598,39 +592,39 @@
       
         <div>
           <div>
-            <input id="page-button-11" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
-            <a href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/结束.html'>
+            <input id="page-button-11" name="page-button-backward" type="button" class="pre_btn_travel" value="上一页">
+            
               <input id="saveForm" name="saveForm" type="submit" value="提交" >
-            </a>
+           
           </div>
         </div>
       
         <br>
         
-        <div id="insured-condition" class="insured" name="insured-condition">
-          <label class="desc" id="insured-condition-list-label" for="insured-condition-list">
+        <div id="insured-condition-travel" class="insured" name="insured-condition-travel">
+          <label class="desc" id="insured-condition-travel-list-label" for="insured-condition-travel-list">
             请确保受保人是否满足以下条件：
           </label>
-          <ol id="insured-condition-list" class="insured" name="insured-condition">
-            <li id="insured-condition-1" class="insured" name="insured-condition">
+          <ol id="insured-condition-travel-list" class="insured" name="insured-condition-travel">
+            <li id="insured-condition-travel-1" class="insured" name="insured-condition-travel">
               年龄在15-89岁
             </li>
-            <li id="insured-condition-2" class="insured" name="insured-condition">
+            <li id="insured-condition-travel-2" class="insured" name="insured-condition-travel">
               持有有效加拿大公共医保(MSP)
             </li>
-            <li id="insured-condition-3" class="insured" name="insured-condition">
+            <li id="insured-condition-travel-3" class="insured" name="insured-condition-travel">
               在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
             </li>
-            <li id="insured-condition-4" class="insured" name="insured-condition">
+            <li id="insured-condition-travel-4" class="insured" name="insured-condition-travel">
               未被诊断为晚期病症
             </li>
-            <li id="insured-condition-5" class="insured" name="insured-condition">
+            <li id="insured-condition-travel-5" class="insured" name="insured-condition-travel">
               未被诊断为癌症3期/4期
             </li>
-            <li id="insured-condition-6" class="insured" name="insured-condition">
+            <li id="insured-condition-travel-6" class="insured" name="insured-condition-travel">
               在过去三个月内未接受过 针对癌症的治疗
             </li>
-            <li id="insured-condition-7" class="insured" name="insured-condition">
+            <li id="insured-condition-travel-7" class="insured" name="insured-condition-travel">
               日常生活无需因健康状况 导致的护理辅助
             </li>
           </ol>
@@ -638,46 +632,46 @@
       
         <br>
       
-        <div id="insured-elder" class="insured" name="insured-elder">
-          <legend id="insured-elder-label" class="desc">
+        <div id="insured-elder-travel" class="insured" name="insured-elder-travel">
+          <legend id="insured-elder-travel-label" class="desc">
             受保人是否超过60岁
           </legend>
           
-          <div id="insured-elder-list" class="insured" name="insured-elder-list">
-            <input id="insured-elder-check" name="insured-elder-check" type="hidden" value="">
+          <div id="insured-elder-travel-list" class="insured" name="insured-elder-travel-list">
+            <input id="insured-elder-travel-check" name="insured-elder-travel-check" type="hidden" value="">
             <div>
-                <input id="insured-elder-yes" name="insured-elder-choice" type="radio" value="First Choice" tabindex="1" onclick="unhide_60()">
-                <label class="choice" for="insured-elder-yes">是</label>
+                <input id="insured-elder-travel-yes" name="insured-elder-travel-choice" type="radio" value="First Choice" tabindex="1" onclick="unhide_60('insured-elder-travel-yes-after')">
+                <label class="choice" for="insured-elder-travel-yes">是</label>
             </div>
             <div>
-              <input id="insured-elder-no" name="insured-elder-choice" type="radio" value="Second Choice" tabindex="2" onclick="rehide_60()">
-              <label class="choice" for="insured-elder-no">否</label>
+              <input id="insured-elder-travel-no" name="insured-elder-travel-choice" type="radio" value="Second Choice" tabindex="2" onclick="rehide_60('insured-elder-travel-yes-after')">
+              <label class="choice" for="insured-elder-travel-no">否</label>
             </div>
           </div>
         </div>
       
         
       
-        <div id="insured-elder-yes-after" style="display:none;">
+        <div id="insured-elder-travel-yes-after" style="display:none;">
           <br><br>
-          <label class="desc" id="insured-elder-history-label" for="insured-elder-history">
+          <label class="desc" id="insured-elder-travel-history-label" for="insured-elder-travel-history">
             请勾选以下符合的选线
           </label><br>
-          <ul id="insured-elder-history" name="insured-elder-history" class="insured" style="list-style: none;">
-            <li><input type="checkbox" id="insured-elder-history-1" name="insured-elder-history" value="history-1">
-            <label for="insured-elder-history-1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
-            <li><input type="checkbox" id="insured-elder-history-2" name="insured-elder-history" value="history-2">
-            <label for="insured-elder-history-2">问是否同时具有糖尿病和心脏病</label></li>
-            <li><input type="checkbox" id="insured-elder-history-3" name="insured-elder-history" value="history-3">
-            <label for="insured-elder-history-3">是否有器官移植</label></li>
-            <li><input type="checkbox" id="insured-elder-history-4" name="insured-elder-history" value="history-4">
-            <label for="insured-elder-history-4">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
-            <li><input type="checkbox" id="insured-elder-history-5" name="insured-elder-history" value="history-5">
-            <label for="insured-elder-history-5">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
-            <li><input type="checkbox" id="insured-elder-history-6" name="insured-elder-history" value="history-6">
-            <label for="insured-elder-history-6">是否确诊癌症，或者接受化疗/放疗</label></li>
-            <li><input type="checkbox" id="insured-elder-history-7" name="insured-elder-history" value="history-7">
-            <label for="insured-elder-history-7">是否因为消化道疾病入院超过24小时</label></li>
+          <ul id="insured-elder-travel-history" name="insured-elder-travel-history" class="insured" style="list-style: none;">
+            <li><input type="checkbox" id="insured-elder-travel-history-1" name="insured-elder-travel-history" value="travel-history-1">
+            <label for="insured-elder-travel-history-1">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
+            <li><input type="checkbox" id="insured-elder-travel-history-2" name="insured-elder-travel-history" value="travel-history-2">
+            <label for="insured-elder-travel-history-2">问是否同时具有糖尿病和心脏病</label></li>
+            <li><input type="checkbox" id="insured-elder-travel-history-3" name="insured-elder-travel-history" value="travel-history-3">
+            <label for="insured-elder-travel-history-3">是否有器官移植</label></li>
+            <li><input type="checkbox" id="insured-elder-travel-history-4" name="insured-elder-travel-history" value="travel-history-4">
+            <label for="insured-elder-travel-history-4">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
+            <li><input type="checkbox" id="insured-elder-travel-history-5" name="insured-elder-travel-history" value="travel-history-5">
+            <label for="insured-elder-travel-history-5">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
+            <li><input type="checkbox" id="insured-elder-travel-history-6" name="insured-elder-travel-history" value="travel-history-6">
+            <label for="insured-elder-travel-history-6">是否确诊癌症，或者接受化疗/放疗</label></li>
+            <li><input type="checkbox" id="insured-elder-travel-history-7" name="insured-elder-travel-history" value="travel-history-7">
+            <label for="insured-elder-travel-history-7">是否因为消化道疾病入院超过24小时</label></li>
           </ul>
         </div>
       
@@ -797,7 +791,7 @@
       
         <div>
           <div>
-            <input id="page-button-12" name="page-button-backward" type="button" class="page-button" onclick="location.href='file:///Users/jiangshaohua/Desktop/%E6%88%91/%E5%B7%A5%E4%BD%9C/%E5%AE%B6%E4%B8%AD%E6%8E%A8%E8%8D%90/Lavie%20financial/%E9%A1%B9%E7%9B%AE1/Project/%E9%A1%B9%E7%9B%AE2-%E5%AE%A2%E6%88%B7%E7%94%B3%E8%AF%B7%E4%BF%9D%E5%8D%95/code/page_3.html'" value="上一页">
+            <input id="page-button-12" name="page-button-backward" type="button" class="pre_btn_travel" value="上一页">
             <input id="saveForm" name="saveForm" type="submit" value="提交">
           </div>
         </div>
@@ -806,3 +800,110 @@
     </div>
   
 </form>
+
+<script>
+  $(document).ready(function() {
+
+
+    $("#insurance-type-visitor").click(function() {
+      $("#visit").fadeIn('slow');
+      $("#page_3").css({
+          'display': 'none'
+      });
+    });
+
+    $("#insurance-type-student-or-parent").click(function() {
+      $("#study").fadeIn('slow');
+      $("#page_3").css({
+          'display': 'none'
+      });
+    });
+
+    $("#insurance-type-travelor").click(function() {
+      $("#travel").fadeIn('slow');
+      $("#page_3").css({
+          'display': 'none'
+      });
+    });
+
+
+
+
+
+    $(".pre_btn_visit").click(function() {
+      $("#page_3").fadeIn('slow');
+      $("#visit").css({
+          'display': 'none'
+      });
+    });
+
+    $(".pre_btn_study").click(function() {
+      $("#page_3").fadeIn('slow');
+      $("#study").css({
+          'display': 'none'
+      });
+    });
+
+    $(".pre_btn_travel").click(function() {
+      $("#page_3").fadeIn('slow');
+      $("#travel").css({
+          'display': 'none'
+      });
+    });
+
+
+
+
+    
+
+
+
+
+  
+  });
+
+  function unhide1(){
+    var added_insured=document.getElementById("added-insured");
+    added_insured.style.display="block";
+  }
+  
+  function rehide1(){
+    var added_insured=document.getElementById("added-insured");
+    added_insured.style.display="none";
+  }
+    // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
+function unhiderehide1(){
+  var america_yes_after=document.getElementById("america-yes-after");
+  var america_no_after=document.getElementById("america-no-after");
+  america_yes_after.style.display="block";
+  america_no_after.style.display="none";
+
+}
+
+// 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
+function unhiderehide2(){
+  var america_yes_after=document.getElementById("america-yes-after");
+  var america_no_after=document.getElementById("america-no-after");
+  america_yes_after.style.display="none";
+  america_no_after.style.display="block";
+}
+
+// // 针对 "添加附加险" 下方的额外选项进行隐藏和重现
+function additional_insurance(){
+  var checkbox = document.getElementById("additional-insurance_1");
+  var additional_insurance_after = document.getElementById("additional-insurance-after");
+  checkbox.addEventListener( "change", () => {
+    if ( checkbox.checked ){
+      additional_insurance_after.style.display="block";
+    }
+    else{
+      additional_insurance_after.style.display="none";
+    }
+  });
+}
+
+
+
+
+
+</script>
