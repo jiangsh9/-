@@ -1,7 +1,8 @@
 <form action="https://travelinsurance.weplusfinancial.ca/travelinsurance/结束.html" class="regform" method="get">
 
   <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
     <link href="css/geeks.css" rel="stylesheet" type="text/css">
     <script src="js/multi_step_form.js"></script>
   </head>
@@ -27,7 +28,7 @@
 
 
       <!-- page_2.html -->
-      <div class="tab">
+      <div class="tab" style="display:none;">
       
         <h2>旅游保险信息表</h2>
         <div></div>
@@ -213,7 +214,7 @@
 
 
       <!-- page_3.html -->
-      <div class="tab" id="page_3">
+      <div class="tab" id="page_3" style="display:none;">
         
         <h2>旅游保险信息表</h2>
         <div>登录 即可保存进度。</div><br>
@@ -241,7 +242,7 @@
 
 
       <!-- 访加旅客保险.html -->
-      <div class="tab" id="visit">
+      <div class="tab" id="visit" style="display:none;">
 
         <h2>旅游保险信息表</h2>
         <div>登录 即可保存进度。</div>
@@ -445,7 +446,7 @@
 
 
       <!-- 留学生/陪读父母保险.html -->
-      <div class="tab" id="study">
+      <div class="tab" id="study" style="display:none;">
 
         <h2>旅游保险信息表</h2>
         <div>登录 即可保存进度。</div>
@@ -580,7 +581,7 @@
 
 
       <!-- 在加居民出境旅游保险.html -->
-      <div class="tab" id="travel">
+      <div class="tab" id="travel" style="display:none;">
         <h2>旅游保险信息表</h2>
         <div>登录 即可保存进度。</div>       
         
@@ -802,9 +803,11 @@
 </form>
 
 <script>
+
+  // 以下是 jQuery 相关的 一些 functions
   $(document).ready(function() {
 
-
+    // 第三页 跳转至 “访加旅客保险” 的代码
     $("#insurance-type-visitor").click(function() {
       $("#visit").fadeIn('slow');
       $("#page_3").css({
@@ -812,6 +815,7 @@
       });
     });
 
+    // 第三页 跳转至 “留学生/陪读父母保险” 的代码
     $("#insurance-type-student-or-parent").click(function() {
       $("#study").fadeIn('slow');
       $("#page_3").css({
@@ -819,6 +823,7 @@
       });
     });
 
+    // 第三页 跳转至 “在加居民出境旅游保险” 的代码
     $("#insurance-type-travelor").click(function() {
       $("#travel").fadeIn('slow');
       $("#page_3").css({
@@ -830,6 +835,7 @@
 
 
 
+    // “访加旅客保险” 的 “上一页” 的代码
     $(".pre_btn_visit").click(function() {
       $("#page_3").fadeIn('slow');
       $("#visit").css({
@@ -837,48 +843,49 @@
       });
     });
 
+    // "留学生/陪读父母保险" 的 "上一页" 的代码
     $(".pre_btn_study").click(function() {
       $("#page_3").fadeIn('slow');
       $("#study").css({
           'display': 'none'
       });
     });
-
+    
+    // "在加居民出境旅游保险" 的 "上一页" 的代码
     $(".pre_btn_travel").click(function() {
       $("#page_3").fadeIn('slow');
       $("#travel").css({
           'display': 'none'
       });
     });
-
-
-
-
-    
-
+  });
 
 
 
   
-  });
 
+
+
+  // 以下是 常规javascript 的一些 functions
+
+  // 确认添加新受保人 时 弹出新信息 的代码
   function unhide1(){
     var added_insured=document.getElementById("added-insured");
     added_insured.style.display="block";
   }
   
+  // 确认"不"添加新受保人 时 隐藏新信息 的代码
   function rehide1(){
     var added_insured=document.getElementById("added-insured");
     added_insured.style.display="none";
   }
     // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
-function unhiderehide1(){
-  var america_yes_after=document.getElementById("america-yes-after");
-  var america_no_after=document.getElementById("america-no-after");
-  america_yes_after.style.display="block";
-  america_no_after.style.display="none";
-
-}
+  function unhiderehide1(){
+    var america_yes_after=document.getElementById("america-yes-after");
+    var america_no_after=document.getElementById("america-no-after");
+    america_yes_after.style.display="block";
+    america_no_after.style.display="none";
+  }
 
 // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
 function unhiderehide2(){
@@ -888,7 +895,7 @@ function unhiderehide2(){
   america_no_after.style.display="block";
 }
 
-// // 针对 "添加附加险" 下方的额外选项进行隐藏和重现
+// 针对 "添加附加险" 下方的额外选项进行隐藏和重现
 function additional_insurance(){
   var checkbox = document.getElementById("additional-insurance_1");
   var additional_insurance_after = document.getElementById("additional-insurance-after");
