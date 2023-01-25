@@ -14,17 +14,15 @@
       
   
       /* Styling form-control Label */
-      .form-control label {
-          display: block;
+      label {
+          height: 100%;
           margin-bottom: 10px;
+          
       }/* Styling form-control Class */
   
-    /* Styling form-control Label */
-    .form-control label {
-        display: block;
-        margin-bottom: 10px;
-    }/* Styling Button */
+    /* Styling Button */
     button {
+      cursor:pointer;
       background-color: #05c46b;
       border: 1px solid #777;
       border-radius: 2px;
@@ -57,7 +55,6 @@ html{
     top: 50%;   
     left:50%;   
     margin: -150px 0 0 -150px;   
-    width: 300px;   
     height: 300px;   
    }   
 
@@ -95,3 +92,5 @@ html{
     border-radius: 5px;   
     margin: 0;   
    }
+
+  
