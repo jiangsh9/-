@@ -42,3 +42,31 @@ function rehide_60(id){
 // function unhide_60_para(id){
 //     $(id).css({display:"block"});
 // }
+
+
+
+
+
+// JSON
+$( ".submit_button" ).on( "click" , function () {
+    var params = $( ".travelForm" ).serializeArray();
+    var j = {};
+    for ( var item in params) {
+      j[params[item].name] = params[item].value;
+    }
+   
+    $.ajax({
+      url: 'index.html' ,
+      data:JSON.stringify(j),
+      type: 'post' ,
+      dataType: 'json' ,
+      headers:{
+        Accept: "application/json" ,
+        "Content-Type" : "application/json"
+      },
+      processData: false ,
+      cache: false
+    }).done( function (data) {
+    });
+   
+  });
