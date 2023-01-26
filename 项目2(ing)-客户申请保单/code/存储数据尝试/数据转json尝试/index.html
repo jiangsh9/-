@@ -1,0 +1,126 @@
+<form id="form1" method="post" action="##">
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  </head>
+
+  <table>
+      <td>
+          单位：<input type="text" name="unitName">
+      </td>
+      </tr>
+      <tr>
+          <td>
+              联系人：<input type="text" name="contacts">
+          </td>
+          <td>
+              <p>省份：
+                  <select name="region">
+                      <option>请选择省份</option>
+                      <option value="北京市">北京市</option>
+                      <option value="广东省">广东省</option>
+                  </select>
+                  <select name="region">
+                      <option>请选择市区</option>
+                      <option value="北京市">市辖区</option>
+                      <option value="广州市">广州市</option>
+                  </select>
+              </p>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <p>联系电话：<input type="text" name="phone"></p>
+          </td>
+          <td>
+              <p>地址：<input type="text" name="address"></p>
+          </td>
+      </tr>
+
+      <tr>
+          <td>
+              <p>开通业务：
+                  <input type="radio" name="openBusiness" value="1"><label>期满换证</label>
+                  <input type="radio" name="openBusiness" value="2"><label>遗失补证</label>
+                  <input type="radio" name="openBusiness" value="3"><label>毁损换证</label>
+                  <input type="radio" name="openBusiness" value="4"><label>联系方式</label>
+              </p>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <p>部门代码：<input type="text" name="departmentCode"></p>
+          </td>
+          <td>
+              <p>配置：<input type="text" name="printerConfiguration"></p>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <p>备注：<input type="text" name="remarks"></p>
+          </td>
+      </tr>
+  </table>
+
+</form>
+<input type="submit" onclick="loadXMLDoc()" value="提交">
+
+<script>
+  //表单数据转JSON对象格式
+         $(function () {
+  
+             //表单转json函数
+  
+             $.fn.serializeObject = function () {
+  
+                 var o = {};
+  
+                 var a = this.serializeArray();
+  
+                 $.each(a, function () {
+  
+                     if (o[this.name] !== undefined) {
+  
+                         if (!o[this.name].push) {
+  
+                             o[this.name] = [o[this.name]];
+  
+                         }
+  
+                         o[this.name].push(this.value || '');
+  
+                     } else {
+  
+                         o[this.name] = this.value || '';
+  
+                     }
+  
+                 });
+  
+                 return o;
+  
+             }
+         });
+  
+  
+         function loadXMLDoc() {
+             console.log($('#form1').serialize());//调试用
+             
+             $.ajax({
+                 type: "POST",
+                 url: "https://travelinsurance.weplusfinancial.ca/travelinsurance/json/data.json",
+                 dataType: "json",
+                 cache: false,
+                 contentType: "application/json;charset=UTF-8",
+                 data: JSON.stringify($('#form1').serializeObject()),
+                 success: function (result) {
+                     console.log("传输成功！！");
+                     console.log(result);
+  
+                 },
+                 error: function (e) {
+                     console.log("err", e);
+                 }
+             });
+         }
+     </script>
