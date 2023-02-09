@@ -1,0 +1,200 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+  <div>
+    <legend id="title5" class="desc">
+      是否添加其他受保人？(现在不删除：可能不止一个受保人)
+    </legend>
+
+    <div>
+        <input id="add-insured" name="add-insured" type="hidden" value="">
+        <div>
+            <input id="add-insured-yes" name="add-insured-choice" onclick="unhide1()" type="radio" value="1" tabindex="1">
+            <label class="insured" for="add-insured-yes">是</label>
+        </div>
+      <div>
+          <input id="add-insured-no" name="add-insured-choice" onclick="rehide1()" type="radio" value="0" tabindex="2" checked="checked">
+          <label class="insured" for="add-insured-no">否</label>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="added-insured-container" id="added-insured-container" style="display:none;">
+    <div id="added-insured_1" name="added-insured_1" class="added-insured-element" style="border-style: inset;">
+      <p>受保人 1</p>
+      <input id="add-insured-button_1" name="add-insured-button_1" type="button" class="add-insured-button" value="添加受保人"> 
+      <div>
+        <label class="desc" id="added-insured-name-label_1" for="added-insured-name_1">受保人姓名（与护照英文呢一致）</label>
+        <div>
+          <input id="added-insured-name_1" name="added-insured-name_1" type="text" class="added-insured" value="" size="50" tabindex="1">
+        </div>
+      </div>
+
+      <br><br>
+
+      <div>
+        <label class="desc" id="added-insured-sex-label_1" for="added-insured-sex_1">受保人性别</label>
+        <div>
+          <input id="added-insured-sex_1" name="added-insured-sex_1" type="hidden" value="">
+          <div>
+              <input id="added-insured-sex-male_1" name="added-insured-sex-choice_1" type="radio" value="First Choice" tabindex="1">
+              <label class="added-insured" for="added-insured-sex-male_1">男</label>
+          </div>
+          <div>
+              <input id="added-insured-sex-female_1" name="added-insured-sex-choice_1" type="radio" value="Second Choice" tabindex="2">
+              <label class="added-insured" for="added-insured-sex-female_1">女</label>
+          </div>
+        </div>
+      </div>
+
+      <br><br>
+
+      <div>
+        <label class="desc" id="added-insured-birthdate-label_1" for="added-insured-birthdate_1">受保人生日</label>
+        <div>
+          <input id="added-insured-birthdate_1" name="added-insured-birthdate_1" type="date" class="added-insured" value="" size="50" tabindex="1">
+        </div>
+      </div>
+
+      <br><br>
+
+      <div>
+        <label class="desc" id="added-relationship-insured-label_1" for="added-relationship-insured_1">与受保人关系</label>
+        <div>
+          <input id="added-relationship-insured_1" name="added-relationship-insured_1" type="text" class="added-insured" placeholder="例：父母、子女、配偶" value="" size="50" tabindex="1">
+        </div>
+      </div>
+      <br><br>
+    </div>
+    <input id="add-insured-button_2" name="add-insured-button_2" type="button" class="add-insured-button" value="添加受保人">    
+  </div>
+
+  <br><br>
+</body>
+
+<script>
+
+  $(document).ready(function(){
+
+    // Add new element
+    $(".add-insured-button").click(function(){
+
+      // Finding total number of elements added
+      var total_element = $(".added-insured-element").length;
+
+      // last <div> with element class id
+      var lastid = $(".added-insured-element:last").attr("id");
+      var split_id = lastid.split("_");
+      var nextindex = Number(split_id[1]) + 1;
+
+      var max = 10;
+      // Check total number elements
+      if(total_element < max){
+        // Adding new div container after last occurance of element class
+        $(".added-insured-element:last").after("<div class='added-insured-element' style='border-style: inset;' id='added-insured_"+ nextindex +"' name='added-insured_"+ nextindex +"'></div>");
+
+        // Adding element to <div>
+          $("#added-insured_" + nextindex).append(
+
+          // Title
+          '<p>受保人 '+ nextindex +'</p>'
+
+
+          // 受保人姓名
+          
+          +'<div>'
+          + '<label class="desc" id="added-insured-name-label_'+ nextindex +'" for="added-insured-name_'+ nextindex +'">受保人姓名（与护照英文呢一致）</label>'
+          + '<div>'
+          +   '<input id="added-insured-name_'+ nextindex +'" name="added-insured-name_'+ nextindex +'" type="text" class="added-insured" value="" size="50" tabindex="1">'
+          + '</div>'
+          +'</div>'
+          +'<br><br>'
+
+
+          // 受保人性别
+          
+          +'<div>'
+          +  '<label class="desc" id="added-insured-sex-label_'+ nextindex +'" for="added-insured-sex_' + nextindex +'">受保人性别</label>'
+          +  '<div>'
+          +  '<input id="added-insured-sex_'+ nextindex +'" name="added-insured-sex_'+ nextindex +'" type="hidden" value="">'
+          +  '<div>'
+          +       '<input id="added-insured-sex-male_'+ nextindex +'" name="added-insured-sex-choice_'+ nextindex +'" type="radio" value="male" tabindex="1">'
+          +       '<label class="added-insured" for="added-insured-sex-male_'+ nextindex +'">男</label>'
+          +   '</div>'
+          +   '<div>'
+          +       '<input id="added-insured-sex-female_'+ nextindex +'" name="added-insured-sex-choice_'+ nextindex +'" type="radio" value="female" tabindex="2">'
+          +       '<label class="added-insured" for="added-insured-sex-female_'+ nextindex +'">女</label>'
+          +   '</div>'
+          + '</div>'
+          +'</div>'
+          +'<br><br>'
+
+
+          // 受保人生日
+          +'<div>'
+          +  '<label class="desc" id="added-insured-birthdate-label_'+ nextindex +'" for="added-insured-birthdate_'+ nextindex +'">受保人生日</label>'
+          +  '<div>'
+          +    '<input id="added-insured-birthdate_'+ nextindex +'" name="added-insured-birthdate_'+ nextindex +'" type="date" class="added-insured" value="" size="50" tabindex="1">'
+          +  '</div>'
+          +'</div>'
+          +'<br><br>'
+
+
+          // 与受保人关系
+          +'<div>'
+          +  '<label class="desc" id="added-relationship-insured-label_'+ nextindex +'" for="added-relationship-insured_'+ nextindex +'">与受保人关系</label>'
+          +  '<div>'
+          +    '<input id="added-relationship-insured_'+ nextindex +'" name="added-relationship-insured_'+ nextindex +'" type="text" class="added-insured" placeholder="例：父母、子女、配偶" value="" size="50" tabindex="1">'
+          +  '</div>'
+          +'</div>'
+          +'<br><br>'
+
+          // 添加和删除insured的按钮
+          +'<input id="remove-insured-button_'+ nextindex +'" name="remove-insured-button_'+ nextindex +'" type="button" class="remove-insured-button" value="删除该受保人">'
+      
+        );
+      } else {
+        alert("最多可添加10个受保人！");
+      }
+    });
+
+
+    // Remove element
+    $('.added-insured-container').on('click','.remove-insured-button',function(){
+
+      var id = this.id;
+      var split_id = id.split("_");
+      var deleteindex = split_id[1];
+
+      // Remove <div> with id
+      $("#added-insured_" + deleteindex).remove();
+
+      // 之后的index-1？（只改了标签，id没改，可能会出问题）
+    });
+  });
+
+
+
+
+
+
+
+  // 确认添加新受保人 时 弹出新信息 的代码
+  function unhide1(){
+    var added_insured=document.getElementById("added-insured-container");
+    added_insured.style.display="block";
+  }
+  
+  // 确认"不"添加新受保人 时 隐藏新信息 的代码
+  function rehide1(){
+    var added_insured=document.getElementById("added-insured-container");
+    added_insured.style.display="none";
+  }
+</script>
+
+
+</html>

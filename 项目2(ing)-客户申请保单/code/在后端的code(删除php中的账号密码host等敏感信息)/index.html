@@ -1,0 +1,1035 @@
+<form action="https://travelinsurance.weplusfinancial.ca/travelinsurance/html_to_mysql.php" class="travel_form" method="post">
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <link href="css/geeks.css" rel="stylesheet" type="text/css">
+    <script src="js/multi_step_form.js"></script>
+  </head>
+  
+  <body>
+    <div class="content">
+      <!-- Multistep Form -->
+      <!-- page_1.html -->
+      <div class="tab" style="display:block;">
+        <h2>旅游保险信息表</h2>
+        <div>完成提交这份表格代表您已授权本人在保险申请过程中使用表格中的信息，使用过程遵循隐私保护条例。如有疑问，请在提交表格前与我联系。</div>
+        <div>提交表单后我们会和您联系获取信用卡信息，谢谢！</div>
+        
+        <br>
+        
+        <div><a href="login.html">登录</a> 即可保存信息</div></body><br>
+        
+        <input id="page-button-1" name="page-button-forward" type="button" class="next_btn" value="下一页">
+      </div>
+
+
+
+
+
+      <!-- page_2.html -->
+      <div class="tab" style="display:none;">
+      
+        <h2>旅游保险信息表</h2>
+        <div></div>
+        <div><a href="login.html">登录</a> 即可保存进度。</div><br><br>
+       
+        
+        <input id="page-button-2" name="page-button-backward" type="button" class="pre_btn" value="上一页">
+        <input id="page-button-3" name="page-button-forward" type="button" class="next_btn" value="下一页">
+        
+        <br><br>
+      
+        <div>
+          <label class="desc" id="insured-name-label" name="insured-name-label" for="insured-name">受保人姓名（与护照英文呢一致）</label>
+          <div>
+            <input id="insured-name" name="insured-name" type="text" class="insured" value="" size="50" tabindex="1">
+          </div>
+        </div>
+      
+        <br><br>
+      
+        <div>
+          <label class="desc" id="insured-sex-label" for="insured-sex">受保人性别</label>
+          <div id="insured-sex" name="insured-sex">
+            <!--<input id="insured-sex" name="insured-sex" type="hidden" value="">-->
+            <div>
+                <input id="insured-sex-male" name="insured-sex-choice" type="radio" value="male" tabindex="1" checked="checked">
+                <label class="insured" for="insured-sex-male">男</label>
+            </div>
+            <div>
+                <input id="insured-sex-female" name="insured-sex-choice" type="radio" value="female" tabindex="2">
+                <label class="insured" for="insured-sex-female">女</label>
+            </div>
+            <!--<div>-->
+            <!--  <input id="insured-sex-none" name="insured-sex-choice" type="radio" value="others" tabindex="3">-->
+            <!--  <label class="insured" for="insured-sex-none">不想回答</label>-->
+            <!--</div>-->
+          </div>
+        </div>
+      
+        <br><br>
+      
+        <div>
+          <label class="desc" id="insured-birthdate-label" for="insured-birthdate">受保人生日</label>
+          <div>
+            <input id="insured-birthdate" name="insured-birthdate" type="date" class="insured" value="" size="50" tabindex="1">
+          </div>
+        </div>
+      
+        <br><br>
+      
+        <div id="insured-address-group" name="insured-address-group" class="insured">
+          <label class="desc" id="insured-address-label" for="insured-address">加拿大地址</label>
+          <div>
+            <label>Street Address</label><br>
+            <input id="insured-street-address" name="insured-street-address" type="text" class="insured" value="" size="50" tabindex="1"><br>
+            <label>ZIP or postal code</label><br>
+            <input id="insured-zip" name="insured-zip" type="text" class="insured" value="" size="20" tabindex="2" ><br>
+            <label>Province</label><br>
+            <input id="insured-province" name="insured-province" type="text" class="insured" value="" size="50" tabindex="3"><br>
+            <label>City</label><br>
+            <input id="insured-city" name="insured-city" type="text" class="insured" value="" size="50" tabindex=""><br>
+          </div>
+        </div>
+      
+        <br><br>
+      
+        <div>
+          <label class="desc" id="insured-tel-label" for="insured-tel">加拿大电话（改成电话格式）</label>
+          <div>
+            <input id="insured-tel" name="insured-tel" type="tel" class="insured" placeholder="123-456-7890" value="" size="50" tabindex="1">
+          </div>
+        </div>
+      
+        <br><br>
+          
+        <div>
+          <label class="desc" id="insured-mail-label" for="insured-mail">
+            联系邮箱
+          </label>
+          <div>
+            <input id="insured-mail" name="insured-mail" type="email" spellcheck="false" size="50" placeholder="google@gmail.com" value="" maxlength="255" tabindex="1"> 
+        </div>
+        </div>
+      
+        <br><br>
+      
+        <div>
+          <label class="desc" id="deceased-beneficiary-label" for="deceased-beneficiary">身故受益人</label>
+          <div>
+            <input id="deceased-beneficiary" name="deceased-beneficiary" type="text" size="50" class="deceased-beneficiary" value="" size="8" tabindex="1">
+          </div>
+        </div>
+      
+        <br><br>
+      
+        <div>
+          <label class="desc" id="relationship-insured-label" for="relationship-insured">与受保人关系</label>
+          <div>
+            <input id="relationship-insured" name="relationship-insured" placeholder="例：父母、子女、配偶" type="text" class="deceased-beneficiary" value="" size="50" tabindex="1">
+          </div>
+        </div>
+      
+        <br><br>
+          
+        <div>
+            <legend id="title5" class="desc">
+              是否添加其他受保人？(现在不删除：可能不止一个受保人)
+            </legend>
+      
+            <div>
+                <input id="add-insured" name="add-insured" type="hidden" value="">
+                <div>
+                    <input id="add-insured-yes" name="add-insured-choice" onclick="unhide1()" type="radio" value="First Choice" tabindex="1">
+                    <label class="insured" for="add-insured-yes">是</label>
+                </div>
+              <div>
+                  <input id="add-insured-no" name="add-insured-choice" onclick="rehide1()" type="radio" value="Second Choice" tabindex="2" checked="checked">
+                  <label class="insured" for="add-insured-no">否</label>
+              </div>
+            </div>
+        </div>
+      
+        <br><br>
+      
+        <div id="added-insured" name="added-insured" class="added-insured" style="display:none;">
+          <div>
+            <label class="desc" id="added-insured-name-label" for="added-insured-name">受保人姓名（与护照英文呢一致）</label>
+            <div>
+              <input id="added-insured-name" name="added-insured-name" type="text" class="added-insured" value="" size="50" tabindex="1">
+            </div>
+          </div>
+      
+          <br><br>
+      
+          <div>
+            <label class="desc" id="added-insured-sex-label" for="added-insured-sex">受保人性别</label>
+            <div>
+              <input id="added-insured-sex" name="added-insured-sex" type="hidden" value="">
+              <div>
+                  <input id="added-insured-sex-male" name="added-insured-sex-choice" type="radio" value="First Choice" tabindex="1">
+                  <label class="added-insured" for="added-insured-sex-male">男</label>
+              </div>
+              <div>
+                  <input id="added-insured-sex-female" name="added-insured-sex-choice" type="radio" value="Second Choice" tabindex="2">
+                  <label class="added-insured" for="added-insured-sex-female">女</label>
+              </div>
+              <div>
+                <input id="added-insured-sex-none" name="added-insured-sex-choice" type="radio" value="Third Choice" tabindex="3">
+                <label class="added-insured" for="added-insured-sex-none">不想回答</label>
+              </div>
+            </div>
+          </div>
+      
+          <br><br>
+      
+          <div>
+            <label class="desc" id="added-insured-birthdate-label" for="added-insured-birthdate">受保人生日</label>
+            <div>
+              <input id="added-insured-birthdate" name="added-insured-birthdate" type="date" class="added-insured" value="" size="50" tabindex="1">
+            </div>
+          </div>
+      
+          <br><br>
+      
+          <div>
+            <label class="desc" id="added-relationship-insured-1-label" for="added-relationship-insured-1">与受保人关系</label>
+            <div>
+              <input id="added-relationship-insured-1" name="added-relationship-insured" type="text" class="added-deceased-beneficiary" placeholder="例：父母、子女、配偶" value="" size="50" tabindex="1">
+            </div>
+          </div>
+        </div>
+      
+        <br><br>
+        
+        
+        <input id="page-button-4" name="page-button-backward" type="button" class="pre_btn" value="上一页">
+        <input id="page-button-5" name="page-button-forward" type="button" class="next_btn" value="下一页">
+      </div>
+
+
+
+
+
+
+      <!-- page_3.html -->
+      <div class="tab" id="page_3" style="display:none;">
+        
+        <h2>旅游保险信息表</h2>
+        <div><a href="login.html">登录</a> 即可保存进度。</div><br>
+        
+        <div>
+          <label class="desc" id="insurance-type-label" for="insurance-type"><b>保险类型</b></label>
+        </div>
+          
+        <br>
+        
+        <div id="insurance-type" name="insurance-type">
+          
+            <input type="hidden" name="postvar" value="" />
+          
+            <input id="insurance-type-visitor" name="insurance-type-choice" type="radio" value="访加旅客保险">访加旅客保险
+          
+            <input id="insurance-type-student-or-parent" name="insurance-type-choice" type="radio" value="留学生/陪读父母保险">留学生/陪读父母保险
+          
+            <input id="insurance-type-travelor" name="insurance-type-choice" type="radio" value="在加居民出境旅游保险">在加居民出境旅游保险   
+          
+        </div>
+    
+        <input id="page-button-6" name="page-button-backward" type="button" class="pre_btn" value="上一页">    
+      </div>
+
+
+      
+
+
+
+      <!-- 访加旅客保险.html -->
+      <div class="tab" id="visit" style="display:none;">
+
+        <h2>旅游保险信息表</h2>
+        <div><a href="login.html">登录</a> 即可保存进度。</div>
+  
+        <br>
+
+        
+        <h3>访加旅客保险</h3>
+    
+        <br>
+        
+        <div>
+          <div>
+            <input id="page-button-7" name="page-button-backward" type="button" class="pre_btn_visit" value="上一页">
+            <input id="saveForm" name="saveForm" type="submit" value="提交">
+          </div>
+        </div>
+    
+        <br>
+        <div id="insured-condition" class="insured" name="insured-condition" >
+          <label class="desc" id="insured-condition-list-label" for="insured-condition-list">
+            请确保受保人是否满足以下条件：
+          </label>
+          <ul id="insured-condition-list" class="insured" name="insured-condition" style="list-style: none;">
+            <!--<li id="insured-condition-1" class="insured" name="insured-condition">-->
+            <li>
+                <input type="hidden" name="insured-condition-1-visit" value="0">
+                <input type="checkbox" id="insured-condition-1-visit" name="insured-condition-1-visit" value="1">年龄在15-89岁
+            </li>
+            <!--<li id="insured-condition-2" class="insured" name="insured-condition">-->
+            <!--  未受保于加拿大公共医保(MSP)下-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-2-visit" value="0">
+                <input type="checkbox" id="insured-condition-2-visit" name="insured-condition-2-visit" value="1">未受保于加拿大公共医保(MSP)下
+            </li>
+            <!--<li id="insured-condition-3" class="insured" name="insured-condition">-->
+            <!--  在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-3-visit" value="0">
+                <input type="checkbox" id="insured-condition-3-visit" name="insured-condition-3-visit" value="1">在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
+            </li>
+            <!--<li id="insured-condition-4" class="insured" name="insured-condition">-->
+            <!--  未被诊断为晚期病症-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-4-visit" value="0">
+                <input type="checkbox" id="insured-condition-4-visit" name="insured-condition-4-visit" value="1">未被诊断为晚期病症
+            </li>
+            <!--<li id="insured-condition-5" class="insured" name="insured-condition">-->
+            <!--  未被诊断为癌症3期/4期-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-5-visit" value="0">
+                <input type="checkbox" id="insured-condition-5-visit" name="insured-condition-5-visit" value="1">未被诊断为癌症3期/4期
+            </li>
+            <!--<li id="insured-condition-6" class="insured" name="insured-condition">-->
+            <!--  在过去三个月内未接受过 针对癌症的治疗-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-6-visit" value="0">
+                <input type="checkbox" id="insured-condition-6-visit" name="insured-condition-6-visit" value="1">在过去三个月内未接受过 针对癌症的治疗
+            </li>
+            <!--<li id="insured-condition-7" class="insured" name="insured-condition">-->
+            <!--  日常生活无需因健康状况 导致的护理辅助-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-7-visit" value="0">
+                <input type="checkbox" id="insured-condition-7-visit" name="insured-condition-7-visit" value="1">日常生活无需因健康状况 导致的护理辅助
+            </li>
+          </ul>
+        </div>
+    
+        <br>
+    
+        <div id="insured-elder-visitor" class="insured" name="insured-elder-visitor">
+          <legend id="insured-elder-visitor-label" class="desc">
+            受保人是否超过60岁
+          </legend>
+          
+          <div id="insured-elder-visitor-list" class="insured" name="insured-elder-visitor-list">
+            <input id="insured-elder-visitor-check" name="insured-elder-visitor-check" type="hidden" value="">
+            <div>
+                <input id="insured-elder-visitor-yes" name="insured-elder-visitor-choice" type="radio" value="1" tabindex="1" onclick="unhide_60('insured-elder-visitor-yes-after')">
+                <label class="choice" for="insured-elder-visitor-yes">是</label>
+            </div>
+            <div>
+              <input id="insured-elder-visitor-no" name="insured-elder-visitor-choice" type="radio" value="0" tabindex="2" onclick="rehide_60('insured-elder-visitor-yes-after')" checked="checked">
+              <label class="choice" for="insured-elder-visitor-no">否</label>
+            </div>
+          </div>
+        </div>
+    
+        
+    
+        <div id="insured-elder-visitor-yes-after" style="display:none;">
+          <br><br>
+          <label class="desc" id="insured-elder-visitor-history-label" for="insured-elder-visitor-history">
+            请勾选以下符合的选项
+          </label>
+          <ul id="insured-elder-visitor-history" name="insured-elder-visitor-history" class="insured" style="list-style: none;">
+            <li><input type="hidden" name="heart-bypass-visit" value="0">
+                <input type="checkbox" id="heart-bypass-visit" name="heart-bypass-visit" value="1">
+            <label for="heart-bypass-visit">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
+            <li><input type="hidden" name="diabetes-visit" value="0">
+                <input type="checkbox" id="diabetes-visit" name="diabetes-visit" value="1">
+            <label for="diabetes-visit">问是否同时具有糖尿病和心脏病</label></li>
+            <li><input type="hidden" name="organ-transplant-visit" value="0">
+                <input type="checkbox" id="organ-transplant-visit" name="organ-transplant-visit" value="1">
+            <label for="organ-transplant-visit">是否有器官移植</label></li>
+            <li><input type="hidden" name="biuretics-visit" value="0">
+                <input type="checkbox" id="biuretics-visit" name="biuretics-visit" value="1">
+            <label for="biuretics-visit">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
+            <li><input type="hidden" name="stroke-visit" value="0">
+                <input type="checkbox" id="stroke-visit" name="stroke-visit" value="1">
+            <label for="stroke-visit">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
+            <li><input type="hidden" name="cancer-visit" value="0">
+                <input type="checkbox" id="cancer-visit" name="cancer-visit" value="1">
+            <label for="cancer-visit">是否确诊癌症，或者接受化疗/放疗</label></li>
+            <li><input type="hidden" name="digestive-tract-visit" value="0">
+                <input type="checkbox" id="digestive-tract-visit" name="digestive-tract-visit" value="1">
+            <label for="digestive-tract-visit">是否因为消化道疾病入院超过24小时</label></li>
+          </ul>
+        </div>
+    
+        <br><br>
+          
+        <div>
+          <label class="desc" id="arrival-date-visitor-label" for="arrival-date-visitor">到达加拿大日期</label>
+          <div>
+            <input id="arrival-date-visitor" name="arrival-date-visitor" type="date" class="date" value="" size="20" tabindex="1">
+          </div>
+        </div>
+    
+        <br><br>
+    
+        <div>
+          <label class="desc" id="effective-date-visit-label" for="effective-date-visit">保险生效日期</label>
+          <div>
+            <input id="effective-date-visit" name="effective-date-visit" type="date" class="insurance" value="" size="20" tabindex="1">
+          </div>
+        </div>
+    
+        <br><br>
+    
+        <div>
+          <label class="desc" id="end-date-visit-label" for="end-date-visit">保险结束日期</label>
+          <div>
+            <input id="end-date-visit" name="end-date-visit" type="date" class="insurance" value="" size="20" tabindex="1">
+          </div>
+        </div>
+    
+        <br><br>
+    
+        <div>
+          <label class="desc" id="insurance-amount-label" for="insurance-amount">保额选择 (CAD)</label>
+          <div>
+            <input id="insurance-amount" name="insurance-amount-choice" type="hidden" value="">
+            <div>
+                <input id="insurance-amount-1" name="insurance-amount-choice" type="radio" value="10000" tabindex="1" checked="checked">
+                <label class="insurance" for="insurance-amount-1">$10,000</label>
+            </div>
+            <div>
+                <input id="insurance-amount-2" name="insurance-amount-choice" type="radio" value="25000" tabindex="2">
+                <label class="insurance" for="insurance-amount-2">$25,000</label>
+            </div>
+            <div>
+              <input id="insurance-amount-3" name="insurance-amount-choice" type="radio" value="50000" tabindex="3">
+              <label class="insurance" for="insurance-amount-3">$50,000</label>
+            </div>
+            <div>
+              <input id="insurance-amount-4" name="insurance-amount-choice" type="radio" value="100000" tabindex="4">
+              <label class="insurance" for="insurance-amount-4">$100,000</label>
+            </div>
+            <div>
+              <input id="insurance-amount-5" name="insurance-amount-choice" type="radio" value="150000" tabindex="5">
+              <label class="insurance" for="insurance-amount-5">$150,000</label>
+            </div>
+            <div>
+              <input id="insurance-amount-6" name="insurance-amount-choice" type="radio" value="300000" tabindex="6">
+              <label class="insurance" for="insurance-amount-6">$300,000</label>
+            </div>
+          </div>
+        </div>
+    
+        <br><br>
+    
+        <div>
+          <label class="desc" id="insurance-deductible-label" for="insurance-deductible">起付额 (CAD)</label>
+          <div id="insurance-deductible" name="insurance-deductible" class="insurance">
+            <input id="insurance-deductible-choice" name="insurance-deductible-choice" type="hidden" value="0">
+            <div>
+                <input id="insurance-deductible-1" name="insurance-deductible-choice" type="radio" value="0" tabindex="1" checked="checked">
+                <label class="insurance" for="insurance-deductible-1">$0</label>
+            </div>
+            <div>
+                <input id="insurance-deductible-2" name="insurance-deductible-choice" type="radio" value="100" tabindex="2">
+                <label class="insurance" for="insurance-deductible-2">$100 (约等于省5%)</label>
+            </div>
+            <div>
+              <input id="insurance-deductible-3" name="insurance-deductible-choice" type="radio" value="250" tabindex="3">
+              <label class="insurance" for="insurance-deductible-3">$250 (约等于省10%)</label>
+            </div>
+            <div>
+              <input id="insurance-deductible-4" name="insurance-deductible-choice" type="radio" value="1000" tabindex="4">
+              <label class="insurance" for="insurance-deductible-4">$1000 (约等于省20%)</label>
+            </div>
+            <div>
+              <input id="insurance-deductible-5" name="insurance-deductible-choice" type="radio" value="3000" tabindex="5">
+              <label class="insurance" for="insurance-deductible-5">$3000 (约等于省30%)</label>
+            </div>
+            <div>
+              <p>(例如起付额$100，指少于$100的部分自付，超出$100的部分可索赔)</p>
+            </div>
+          </div>
+        </div>
+    
+        <br>
+        
+        <div>
+          <div>
+            <input id="page-button-8" name="page-button-backward" type="button" class="pre_btn_visit" value="上一页">
+            <input id="saveForm" name="saveForm" type="submit" value="提交">
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+      <!-- 留学生/陪读父母保险.html -->
+      <div class="tab" id="study" style="display:none;">
+
+        <h2>旅游保险信息表</h2>
+        <div><a href="login.html">登录</a> 即可保存进度。</div>
+
+    
+        <br>
+        
+        <h3>留学生/陪读父母保险</h3>
+    
+        <br>
+    
+        <div>
+          <div>
+            <input id="page-button-9" name="page-button-backward" type="button" class="pre_btn_study" value="上一页">
+            <input id="saveForm" name="saveForm" type="submit" value="提交">
+          </div>
+        </div>
+    
+        <br>
+        
+        <div>
+          <label class="desc" id="insured-condition-study-list-label" for="insured-condition-study-list">请确保受保人是否满足以下条件：</label>
+          <ul id="insured-condition-study-list" class="insured" name="insured-condition-study" style="list-style: none;">
+            <!--<li id="insured-condition-1-study" class="insured" name="insured-condition-study">-->
+            <!--  年龄在15-89岁-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-1-study" value="0">
+                <input type="checkbox" id="insured-condition-1-study" name="insured-condition-1-study" value="1">年龄在15-89岁
+            </li>
+            <!--<li id="insured-condition-study-2" class="insured" name="insured-condition-study">-->
+            <!--  未受保于加拿大公共医保(MSP)下-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-2-study" value="0">
+                <input type="checkbox" id="insured-condition-2-study" name="insured-condition-2-study" value="1">未受保于加拿大公共医保(MSP)下
+            </li>
+            <!--<li id="insured-condition-study-3" class="insured" name="insured-condition-study">-->
+            <!--  在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-3-study" value="0">
+                <input type="checkbox" id="insured-condition-3-study" name="insured-condition-3-study" value="1">在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
+            </li>
+            <!--<li id="insured-condition-study-4" class="insured" name="insured-condition-study">-->
+            <!--  未被诊断为晚期病症-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-4-study" value="0">
+                <input type="checkbox" id="insured-condition-4-study" name="insured-condition-4-study" value="1">未被诊断为晚期病症
+            </li>
+            <!--<li id="insured-condition-study-5" class="insured" name="insured-condition-study">-->
+            <!--  未被诊断为癌症3期/4期-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-5-study" value="0">
+                <input type="checkbox" id="insured-condition-5-study" name="insured-condition-5-study" value="1">未被诊断为癌症3期/4期
+            </li>
+            <!--<li id="insured-condition-study-6" class="insured" name="insured-condition-study">-->
+            <!--  在过去三个月内未接受过针对癌症的治疗-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-6-study" value="0">
+                <input type="checkbox" id="insured-condition-6-study" name="insured-condition-6-study" value="1">在过去三个月内未接受过针对癌症的治疗
+            </li>
+            <!--<li id="insured-condition-study-7" class="insured" name="insured-condition-study">-->
+            <!--  日常生活无需因健康状况导致的护理辅助-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-7-study" value="0">
+                <input type="checkbox" id="insured-condition-7-study" name="insured-condition-7-study" value="1">日常生活无需因健康状况导致的护理辅助
+            </li>
+            <!--<li id="insured-condition-study-8" class="insured" name="insured-condition-study">-->
+            <!--  在加拿大全职/兼职上学，或是其陪读父母-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-8-study" value="0">
+                <input type="checkbox" id="insured-condition-8-study" name="insured-condition-8-study" value="1">在加拿大全职/兼职上学，或是其陪读父母
+            </li>
+          </ul>
+        </div>
+    
+        <br>
+    
+        <div id="insured-elder-study" class="insured" name="insured-elder-study">
+          <legend id="insured-elder-study-label" class="desc">
+            受保人是否超过60岁
+          </legend>
+          
+          <div id="insured-elder-study-list" class="insured" name="insured-elder-study-list">
+            <input id="insured-elder-study-check" name="insured-elder-study-check" type="hidden" value="">
+            <div>
+                <input id="insured-elder-study-yes" name="insured-elder-study-choice" type="radio" value="1" tabindex="1" onclick="unhide_60('insured-elder-study-yes-after')">
+                <label class="choice" for="insured-elder-yes">是</label>
+            </div>
+            <div>
+              <input id="insured-elder-study-no" name="insured-elder-study-choice" type="radio" value="0" tabindex="2" onclick="rehide_60('insured-elder-study-yes-after')" checked="checked">
+              <label class="choice" for="insured-elder-study-no">否</label>
+            </div>
+          </div>
+        </div>
+    
+        <div id="insured-elder-study-yes-after" style="display:none;">
+          <br><br>
+          <label class="desc" id="insured-elder-study-history-label" for="insured-elder-study-history">请勾选以下符合的选项</label>
+          <ul id="insured-elder-study-history" name="insured-elder-study-history" class="insured" style="list-style: none;">
+            <li><input type="hidden" name="heart-bypass-study" value="0">
+                <input type="checkbox" id="heart-bypass-study" name="heart-bypass-study" value="1">
+            <label for="heart-bypass-study">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
+            <li><input type="hidden" name="diabetes-study" value="0">
+                <input type="checkbox" id="diabetes-study" name="diabetes-study" value="1">
+            <label for="diabetes-study">问是否同时具有糖尿病和心脏病</label></li>
+            <li><input type="hidden" name="organ-transplant-study" value="0">
+                <input type="checkbox" id="organ-transplant-study" name="organ-transplant-study" value="1">
+            <label for="organ-transplant-study">是否有器官移植</label></li>
+            <li><input type="hidden" name="biuretics-study" value="0">
+                <input type="checkbox" id="biuretics-study" name="biuretics-study" value="1">
+            <label for="biuretics-study">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
+            <li><input type="hidden" name="stroke-study" value="0">
+                <input type="checkbox" id="stroke-study" name="stroke-study" value="1">
+            <label for="stroke-study">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
+            <li><input type="hidden" name="cancer-study" value="0">
+                <input type="checkbox" id="cancer-study" name="cancer-study" value="1">
+            <label for="cancer-study">是否确诊癌症，或者接受化疗/放疗</label></li>
+            <li><input type="hidden" name="digestive-tract-study" value="0">
+                <input type="checkbox" id="digestive-tract-study" name="digestive-tract-study" value="1">
+            <label for="digestive-tract-study">是否因为消化道疾病入院超过24小时</label></li>
+          </ul>
+        </div>
+    
+        <br><br>
+          
+        <div>
+          <label class="desc" id="arrival-date-label" for="arrival-date">到达加拿大日期</label>
+          <div>
+            <input id="arrival-date" name="arrival-date" type="date" class="date" value="" size="20" tabindex="1">
+          </div>
+        </div>
+    
+        <br><br>
+    
+        <div>
+          <label class="desc" id="effective-date-study-label" for="effective-date-study">保险生效日期</label>
+          <div>
+            <input id="effective-date-study" name="effective-date-study" type="date" class="insurance" value="" size="20" tabindex="1">
+          </div>
+        </div>
+    
+        <br><br>
+    
+        <div>
+          <label class="desc" id="end-date-study-label" for="end-date-study">保险结束日期</label>
+          <div>
+            <input id="end-date-study" name="end-date-study" type="date" class="insurance" value="" size="20" tabindex="1">
+          </div>
+        </div>
+    
+        <br><br>
+    
+        <div>
+          <div>
+            <input id="page-button-10" name="page-button-backward" type="button" class="pre_btn_study" value="上一页">
+            <input id="saveForm" name="saveForm" type="submit" value="提交">
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <!-- 在加居民出境旅游保险.html -->
+      <div class="tab" id="travel" style="display:none;">
+        <h2>旅游保险信息表</h2>
+        <div><a href="login.html">登录</a> 即可保存进度。</div>       
+        
+        <br>
+      
+        <h3>在加居民出境旅游保险</h3>
+      
+        <br>
+      
+        <div>
+          <div>
+            <input id="page-button-11" name="page-button-backward" type="button" class="pre_btn_travel" value="上一页">
+            
+              <input id="saveForm" name="saveForm" type="submit" value="提交" >
+           
+          </div>
+        </div>
+      
+        <br>
+        
+        <div id="insured-condition-travel" class="insured" name="insured-condition-travel">
+          <label class="desc" id="insured-condition-travel-list-label" for="insured-condition-travel-list">
+            请确保受保人是否满足以下条件：
+          </label>
+          <ul id="insured-condition-travel-list" class="insured" name="insured-condition-travel" style="list-style: none;">
+            <!--<li id="insured-condition-travel-1" class="insured" name="insured-condition-travel">-->
+            <!--  年龄在15-89岁-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-1-travel" value="0">
+                <input type="checkbox" id="insured-condition-1-travel" name="insured-condition-1-travel" value="1">年龄在15-89岁
+            </li>
+            <!--<li id="insured-condition-travel-2" class="insured" name="insured-condition-travel">-->
+            <!--  持有有效加拿大公共医保(MSP)-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-2-travel" value="0">
+                <input type="checkbox" id="insured-condition-2-travel" name="insured-condition-2-travel" value="1">持有有效加拿大公共医保(MSP)
+            </li>
+            <!--<li id="insured-condition-travel-3" class="insured" name="insured-condition-travel">-->
+            <!--  在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-3-travel" value="0">
+                <input type="checkbox" id="insured-condition-3-travel" name="insured-condition-3-travel" value="1">在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
+            </li>
+            <!--<li id="insured-condition-travel-4" class="insured" name="insured-condition-travel">-->
+            <!--  未被诊断为晚期病症-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-4-travel" value="0">
+                <input type="checkbox" id="insured-condition-4-travel" name="insured-condition-4-travel" value="1">未被诊断为晚期病症
+            </li>
+            <!--<li id="insured-condition-travel-5" class="insured" name="insured-condition-travel">-->
+            <!--  未被诊断为癌症3期/4期-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-5-travel" value="0">
+                <input type="checkbox" id="insured-condition-5-travel" name="insured-condition-5-travel" value="1">未被诊断为癌症3期/4期
+            </li>
+            <!--<li id="insured-condition-travel-6" class="insured" name="insured-condition-travel">-->
+            <!--  在过去三个月内未接受过 针对癌症的治疗-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-6-travel" value="0">
+                <input type="checkbox" id="insured-condition-6-travel" name="insured-condition-6-travel" value="1">在过去三个月内未接受过 针对癌症的治疗
+            </li>
+            <!--<li id="insured-condition-travel-7" class="insured" name="insured-condition-travel">-->
+            <!--  日常生活无需因健康状况 导致的护理辅助-->
+            <!--</li>-->
+            <li>
+                <input type="hidden" name="insured-condition-7-travel" value="0">
+                <input type="checkbox" id="insured-condition-7-travel" name="insured-condition-7-travel" value="1">日常生活无需因健康状况 导致的护理辅助
+            </li>
+          </ul>
+        </div>
+      
+        <br>
+      
+        <div id="insured-elder-travel" class="insured" name="insured-elder-travel">
+          <legend id="insured-elder-travel-label" class="desc">
+            受保人是否超过60岁
+          </legend>
+          
+          <div id="insured-elder-travel-list" class="insured" name="insured-elder-travel-list">
+            <input id="insured-elder-travel-check" name="insured-elder-travel-check" type="hidden" value="">
+            <div>
+                <input id="insured-elder-travel-yes" name="insured-elder-travel-choice" type="radio" value="1" tabindex="1" onclick="unhide_60('insured-elder-travel-yes-after')">
+                <label class="choice" for="insured-elder-travel-yes">是</label>
+            </div>
+            <div>
+              <input id="insured-elder-travel-no" name="insured-elder-travel-choice" type="radio" value="0" tabindex="2" onclick="rehide_60('insured-elder-travel-yes-after')" checked="checked">
+              <label class="choice" for="insured-elder-travel-no">否</label>
+            </div>
+          </div>
+        </div>
+      
+        
+      
+        <div id="insured-elder-travel-yes-after" style="display:none;">
+          <br><br>
+          <label class="desc" id="insured-elder-travel-history-label" for="insured-elder-travel-history">
+            请勾选以下符合的选项
+          </label><br>
+          <ul id="insured-elder-travel-history" name="insured-elder-travel-history" class="insured" style="list-style: none;">
+            <li><input type="hidden" name="heart-bypass-travel" value="0">
+                <input type="checkbox" id="heart-bypass-travel" name="heart-bypass-travel" value="1">
+            <label for="heart-bypass-travel">问是否有心脏搭桥或者瓣膜置换手术（10年内）</label></li>
+            <li><input type="hidden" name="diabetes-travel" value="0">
+                <input type="checkbox" id="diabetes-travel" name="diabetes-travel" value="1">
+            <label for="diabetes-travel">问是否同时具有糖尿病和心脏病</label></li>
+            <li><input type="hidden" name="organ-transplant-travel" value="0">
+                <input type="checkbox" id="organ-transplant-travel" name="organ-transplant-travel" value="1">
+            <label for="organ-transplant-travel">是否有器官移植</label></li>
+            <li><input type="hidden" name="biuretics-travel" value="0">
+                <input type="checkbox" id="biuretics-travel" name="biuretics-travel" value="1">
+            <label for="biuretics-travel">过去2年内，是否有服用过利尿剂。是否有慢性心衰。是否因为肺病需要氧气</label></li>
+            <li><input type="hidden" name="stroke-travel" value="0">
+                <input type="checkbox" id="stroke-travel" name="stroke-travel" value="1">
+            <label for="stroke-travel">过去12个月内，是否有被诊断为心脏病，中风，短暂性脑缺血，小中风，或者内出血</label></li>
+            <li><input type="hidden" name="cancer-travel" value="0">
+                <input type="checkbox" id="cancer-travel" name="cancer-travel" value="1">
+            <label for="cancer-travel">是否确诊癌症，或者接受化疗/放疗</label></li>
+            <li><input type="hidden" name="digestive-tract-travel" value="0">
+                <input type="checkbox" id="digestive-tract-travel" name="digestive-tract-travel" value="1">
+            <label for="digestive-tract-travel">是否因为消化道疾病入院超过24小时</label></li>
+          </ul>
+        </div>
+      
+        <br><br>
+          
+        <div>
+          <label class="desc" id="departure-date-label" for="departure-date">离开加拿大日期</label>
+          <div>
+            <input id="departure-date" name="departure-date" type="date" class="date" value="" size="20" tabindex="1">
+          </div>
+        </div>
+      
+        <br><br>
+      
+        <div>
+          <label class="desc" id="effective-date-travel-label" for="effective-date-travel">保险生效日期</label>
+          <div>
+            <input id="effective-date-travel" name="effective-date-travel" type="date" class="insurance" value="" size="20" tabindex="1">
+          </div>
+        </div>
+      
+        <br><br>
+      
+        <div>
+          <label class="desc" id="end-date-travel-label" for="end-date-travel">保险结束日期</label>
+          <div>
+            <input id="end-date-travel" name="end-date-travel" type="date" class="insurance" value="" size="20" tabindex="1">
+          </div>
+        </div>
+      
+        <br><br>
+      
+        <div>
+          <label class="desc" id="america-or-not-label" for="america-or-not">目的地是否在美国？</label>
+          <div>
+            <input id="america-or-not" name="america-or-not-choice" type="hidden" value="0">
+            <div>
+                <input id="america-yes" name="america-or-not-choice" onclick="unhiderehide1()" type="radio" value="1" tabindex="1">
+                <label class="travel" for="america-yes" >是</label>
+            </div>
+            <div>
+                <input id="america-no" name="america-or-not-choice" onclick="unhiderehide2()" type="radio" value="0" tabindex="2">
+                <label class="travel" for="america-no" >否</label>
+            </div>
+          </div>
+        </div>
+      
+        <br><br>
+      
+        <div id="america-yes-after" style="display:none;">
+          <div id="america_state" >
+            <label class="desc" id="america-state-label" for="america-state">
+              在美国哪个州 (如果上面目的地选择"是"，弹出此内容)
+            </label><br>
+            <input id="america-state" name="america-state" type="text" class="travel" value="" size="8" tabindex="1">
+          </div>
+      
+          <div id="america_stay">
+            <label class="desc" id="america-stay-label" for="america-stay">
+              在美国停留天数 
+            </label><br>
+            <input id="america-stay" name="america-stay" type="text" class="travel" value="" size="8" tabindex="2">
+          </div><br><br>
+        </div>
+      
+        
+      
+        <div id="america-no-after" style="display:none;">
+          <label class="desc" id="country-label" for="country">
+            在哪个国家
+          </label><br>
+          <input id="country" name="country" type="text" class="travel" value="" size="8" tabindex="1">
+          <br><br>
+        </div>
+      
+      
+        <div>
+          <label class="desc" id="insurance-type-label" for="insurance-type">
+            保险类型
+          </label>
+          <div>
+            <input id="radioDefault_5" name="Field5" type="hidden" value="">
+            <ul id="insurance-type" name="insurance-type" class="insurance" style="list-style: none;">
+              <li>
+                <input name="medical-insurance" type="hidden" value="0">
+                <input type="checkbox" id="medical-insurance" name="medical-insurance" value="1">
+                <label for="medical-insurance">医疗保险，仅包含紧急/意外医疗费用</label>
+              </li>
+              <li>
+                <div id="additional-insurance-check">
+                  <input name="additional_insurance_1" type="hidden" value="0">
+                  <input type="checkbox" id="additional-insurance_1" name="additional_insurance_1" value="1" onclick="additional_insurance()">
+                  <label for="additional-insurance">添加附加险：</label>
+                </div>
+                <div id="additional-insurance-after" style="display:none;">
+                  <ul id="additional-insurance-list" name="additional-insurance-list" class="insurance" style="list-style: none;">
+                    <li><label>
+                      <input name="no_insurance" type="hidden" value="0">
+                      <input type="checkbox" id="no_insurance" name="no_insurance" class="insurance" value="1">$0
+                    </label></li>
+                    <li><label>
+                      <input name="air-accident-insurance" type="hidden" value="0">
+                      <input type="checkbox" id="air-accident-insurance" name="air-accident-insurance" class="insurance" value="1">航空事故($20万/$50万)
+                    </label></li>
+                    <li><label>
+                      <input name="accidental-death-insurance" type="hidden" value="0">
+                      <input type="checkbox" id="accidental-death-insurance" name="accidental-death-insurance" class="insurance" value="1">意外身故($2万5千/$10万/$25万)
+                    </label></li>
+                    <li><label>
+                      <input name="trip-interruption-insurance" type="hidden" value="0">
+                      <input type="checkbox" id="trip-interruption-insurance" name="trip-interruption-insurance" class="insurance" value="1">旅途中断($800/$1500/$2000)
+                    </label></li>
+                    <li><label>
+                      <input name="trip-cancellation-insurance" type="hidden" value="0">
+                      <input type="checkbox" id="trip-cancellation-insurance" name="trip-cancellation-insurance" class="insurance" value="1">旅途取消($100~$15000,每$100一个档位)
+                    </label></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+        </div>
+      
+        <br><br>
+      
+        <div>
+          <div>
+            <input id="page-button-12" name="page-button-backward" type="button" class="pre_btn_travel" value="上一页">
+            <input id="saveForm" name="saveForm" type="submit" value="提交">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+</form>
+
+<script>
+
+  // 以下是 jQuery 相关的 一些 functions
+  $(document).ready(function() {
+
+    // 第三页 跳转至 “访加旅客保险” 的代码
+    $("#insurance-type-visitor").click(function() {
+      $("#visit").fadeIn('slow');
+      $("#page_3").css({
+          'display': 'none'
+      });
+    });
+
+    // 第三页 跳转至 “留学生/陪读父母保险” 的代码
+    $("#insurance-type-student-or-parent").click(function() {
+      $("#study").fadeIn('slow');
+      $("#page_3").css({
+          'display': 'none'
+      });
+    });
+
+    // 第三页 跳转至 “在加居民出境旅游保险” 的代码
+    $("#insurance-type-travelor").click(function() {
+      $("#travel").fadeIn('slow');
+      $("#page_3").css({
+          'display': 'none'
+      });
+    });
+
+
+
+
+
+    // “访加旅客保险” 的 “上一页” 的代码
+    $(".pre_btn_visit").click(function() {
+      $("#page_3").fadeIn('slow');
+      $("#visit").css({
+          'display': 'none'
+      });
+    });
+
+    // "留学生/陪读父母保险" 的 "上一页" 的代码
+    $(".pre_btn_study").click(function() {
+      $("#page_3").fadeIn('slow');
+      $("#study").css({
+          'display': 'none'
+      });
+    });
+    
+    // "在加居民出境旅游保险" 的 "上一页" 的代码
+    $(".pre_btn_travel").click(function() {
+      $("#page_3").fadeIn('slow');
+      $("#travel").css({
+          'display': 'none'
+      });
+    });
+  });
+
+
+
+  
+
+
+
+  // 以下是 常规javascript 的一些 functions
+
+
+  // 确认添加新受保人 时 弹出新信息 的代码
+  function unhide1(){
+    var added_insured=document.getElementById("added-insured");
+    added_insured.style.display="block";
+  }
+  
+  // 确认"不"添加新受保人 时 隐藏新信息 的代码
+  function rehide1(){
+    var added_insured=document.getElementById("added-insured");
+    added_insured.style.display="none";
+  }
+    // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
+  function unhiderehide1(){
+    var america_yes_after=document.getElementById("america-yes-after");
+    var america_no_after=document.getElementById("america-no-after");
+    america_yes_after.style.display="block";
+    america_no_after.style.display="none";
+  }
+
+// 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
+function unhiderehide2(){
+  var america_yes_after=document.getElementById("america-yes-after");
+  var america_no_after=document.getElementById("america-no-after");
+  america_yes_after.style.display="none";
+  america_no_after.style.display="block";
+}
+
+// 针对 "添加附加险" 下方的额外选项进行隐藏和重现
+function additional_insurance(){
+  var checkbox = document.getElementById("additional-insurance_1");
+  var additional_insurance_after = document.getElementById("additional-insurance-after");
+  checkbox.addEventListener( "change", () => {
+    if ( checkbox.checked ){
+      additional_insurance_after.style.display="block";
+    }
+    else{
+      additional_insurance_after.style.display="none";
+    }
+  });
+}
+
+
+
+
+
+</script>
