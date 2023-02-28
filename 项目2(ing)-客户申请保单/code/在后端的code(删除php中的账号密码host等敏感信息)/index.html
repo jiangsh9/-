@@ -2,12 +2,13 @@
 
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <link href="css/geeks.css" rel="stylesheet" type="text/css">
     <script src="js/multi_step_form.js"></script>
   </head>
   
-  <body>
+  
     <div class="content">
       <!-- Multistep Form -->
       <!-- page_1.html -->
@@ -18,7 +19,7 @@
         
         <br>
         
-        <div><a href="login.html">登录</a> 即可保存信息</div></body><br>
+        <div><a href="login.html">登录</a> 即可保存信息</div><br>
         
         <input id="page-button-1" name="page-button-forward" type="button" class="next_btn" value="下一页">
       </div>
@@ -43,7 +44,10 @@
         <div>
           <label class="desc" id="insured-name-label" name="insured-name-label" for="insured-name">受保人姓名（与护照英文呢一致）</label>
           <div>
-            <input id="insured-name" name="insured-name" type="text" class="insured" value="" size="50" tabindex="1">
+            <label>姓</label>
+            <input id="insured-last-name" name="insured-last-name" type="text" class="insured" value="" size="50" ><br>
+            <label>名</label>
+            <input id="insured-first-name" name="insured-first-name" type="text" class="insured" value="" size="50" >
           </div>
         </div>
       
@@ -54,17 +58,13 @@
           <div id="insured-sex" name="insured-sex">
             <!--<input id="insured-sex" name="insured-sex" type="hidden" value="">-->
             <div>
-                <input id="insured-sex-male" name="insured-sex-choice" type="radio" value="male" tabindex="1" checked="checked">
+                <input id="insured-sex-male" name="insured-sex-choice" type="radio" value="male"  checked="checked">
                 <label class="insured" for="insured-sex-male">男</label>
             </div>
             <div>
-                <input id="insured-sex-female" name="insured-sex-choice" type="radio" value="female" tabindex="2">
+                <input id="insured-sex-female" name="insured-sex-choice" type="radio" value="female" >
                 <label class="insured" for="insured-sex-female">女</label>
             </div>
-            <!--<div>-->
-            <!--  <input id="insured-sex-none" name="insured-sex-choice" type="radio" value="others" tabindex="3">-->
-            <!--  <label class="insured" for="insured-sex-none">不想回答</label>-->
-            <!--</div>-->
           </div>
         </div>
       
@@ -73,7 +73,7 @@
         <div>
           <label class="desc" id="insured-birthdate-label" for="insured-birthdate">受保人生日</label>
           <div>
-            <input id="insured-birthdate" name="insured-birthdate" type="date" class="insured" value="" size="50" tabindex="1">
+            <input id="insured-birthdate" name="insured-birthdate" type="date" class="insured" value="" size="50" max="9999-12-31">
           </div>
         </div>
       
@@ -83,22 +83,57 @@
           <label class="desc" id="insured-address-label" for="insured-address">加拿大地址</label>
           <div>
             <label>Street Address</label><br>
-            <input id="insured-street-address" name="insured-street-address" type="text" class="insured" value="" size="50" tabindex="1"><br>
+            <input id="insured-street-address" name="insured-street-address_1" type="text" class="insured" value="" size="50"><br>
+            <input id="insured-street-address" name="insured-street-address_2" type="text" class="insured" value="" size="50"><br>
+            <input id="insured-street-address" name="insured-street-address_3" type="text" class="insured" value="" size="50"><br>
+            <input id="insured-street-address" name="insured-street-address_4" type="text" class="insured" value="" size="50"><br>
+          </div>
+          <div class="zip-div">
             <label>ZIP or postal code</label><br>
-            <input id="insured-zip" name="insured-zip" type="text" class="insured" value="" size="20" tabindex="2" ><br>
+            <input id="insured-zip_1" name="insured-zip_1" type="text" class="zip-input" value="" size="3" placeholder="A0A" maxlength="3">
+            <span>-</span>
+            <input id="insured-zip_2" name="insured-zip_2" type="text" class="zip-input" value="" size="3" placeholder="0A0" maxlength="3"><br>
+          </div>
+          <div>
             <label>Province</label><br>
-            <input id="insured-province" name="insured-province" type="text" class="insured" value="" size="50" tabindex="3"><br>
+            <input id="insured-province" name="insured-province" type="text" class="insured" value="" size="50"><br>
+          </div>
+          <div>
             <label>City</label><br>
-            <input id="insured-city" name="insured-city" type="text" class="insured" value="" size="50" tabindex=""><br>
+            <input id="insured-city" name="insured-city" type="text" class="insured" value="" size="50"><br>
           </div>
         </div>
       
         <br><br>
+        
+        <style>
+            .phone-input {
+              display: flex;
+              align-items: center;
+            }
+            
+            #insured-tel_1, #insured-tel_2{
+                width: 30px;
+            }
+            
+            #insured-tel_3{
+                width: 38px;
+            }
+            
+            /*.separator {*/
+            /*  margin: 0 0.05rem;*/
+            /*}*/
+        </style>
       
         <div>
           <label class="desc" id="insured-tel-label" for="insured-tel">加拿大电话（改成电话格式）</label>
-          <div>
-            <input id="insured-tel" name="insured-tel" type="tel" class="insured" placeholder="123-456-7890" value="" size="50" tabindex="1">
+          <div class="insured-tel-input">
+            <!--<input id="insured-tel" name="insured-tel" type="tel" class="insured" value="" size="50" placeholder="(123) 456-7890"  autocomplete="tel" onkeyup="formatPhone(this)">-->
+            (<input type="text" id="insured-tel_1" name="insured-tel_1" maxlength="3" class="tel-input"  placeholder="___">)
+            <span class="separator">-</span>
+            <input type="text" id="insured-tel_2" name="insured-tel_2" maxlength="3" class="tel-input"  placeholder="___">
+            <span class="separator">-</span>
+            <input type="text" id="insured-tel_3" name="insured-tel_3" maxlength="4" class="tel-input" placeholder="____">
           </div>
         </div>
       
@@ -109,7 +144,7 @@
             联系邮箱
           </label>
           <div>
-            <input id="insured-mail" name="insured-mail" type="email" spellcheck="false" size="50" placeholder="google@gmail.com" value="" maxlength="255" tabindex="1"> 
+            <input id="insured-mail" name="insured-mail" type="email" spellcheck="false" size="60" placeholder="google@gmail.com" value="" maxlength="255"> 
         </div>
         </div>
       
@@ -118,7 +153,7 @@
         <div>
           <label class="desc" id="deceased-beneficiary-label" for="deceased-beneficiary">身故受益人</label>
           <div>
-            <input id="deceased-beneficiary" name="deceased-beneficiary" type="text" size="50" class="deceased-beneficiary" value="" size="8" tabindex="1">
+            <input id="deceased-beneficiary" name="deceased-beneficiary" type="text" size="50" class="deceased-beneficiary" value="">
           </div>
         </div>
       
@@ -127,79 +162,119 @@
         <div>
           <label class="desc" id="relationship-insured-label" for="relationship-insured">与受保人关系</label>
           <div>
-            <input id="relationship-insured" name="relationship-insured" placeholder="例：父母、子女、配偶" type="text" class="deceased-beneficiary" value="" size="50" tabindex="1">
+            <input id="relationship-insured" name="relationship-insured" placeholder="例：父母、子女、配偶" type="text" class="deceased-beneficiary" value="" size="50" >
           </div>
         </div>
       
         <br><br>
-          
+                  
         <div>
             <legend id="title5" class="desc">
-              是否添加其他受保人？(现在不删除：可能不止一个受保人)
+              是否添加其他受保人？
             </legend>
-      
+        
             <div>
                 <input id="add-insured" name="add-insured" type="hidden" value="">
                 <div>
-                    <input id="add-insured-yes" name="add-insured-choice" onclick="unhide1()" type="radio" value="First Choice" tabindex="1">
+                    <input id="add-insured-yes" name="add-insured-choice" onclick="unhide1()" type="radio" value="1" >
                     <label class="insured" for="add-insured-yes">是</label>
                 </div>
               <div>
-                  <input id="add-insured-no" name="add-insured-choice" onclick="rehide1()" type="radio" value="Second Choice" tabindex="2" checked="checked">
+                  <input id="add-insured-no" name="add-insured-choice" onclick="rehide1()" type="radio" value="0"  checked="checked">
                   <label class="insured" for="add-insured-no">否</label>
               </div>
             </div>
-        </div>
-      
+          </div>
+                      
         <br><br>
+        
+
+        
+        
+        
+        <style>
+            .added-insured-element {
+                border: 5px solid purple;
+                padding: 10px;
+                border-radius: 20px;
+              }
+        </style>
       
-        <div id="added-insured" name="added-insured" class="added-insured" style="display:none;">
-          <div>
-            <label class="desc" id="added-insured-name-label" for="added-insured-name">受保人姓名（与护照英文呢一致）</label>
-            <div>
-              <input id="added-insured-name" name="added-insured-name" type="text" class="added-insured" value="" size="50" tabindex="1">
+        <div class="added-insured-container" id="added-insured-container" style="display:none;">
+            
+            <div id="add-family-div" name="add-family-div">
+                <legend id="add-family-check-legend" class="desc">
+                  以下受保人是否是一家人？
+                </legend>
+            
+                <div>
+                    <input id="add-family-check" name="add-family-choice" type="hidden" value="0">
+                    <div>
+                        <input id="add-family-yes" name="add-family-choice" type="radio" value="1" >
+                        <label class="insured" for="add-family-yes">是</label>
+                    </div>
+                  <div>
+                      <input id="add-family-no" name="add-family-choice" type="radio" value="0" checked="checked">
+                      <label class="insured" for="add-family-no">否</label>
+                  </div>
+                </div>
             </div>
-          </div>
-      
-          <br><br>
-      
-          <div>
-            <label class="desc" id="added-insured-sex-label" for="added-insured-sex">受保人性别</label>
-            <div>
-              <input id="added-insured-sex" name="added-insured-sex" type="hidden" value="">
+            
+            <br><br>
+            
+            
+            <div id="added-insured_1" name="added-insured_1" class="added-insured-element">
+              <p>新增受保人</p>
+              <input id="add-insured-button_1" name="add-insured-button_1" type="button" class="add-insured-button" value="添加受保人"> 
               <div>
-                  <input id="added-insured-sex-male" name="added-insured-sex-choice" type="radio" value="First Choice" tabindex="1">
-                  <label class="added-insured" for="added-insured-sex-male">男</label>
+                <label class="desc" id="added-insured-name-label_1" for="added-insured-name_1">受保人姓名（与护照英文呢一致）</label>
+                <div>
+                    <!--<input id="added-insured-name_1" name="added-insured-name_1" type="text" class="insured" value="" size="50" ><br>-->
+                  <label>姓</label>
+                  <input id="added-insured-last-name_1" name="added-insured-last-name_1" type="text" class="insured" value="" size="50" ><br>
+                  <label>名</label>
+                  <input id="added-insured-first-name_1" name="added-insured-first-name_1" type="text" class="insured" value="" size="50" >
+                </div>
               </div>
+        
+              <br><br>
+        
               <div>
-                  <input id="added-insured-sex-female" name="added-insured-sex-choice" type="radio" value="Second Choice" tabindex="2">
-                  <label class="added-insured" for="added-insured-sex-female">女</label>
+                <label class="desc" id="added-insured-sex-label_1" for="added-insured-sex_1">受保人性别</label>
+                <div>
+                  <input id="added-insured-sex_1" name="added-insured-sex_1" type="hidden" value="">
+                  <div>
+                      <input id="added-insured-sex-male_1" name="added-insured-sex-choice_1" type="radio" value="male"  checked="checked">
+                      <label class="added-insured" for="added-insured-sex-male_1">男</label>
+                  </div>
+                  <div>
+                      <input id="added-insured-sex-female_1" name="added-insured-sex-choice_1" type="radio" value="female" >
+                      <label class="added-insured" for="added-insured-sex-female_1">女</label>
+                  </div>
+                </div>
               </div>
+        
+              <br><br>
+        
               <div>
-                <input id="added-insured-sex-none" name="added-insured-sex-choice" type="radio" value="Third Choice" tabindex="3">
-                <label class="added-insured" for="added-insured-sex-none">不想回答</label>
+                <label class="desc" id="added-insured-birthdate-label_1" for="added-insured-birthdate_1">受保人生日</label>
+                <div>
+                  <input id="added-insured-birthdate_1" name="added-insured-birthdate_1" type="date" class="added-insured" value="" size="50" max="9999-12-31">
+                </div>
               </div>
+        
+              <br><br>
+        
+              <div>
+                <label class="desc" id="added-relationship-insured-label_1" for="added-relationship-insured_1">与受保人关系</label>
+                <div>
+                  <input id="added-relationship-insured_1" name="added-relationship-insured_1" type="text" class="added-insured" placeholder="例：父母、子女、配偶" value="" size="50" >
+                </div>
+              </div>
+              <br><br>
             </div>
+            <input id="add-insured-button_2" name="add-insured-button_2" type="button" class="add-insured-button" value="添加受保人">    
           </div>
-      
-          <br><br>
-      
-          <div>
-            <label class="desc" id="added-insured-birthdate-label" for="added-insured-birthdate">受保人生日</label>
-            <div>
-              <input id="added-insured-birthdate" name="added-insured-birthdate" type="date" class="added-insured" value="" size="50" tabindex="1">
-            </div>
-          </div>
-      
-          <br><br>
-      
-          <div>
-            <label class="desc" id="added-relationship-insured-1-label" for="added-relationship-insured-1">与受保人关系</label>
-            <div>
-              <input id="added-relationship-insured-1" name="added-relationship-insured" type="text" class="added-deceased-beneficiary" placeholder="例：父母、子女、配偶" value="" size="50" tabindex="1">
-            </div>
-          </div>
-        </div>
       
         <br><br>
         
@@ -261,7 +336,7 @@
         <div>
           <div>
             <input id="page-button-7" name="page-button-backward" type="button" class="pre_btn_visit" value="上一页">
-            <input id="saveForm" name="saveForm" type="submit" value="提交">
+            <input id="page-button-8" name="page-button-forward" type="button" class="next_btn_visit" value="下一页">
           </div>
         </div>
     
@@ -276,44 +351,26 @@
                 <input type="hidden" name="insured-condition-1-visit" value="0">
                 <input type="checkbox" id="insured-condition-1-visit" name="insured-condition-1-visit" value="1">年龄在15-89岁
             </li>
-            <!--<li id="insured-condition-2" class="insured" name="insured-condition">-->
-            <!--  未受保于加拿大公共医保(MSP)下-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-2-visit" value="0">
                 <input type="checkbox" id="insured-condition-2-visit" name="insured-condition-2-visit" value="1">未受保于加拿大公共医保(MSP)下
             </li>
-            <!--<li id="insured-condition-3" class="insured" name="insured-condition">-->
-            <!--  在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-3-visit" value="0">
                 <input type="checkbox" id="insured-condition-3-visit" name="insured-condition-3-visit" value="1">在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
             </li>
-            <!--<li id="insured-condition-4" class="insured" name="insured-condition">-->
-            <!--  未被诊断为晚期病症-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-4-visit" value="0">
                 <input type="checkbox" id="insured-condition-4-visit" name="insured-condition-4-visit" value="1">未被诊断为晚期病症
             </li>
-            <!--<li id="insured-condition-5" class="insured" name="insured-condition">-->
-            <!--  未被诊断为癌症3期/4期-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-5-visit" value="0">
                 <input type="checkbox" id="insured-condition-5-visit" name="insured-condition-5-visit" value="1">未被诊断为癌症3期/4期
             </li>
-            <!--<li id="insured-condition-6" class="insured" name="insured-condition">-->
-            <!--  在过去三个月内未接受过 针对癌症的治疗-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-6-visit" value="0">
                 <input type="checkbox" id="insured-condition-6-visit" name="insured-condition-6-visit" value="1">在过去三个月内未接受过 针对癌症的治疗
             </li>
-            <!--<li id="insured-condition-7" class="insured" name="insured-condition">-->
-            <!--  日常生活无需因健康状况 导致的护理辅助-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-7-visit" value="0">
                 <input type="checkbox" id="insured-condition-7-visit" name="insured-condition-7-visit" value="1">日常生活无需因健康状况 导致的护理辅助
@@ -331,11 +388,11 @@
           <div id="insured-elder-visitor-list" class="insured" name="insured-elder-visitor-list">
             <input id="insured-elder-visitor-check" name="insured-elder-visitor-check" type="hidden" value="">
             <div>
-                <input id="insured-elder-visitor-yes" name="insured-elder-visitor-choice" type="radio" value="1" tabindex="1" onclick="unhide_60('insured-elder-visitor-yes-after')">
+                <input id="insured-elder-visitor-yes" name="insured-elder-visitor-choice" type="radio" value="1"  onclick="unhide_60('insured-elder-visitor-yes-after')">
                 <label class="choice" for="insured-elder-visitor-yes">是</label>
             </div>
             <div>
-              <input id="insured-elder-visitor-no" name="insured-elder-visitor-choice" type="radio" value="0" tabindex="2" onclick="rehide_60('insured-elder-visitor-yes-after')" checked="checked">
+              <input id="insured-elder-visitor-no" name="insured-elder-visitor-choice" type="radio" value="0"  onclick="rehide_60('insured-elder-visitor-yes-after')" checked="checked">
               <label class="choice" for="insured-elder-visitor-no">否</label>
             </div>
           </div>
@@ -378,7 +435,7 @@
         <div>
           <label class="desc" id="arrival-date-visitor-label" for="arrival-date-visitor">到达加拿大日期</label>
           <div>
-            <input id="arrival-date-visitor" name="arrival-date-visitor" type="date" class="date" value="" size="20" tabindex="1">
+            <input id="arrival-date-visitor" name="arrival-date-visitor" type="date" class="date" value="" size="20" max="9999-12-31">
           </div>
         </div>
     
@@ -387,7 +444,7 @@
         <div>
           <label class="desc" id="effective-date-visit-label" for="effective-date-visit">保险生效日期</label>
           <div>
-            <input id="effective-date-visit" name="effective-date-visit" type="date" class="insurance" value="" size="20" tabindex="1">
+            <input id="effective-date-visit" name="effective-date-visit" type="date" class="insurance" value="" size="20" max="9999-12-31">
           </div>
         </div>
     
@@ -396,7 +453,7 @@
         <div>
           <label class="desc" id="end-date-visit-label" for="end-date-visit">保险结束日期</label>
           <div>
-            <input id="end-date-visit" name="end-date-visit" type="date" class="insurance" value="" size="20" tabindex="1">
+            <input id="end-date-visit" name="end-date-visit" type="date" class="insurance" value="" size="20" max="9999-12-31">
           </div>
         </div>
     
@@ -407,29 +464,29 @@
           <div>
             <input id="insurance-amount" name="insurance-amount-choice" type="hidden" value="">
             <div>
-                <input id="insurance-amount-1" name="insurance-amount-choice" type="radio" value="10000" tabindex="1" checked="checked">
-                <label class="insurance" for="insurance-amount-1">$10,000</label>
+                <input id="insurance-amount-1" name="insurance-amount-choice" type="radio" value="15000"  checked="checked">
+                <label class="insurance" for="insurance-amount-1">$15,000</label>
             </div>
             <div>
-                <input id="insurance-amount-2" name="insurance-amount-choice" type="radio" value="25000" tabindex="2">
+                <input id="insurance-amount-2" name="insurance-amount-choice" type="radio" value="25000" >
                 <label class="insurance" for="insurance-amount-2">$25,000</label>
             </div>
             <div>
-              <input id="insurance-amount-3" name="insurance-amount-choice" type="radio" value="50000" tabindex="3">
+              <input id="insurance-amount-3" name="insurance-amount-choice" type="radio" value="50000" >
               <label class="insurance" for="insurance-amount-3">$50,000</label>
             </div>
             <div>
-              <input id="insurance-amount-4" name="insurance-amount-choice" type="radio" value="100000" tabindex="4">
+              <input id="insurance-amount-4" name="insurance-amount-choice" type="radio" value="100000" >
               <label class="insurance" for="insurance-amount-4">$100,000</label>
             </div>
             <div>
-              <input id="insurance-amount-5" name="insurance-amount-choice" type="radio" value="150000" tabindex="5">
+              <input id="insurance-amount-5" name="insurance-amount-choice" type="radio" value="150000" >
               <label class="insurance" for="insurance-amount-5">$150,000</label>
             </div>
-            <div>
-              <input id="insurance-amount-6" name="insurance-amount-choice" type="radio" value="300000" tabindex="6">
-              <label class="insurance" for="insurance-amount-6">$300,000</label>
-            </div>
+            <!--<div>-->
+            <!--  <input id="insurance-amount-6" name="insurance-amount-choice" type="radio" value="300000" >-->
+            <!--  <label class="insurance" for="insurance-amount-6">$300,000</label>-->
+            <!--</div>-->
           </div>
         </div>
     
@@ -440,23 +497,23 @@
           <div id="insurance-deductible" name="insurance-deductible" class="insurance">
             <input id="insurance-deductible-choice" name="insurance-deductible-choice" type="hidden" value="0">
             <div>
-                <input id="insurance-deductible-1" name="insurance-deductible-choice" type="radio" value="0" tabindex="1" checked="checked">
+                <input id="insurance-deductible-1" name="insurance-deductible-choice" type="radio" value="0" checked="checked">
                 <label class="insurance" for="insurance-deductible-1">$0</label>
             </div>
             <div>
-                <input id="insurance-deductible-2" name="insurance-deductible-choice" type="radio" value="100" tabindex="2">
+                <input id="insurance-deductible-2" name="insurance-deductible-choice" type="radio" value="100" >
                 <label class="insurance" for="insurance-deductible-2">$100 (约等于省5%)</label>
             </div>
             <div>
-              <input id="insurance-deductible-3" name="insurance-deductible-choice" type="radio" value="250" tabindex="3">
+              <input id="insurance-deductible-3" name="insurance-deductible-choice" type="radio" value="250" >
               <label class="insurance" for="insurance-deductible-3">$250 (约等于省10%)</label>
             </div>
             <div>
-              <input id="insurance-deductible-4" name="insurance-deductible-choice" type="radio" value="1000" tabindex="4">
+              <input id="insurance-deductible-4" name="insurance-deductible-choice" type="radio" value="1000" >
               <label class="insurance" for="insurance-deductible-4">$1000 (约等于省20%)</label>
             </div>
             <div>
-              <input id="insurance-deductible-5" name="insurance-deductible-choice" type="radio" value="3000" tabindex="5">
+              <input id="insurance-deductible-5" name="insurance-deductible-choice" type="radio" value="3000" >
               <label class="insurance" for="insurance-deductible-5">$3000 (约等于省30%)</label>
             </div>
             <div>
@@ -469,8 +526,8 @@
         
         <div>
           <div>
-            <input id="page-button-8" name="page-button-backward" type="button" class="pre_btn_visit" value="上一页">
-            <input id="saveForm" name="saveForm" type="submit" value="提交">
+            <input id="page-button-9" name="page-button-backward" type="button" class="pre_btn_visit" value="上一页">
+            <input id="page-button-10" name="page-button-forward" type="button" class="next_btn_visit" value="下一页">
           </div>
         </div>
       </div>
@@ -497,8 +554,8 @@
     
         <div>
           <div>
-            <input id="page-button-9" name="page-button-backward" type="button" class="pre_btn_study" value="上一页">
-            <input id="saveForm" name="saveForm" type="submit" value="提交">
+            <input id="page-button-11" name="page-button-backward" type="button" class="pre_btn_study" value="上一页">
+            <input id="page-button-12" name="page-button-forward" type="button" class="next_btn_study" value="下一页">
           </div>
         </div>
     
@@ -507,58 +564,34 @@
         <div>
           <label class="desc" id="insured-condition-study-list-label" for="insured-condition-study-list">请确保受保人是否满足以下条件：</label>
           <ul id="insured-condition-study-list" class="insured" name="insured-condition-study" style="list-style: none;">
-            <!--<li id="insured-condition-1-study" class="insured" name="insured-condition-study">-->
-            <!--  年龄在15-89岁-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-1-study" value="0">
                 <input type="checkbox" id="insured-condition-1-study" name="insured-condition-1-study" value="1">年龄在15-89岁
             </li>
-            <!--<li id="insured-condition-study-2" class="insured" name="insured-condition-study">-->
-            <!--  未受保于加拿大公共医保(MSP)下-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-2-study" value="0">
                 <input type="checkbox" id="insured-condition-2-study" name="insured-condition-2-study" value="1">未受保于加拿大公共医保(MSP)下
             </li>
-            <!--<li id="insured-condition-study-3" class="insured" name="insured-condition-study">-->
-            <!--  在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-3-study" value="0">
                 <input type="checkbox" id="insured-condition-3-study" name="insured-condition-3-study" value="1">在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
             </li>
-            <!--<li id="insured-condition-study-4" class="insured" name="insured-condition-study">-->
-            <!--  未被诊断为晚期病症-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-4-study" value="0">
                 <input type="checkbox" id="insured-condition-4-study" name="insured-condition-4-study" value="1">未被诊断为晚期病症
             </li>
-            <!--<li id="insured-condition-study-5" class="insured" name="insured-condition-study">-->
-            <!--  未被诊断为癌症3期/4期-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-5-study" value="0">
                 <input type="checkbox" id="insured-condition-5-study" name="insured-condition-5-study" value="1">未被诊断为癌症3期/4期
             </li>
-            <!--<li id="insured-condition-study-6" class="insured" name="insured-condition-study">-->
-            <!--  在过去三个月内未接受过针对癌症的治疗-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-6-study" value="0">
                 <input type="checkbox" id="insured-condition-6-study" name="insured-condition-6-study" value="1">在过去三个月内未接受过针对癌症的治疗
             </li>
-            <!--<li id="insured-condition-study-7" class="insured" name="insured-condition-study">-->
-            <!--  日常生活无需因健康状况导致的护理辅助-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-7-study" value="0">
                 <input type="checkbox" id="insured-condition-7-study" name="insured-condition-7-study" value="1">日常生活无需因健康状况导致的护理辅助
             </li>
-            <!--<li id="insured-condition-study-8" class="insured" name="insured-condition-study">-->
-            <!--  在加拿大全职/兼职上学，或是其陪读父母-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-8-study" value="0">
                 <input type="checkbox" id="insured-condition-8-study" name="insured-condition-8-study" value="1">在加拿大全职/兼职上学，或是其陪读父母
@@ -576,11 +609,11 @@
           <div id="insured-elder-study-list" class="insured" name="insured-elder-study-list">
             <input id="insured-elder-study-check" name="insured-elder-study-check" type="hidden" value="">
             <div>
-                <input id="insured-elder-study-yes" name="insured-elder-study-choice" type="radio" value="1" tabindex="1" onclick="unhide_60('insured-elder-study-yes-after')">
+                <input id="insured-elder-study-yes" name="insured-elder-study-choice" type="radio" value="1"  onclick="unhide_60('insured-elder-study-yes-after')">
                 <label class="choice" for="insured-elder-yes">是</label>
             </div>
             <div>
-              <input id="insured-elder-study-no" name="insured-elder-study-choice" type="radio" value="0" tabindex="2" onclick="rehide_60('insured-elder-study-yes-after')" checked="checked">
+              <input id="insured-elder-study-no" name="insured-elder-study-choice" type="radio" value="0"  onclick="rehide_60('insured-elder-study-yes-after')" checked="checked">
               <label class="choice" for="insured-elder-study-no">否</label>
             </div>
           </div>
@@ -619,7 +652,7 @@
         <div>
           <label class="desc" id="arrival-date-label" for="arrival-date">到达加拿大日期</label>
           <div>
-            <input id="arrival-date" name="arrival-date" type="date" class="date" value="" size="20" tabindex="1">
+            <input id="arrival-date" name="arrival-date" type="date" class="date" value="" size="20" max="9999-12-31">
           </div>
         </div>
     
@@ -628,7 +661,7 @@
         <div>
           <label class="desc" id="effective-date-study-label" for="effective-date-study">保险生效日期</label>
           <div>
-            <input id="effective-date-study" name="effective-date-study" type="date" class="insurance" value="" size="20" tabindex="1">
+            <input id="effective-date-study" name="effective-date-study" type="date" class="insurance" value="" size="20" max="9999-12-31">
           </div>
         </div>
     
@@ -637,7 +670,7 @@
         <div>
           <label class="desc" id="end-date-study-label" for="end-date-study">保险结束日期</label>
           <div>
-            <input id="end-date-study" name="end-date-study" type="date" class="insurance" value="" size="20" tabindex="1">
+            <input id="end-date-study" name="end-date-study" type="date" class="insurance" value="" size="20" max="9999-12-31">
           </div>
         </div>
     
@@ -645,8 +678,8 @@
     
         <div>
           <div>
-            <input id="page-button-10" name="page-button-backward" type="button" class="pre_btn_study" value="上一页">
-            <input id="saveForm" name="saveForm" type="submit" value="提交">
+            <input id="page-button-13" name="page-button-backward" type="button" class="pre_btn_study" value="上一页">
+            <input id="page-button-14" name="page-button-forward" type="button" class="next_btn_study" value="下一页">
           </div>
         </div>
       </div>
@@ -669,9 +702,8 @@
       
         <div>
           <div>
-            <input id="page-button-11" name="page-button-backward" type="button" class="pre_btn_travel" value="上一页">
-            
-              <input id="saveForm" name="saveForm" type="submit" value="提交" >
+            <input id="page-button-15" name="page-button-backward" type="button" class="pre_btn_travel" value="上一页">
+            <input id="page-button-16" name="page-button-forward" type="button" class="next_btn_travel" value="下一页">
            
           </div>
         </div>
@@ -683,51 +715,30 @@
             请确保受保人是否满足以下条件：
           </label>
           <ul id="insured-condition-travel-list" class="insured" name="insured-condition-travel" style="list-style: none;">
-            <!--<li id="insured-condition-travel-1" class="insured" name="insured-condition-travel">-->
-            <!--  年龄在15-89岁-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-1-travel" value="0">
                 <input type="checkbox" id="insured-condition-1-travel" name="insured-condition-1-travel" value="1">年龄在15-89岁
             </li>
-            <!--<li id="insured-condition-travel-2" class="insured" name="insured-condition-travel">-->
-            <!--  持有有效加拿大公共医保(MSP)-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-2-travel" value="0">
                 <input type="checkbox" id="insured-condition-2-travel" name="insured-condition-2-travel" value="1">持有有效加拿大公共医保(MSP)
             </li>
-            <!--<li id="insured-condition-travel-3" class="insured" name="insured-condition-travel">-->
-            <!--  在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-3-travel" value="0">
                 <input type="checkbox" id="insured-condition-3-travel" name="insured-condition-3-travel" value="1">在开始旅行及申请保险时，受保人身体健康，旅行不是以寻求医疗咨询为目的
             </li>
-            <!--<li id="insured-condition-travel-4" class="insured" name="insured-condition-travel">-->
-            <!--  未被诊断为晚期病症-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-4-travel" value="0">
                 <input type="checkbox" id="insured-condition-4-travel" name="insured-condition-4-travel" value="1">未被诊断为晚期病症
             </li>
-            <!--<li id="insured-condition-travel-5" class="insured" name="insured-condition-travel">-->
-            <!--  未被诊断为癌症3期/4期-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-5-travel" value="0">
                 <input type="checkbox" id="insured-condition-5-travel" name="insured-condition-5-travel" value="1">未被诊断为癌症3期/4期
             </li>
-            <!--<li id="insured-condition-travel-6" class="insured" name="insured-condition-travel">-->
-            <!--  在过去三个月内未接受过 针对癌症的治疗-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-6-travel" value="0">
                 <input type="checkbox" id="insured-condition-6-travel" name="insured-condition-6-travel" value="1">在过去三个月内未接受过 针对癌症的治疗
             </li>
-            <!--<li id="insured-condition-travel-7" class="insured" name="insured-condition-travel">-->
-            <!--  日常生活无需因健康状况 导致的护理辅助-->
-            <!--</li>-->
             <li>
                 <input type="hidden" name="insured-condition-7-travel" value="0">
                 <input type="checkbox" id="insured-condition-7-travel" name="insured-condition-7-travel" value="1">日常生活无需因健康状况 导致的护理辅助
@@ -745,11 +756,11 @@
           <div id="insured-elder-travel-list" class="insured" name="insured-elder-travel-list">
             <input id="insured-elder-travel-check" name="insured-elder-travel-check" type="hidden" value="">
             <div>
-                <input id="insured-elder-travel-yes" name="insured-elder-travel-choice" type="radio" value="1" tabindex="1" onclick="unhide_60('insured-elder-travel-yes-after')">
+                <input id="insured-elder-travel-yes" name="insured-elder-travel-choice" type="radio" value="1"  onclick="unhide_60('insured-elder-travel-yes-after')">
                 <label class="choice" for="insured-elder-travel-yes">是</label>
             </div>
             <div>
-              <input id="insured-elder-travel-no" name="insured-elder-travel-choice" type="radio" value="0" tabindex="2" onclick="rehide_60('insured-elder-travel-yes-after')" checked="checked">
+              <input id="insured-elder-travel-no" name="insured-elder-travel-choice" type="radio" value="0"  onclick="rehide_60('insured-elder-travel-yes-after')" checked="checked">
               <label class="choice" for="insured-elder-travel-no">否</label>
             </div>
           </div>
@@ -792,7 +803,7 @@
         <div>
           <label class="desc" id="departure-date-label" for="departure-date">离开加拿大日期</label>
           <div>
-            <input id="departure-date" name="departure-date" type="date" class="date" value="" size="20" tabindex="1">
+            <input id="departure-date" name="departure-date" type="date" class="date" value="" size="20" max="9999-12-31">
           </div>
         </div>
       
@@ -801,7 +812,7 @@
         <div>
           <label class="desc" id="effective-date-travel-label" for="effective-date-travel">保险生效日期</label>
           <div>
-            <input id="effective-date-travel" name="effective-date-travel" type="date" class="insurance" value="" size="20" tabindex="1">
+            <input id="effective-date-travel" name="effective-date-travel" type="date" class="insurance" value="" size="20" max="9999-12-31">
           </div>
         </div>
       
@@ -810,7 +821,7 @@
         <div>
           <label class="desc" id="end-date-travel-label" for="end-date-travel">保险结束日期</label>
           <div>
-            <input id="end-date-travel" name="end-date-travel" type="date" class="insurance" value="" size="20" tabindex="1">
+            <input id="end-date-travel" name="end-date-travel" type="date" class="insurance" value="" size="20" max="9999-12-31">
           </div>
         </div>
       
@@ -821,11 +832,11 @@
           <div>
             <input id="america-or-not" name="america-or-not-choice" type="hidden" value="0">
             <div>
-                <input id="america-yes" name="america-or-not-choice" onclick="unhiderehide1()" type="radio" value="1" tabindex="1">
+                <input id="america-yes" name="america-or-not-choice" onclick="unhiderehide1()" type="radio" value="1" >
                 <label class="travel" for="america-yes" >是</label>
             </div>
             <div>
-                <input id="america-no" name="america-or-not-choice" onclick="unhiderehide2()" type="radio" value="0" tabindex="2">
+                <input id="america-no" name="america-or-not-choice" onclick="unhiderehide2()" type="radio" value="0" >
                 <label class="travel" for="america-no" >否</label>
             </div>
           </div>
@@ -838,14 +849,14 @@
             <label class="desc" id="america-state-label" for="america-state">
               在美国哪个州 (如果上面目的地选择"是"，弹出此内容)
             </label><br>
-            <input id="america-state" name="america-state" type="text" class="travel" value="" size="8" tabindex="1">
+            <input id="america-state" name="america-state" type="text" class="travel" value="" size="8" >
           </div>
       
           <div id="america_stay">
             <label class="desc" id="america-stay-label" for="america-stay">
               在美国停留天数 
             </label><br>
-            <input id="america-stay" name="america-stay" type="text" class="travel" value="" size="8" tabindex="2">
+            <input id="america-stay" name="america-stay" type="text" class="travel" value="" size="8" >
           </div><br><br>
         </div>
       
@@ -855,7 +866,7 @@
           <label class="desc" id="country-label" for="country">
             在哪个国家
           </label><br>
-          <input id="country" name="country" type="text" class="travel" value="" size="8" tabindex="1">
+          <input id="country" name="country" type="text" class="travel" value="" size="8" >
           <br><br>
         </div>
       
@@ -910,13 +921,70 @@
       
         <div>
           <div>
-            <input id="page-button-12" name="page-button-backward" type="button" class="pre_btn_travel" value="上一页">
-            <input id="saveForm" name="saveForm" type="submit" value="提交">
+            <input id="page-button-17" name="page-button-backward" type="button" class="pre_btn_travel" value="上一页">
+            <input id="page-button-18" name="page-button-forward" type="button" class="next_btn_travel" value="下一页">
           </div>
         </div>
       </div>
 
     </div>
+    
+    
+    
+          <!-- payment page.html -->
+      <div class="tab" id="payment_page" style="display:none;">
+        
+        <h2>旅游保险信息表</h2>
+        <div><a href="login.html">登录</a> 即可保存进度。</div><br>
+        
+        <div>
+          <h2>付款</h2>
+        </div>
+        <input id="page-button-19" name="page-button-backward" type="button" class="pre_btn_payment" value="上一页"> 
+        <input id="saveForm" name="saveForm" type="submit" value="提交">
+          
+        <br><br>
+        
+        <section id="payment-section" name="payment-section">
+            <!--<input id="payment-amount" name="payment-amount" type="hidden" value="0">-->
+            <div id="payment-amount-div" name="payment-amount-div">
+                <text><b>支付金额（CAD）: </b>$<span id="payment-amount" name="payment-amount"></span></text>
+                <br>
+                <text><b>测试: </b><span id="test" name="test"></span></text>
+            </div>
+            <br><br>
+            <label class="payment"><b>Card Type</b></label>
+            <input id="card-type" name="card-type-choice" type="hidden" value="visa">
+            <input id="card-type-visa" name="card-type-choice" type="radio" class="payment" value="visa">Visa
+            <input id="card-type-mastercard" name="card-type-choice" type="radio" value="mastercard" class="payment">Mastercard
+            <br><br>
+            <label><b>持卡人</b></label>
+            <input id="card-holder" name="card-holder" type="text" class="payment" value="" size="50" >
+            <br><br>
+            <label><b>卡号</b></label>
+            <input id="card-number" name="card-number" type="text" class="payment" value="" size="50" >
+            <br><br>
+            <label><b>有效期限</b></label>
+            <input id="card_expiry-date" name="card_expiry-date" type="date" class="payment" value="" size="50" max="9999-12-31">
+            <br><br>
+            <label><b>验证码</b></label>
+            <input id="cvv" name="cvv" type="text" class="payment" value="" placeholder="cvv" size="8" >
+        </section>
+        
+        <br><br>
+    
+        <input id="page-button-20" name="page-button-backward" type="button" class="pre_btn_payment" value="上一页">  
+        <input id="saveForm" name="saveForm" type="submit" value="提交">
+      </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
   
 </form>
 
@@ -950,8 +1018,23 @@
     });
 
 
-
-
+    // 为付款页面决定 上一页 是哪一页的 全局变量
+    var payment_prev = '';
+    window.globalVariable = '';
+    
+    // 付款页面的 “上一页” 的代码 从这里继续
+    $(".pre_btn_payment").click(function() {
+      if(window.globalVariable != ''){
+        $("#" + window.globalVariable).fadeIn('slow');
+      }
+      else{
+        $("#page_3").fadeIn('slow');
+      }
+      $("#payment_page").css({
+          'display': 'none'
+      });
+      window.globalVariable = '';
+    });
 
     // “访加旅客保险” 的 “上一页” 的代码
     $(".pre_btn_visit").click(function() {
@@ -959,6 +1042,15 @@
       $("#visit").css({
           'display': 'none'
       });
+    });
+    
+    // "访加旅客保险" 的 "下一页" 的代码 
+    $(".next_btn_visit").click(function() {
+      $("#payment_page").fadeIn('slow');
+      $("#visit").css({
+          'display': 'none'
+      });
+      window.globalVariable = 'visit';
     });
 
     // "留学生/陪读父母保险" 的 "上一页" 的代码
@@ -969,12 +1061,30 @@
       });
     });
     
+    // "留学生/陪读父母保险" 的 "下一页" 的代码 
+    $(".next_btn_study").click(function() {
+      $("#payment_page").fadeIn('slow');
+      $("#study").css({
+          'display': 'none'
+      });
+      window.globalVariable = 'study';
+    });
+    
     // "在加居民出境旅游保险" 的 "上一页" 的代码
     $(".pre_btn_travel").click(function() {
       $("#page_3").fadeIn('slow');
       $("#travel").css({
           'display': 'none'
       });
+    });
+    
+    // "在加居民出境旅游保险" 的 "下一页" 的代码 
+    $(".next_btn_travel").click(function() {
+      $("#payment_page").fadeIn('slow');
+      $("#travel").css({
+          'display': 'none'
+      });
+      window.globalVariable = 'travel';
     });
   });
 
@@ -985,17 +1095,290 @@
 
 
   // 以下是 常规javascript 的一些 functions
+  
+  
+  
+  
+  
+  
+  // 添加和删除新受保人
+  $(document).ready(function(){
+
+    // 添加新受保人
+    $(".add-insured-button").click(function(){
+
+      // Finding total number of elements added
+      var total_element = $(".added-insured-element").length;
+
+
+      // Set a check number (assumed not exceeding "total_element" above)
+      check_iteration = 0;
+      
+      // if the check number exceeds (or equal to, depends on the situation), then run the few lines of code below
+      
+      // last <div> with element class id
+      var lastid = $(".added-insured-element:last").attr("id");
+      var split_id = lastid.split("_");
+      var nextindex = Number(split_id[1]) + 1;
+
+      var max = 10;
+      // Check total number elements
+      if(total_element < max){
+        // Adding new div container after last occurance of element class
+        $(".added-insured-element:last").after("<div class='added-insured-element'  id='added-insured_"+ nextindex +"' name='added-insured_"+ nextindex +"'></div>");
+
+        // Adding element to <div>
+        
+        
+        
+        
+        
+        
+        
+  
+        
+        // 将保存的div代码加入body中
+        var myDiv = 
+        // Title
+          '<p>新增受保人</p>'
+
+
+          // 受保人姓名
+          
+          +'<div>'
+          + '<label class="desc" id="added-insured-name-label_'+ nextindex +'" for="added-insured-name_'+ nextindex +'">受保人姓名（与护照英文呢一致）</label>'
+          + '<div>'
+        //   +   '<input id="added-insured-name_'+ nextindex +'" name="added-insured-name_'+ nextindex +'" type="text" class="added-insured" value="" size="50" >'
+          +   '<label>姓</label>'
+          +   '<input id="added-insured-last-name_'+ nextindex +'" name="added-insured-last-name_'+ nextindex +'" type="text" class="added-insured" value="" size="50" ><br>'
+          +   '<label>名</label>'
+          +   '<input id="added-insured-first-name_'+ nextindex +'" name="added-insured-first-name_'+ nextindex +'" type="text" class="insured" value="" size="50" >'
+          + '</div>'
+          +'</div>'
+          +'<br><br>'
+
+
+          // 受保人性别
+          
+          + '<div>'
+          +  '<label class="desc" id="added-insured-sex-label_'+ nextindex +'" for="added-insured-sex_' + nextindex +'">受保人性别</label>'
+          +  '<div>'
+          +  '<input id="added-insured-sex_'+ nextindex +'" name="added-insured-sex_'+ nextindex +'" type="hidden" value="">'
+          +  '<div>'
+          +       '<input id="added-insured-sex-male_'+ nextindex +'" name="added-insured-sex-choice_'+ nextindex +'" type="radio" value="male"  checked="checked">'
+          +       '<label class="added-insured" for="added-insured-sex-male_'+ nextindex +'">男</label>'
+          +   '</div>'
+          +   '<div>'
+          +       '<input id="added-insured-sex-female_'+ nextindex +'" name="added-insured-sex-choice_'+ nextindex +'" type="radio" value="female" >'
+          +       '<label class="added-insured" for="added-insured-sex-female_'+ nextindex +'">女</label>'
+          +   '</div>'
+          + '</div>'
+          +'</div>'
+          +'<br><br>'
+
+
+          // 受保人生日
+          +'<div>'
+          +  '<label class="desc" id="added-insured-birthdate-label_'+ nextindex +'" for="added-insured-birthdate_'+ nextindex +'">受保人生日</label>'
+          +  '<div>'
+          +    '<input id="added-insured-birthdate_'+ nextindex +'" name="added-insured-birthdate_'+ nextindex +'" type="date" class="added-insured" value="" size="50" max="9999-12-31" >'
+          +  '</div>'
+          +'</div>'
+          +'<br><br>'
+
+
+          // 与受保人关系
+          +'<div>'
+          +  '<label class="desc" id="added-relationship-insured-label_'+ nextindex +'" for="added-relationship-insured_'+ nextindex +'">与受保人关系</label>'
+          +  '<div>'
+          +    '<input id="added-relationship-insured_'+ nextindex +'" name="added-relationship-insured_'+ nextindex +'" type="text" class="added-insured" placeholder="例：父母、子女、配偶" value="" size="50" >'
+          +  '</div>'
+          +'</div>'
+          +'<br><br>'
+
+          // 添加和删除insured的按钮
+          +'<input id="remove-insured-button_'+ nextindex +'" name="remove-insured-button_'+ nextindex +'" type="button" class="remove-insured-button" value="删除该受保人">'
+        ;
+        
+        
+        
+        $("#added-insured_" + nextindex).append(myDiv);
+          
+          
+
+        
+      }
+    });
+
+
+    // Remove element
+    $('.added-insured-container').on('click','.remove-insured-button',function(){
+
+      // Get the id of the element to be deleted
+      var id = this.id;
+      var split_id = id.split("_");
+      // Get the last character of the element, which is a number
+      var deleteindex = split_id[1];
+
+      // Remove <div> with id
+      $("#added-insured_" + deleteindex).remove();
+      
+      // If there is/are elements(s) after this element, change the id of all the elements after this element (last characters delete by 1)
+      
+      // Get the total number of elements in the div after deleting
+      var total_element = $(".added-insured-element").length;
+      
+      // 为下面的for loop 设置一个 exit_check
+      exit_check = false;
+      
+      // Loop through the div, start with the "deleteindex - 1?" (经测试，i=真实index-1, 可能同时是 "真实id-2")
+      for (let i = deleteindex - 1; i < total_element ; i++) {
+        
+        // 找到 "id的最后一位"=i+2? 的元素，将其和以及内部所有的elements的 "id和name的最后一位"都减1:
+        // Step 1: 找到删除的元素：
+        var div = document.getElementById( "added-insured_" + i );
+        
+        // test
+        //console.log(div);
+        
+        // Step 2: 用while loop, 如果删除的元素的后面还有元素，得到id的最后一位（一个数字），将其和内部元素的所有id 和 name都减一，**并将exit_check=true**
+        
+        
+        // 确保删除元素的下一个元素不是input button
+        while(div !== null && div.nextElementSibling !== null && div.nextElementSibling.tagName !== 'INPUT'){
+            
+            
+            div = div.nextElementSibling;
+            console.log(div);
+            
+            // 获得 div 中的所有小元素，包括受保人姓名，性别，生日，关系等
+            var children = div.children;
+            
+            // 重要: 获得 div 中的 id 的"_"后面的部分（一个数字）
+            // Get the id of the div
+            var modify_id = div.id;
+            var split_id = modify_id.split("_");
+            // Get the last character of the element, which is a number
+            var modifyindex = split_id[1]-1;
+            
+            
+            // 将此 div 中的 id 和 name 的"_"后面的部分（一个数字）改为 1160行 保存的数字 (modifyindex)
+            split_id = div.id.split("_");
+            div.id = split_id[0]+"_"+modifyindex;
+            div.setAttribute("name",split_id[0]+"_"+modifyindex);
+            
+            
+            
+            // Loop through div 中的所有小元素
+            for (let i = 0; i < children.length ; i++) {
+                
+                // 排除  <br>, "<p>" 和 delete button，后面也可以选择改delete button的值
+                if (children[i].tagName.toLowerCase() !== "br" && children[i].tagName !== 'INPUT' && children[i].tagName !== 'P'){
+                    
+                    // 尝试获得children[i]中的label
+                    var div_label = children[i].children[0];
+                    // 将此 div 中的 id 和 for 的"_"后面的部分（一个数字）改为 1160行 保存的数字 (modifyindex)
+                    split_id = div_label.id.split("_");
+                    div_label.id = split_id[0]+"_"+modifyindex;
+                    div_label.setAttribute("for",split_id[0]+"_"+modifyindex);
+                    
+                    var major_inputs = children[i].children;
+                    
+                    // loop through children[i] (除性别之外的主要input都在这里)
+                    for (let j = 0; j < major_inputs.length ; j++) {
+                    
+                        
+                        // 将label中的for和id的"_"后面的部分（一个数字）改为 1160行 保存的数字
+                        // Step1: 如果 major_inputs[i] 是 label: 
+                            if (major_inputs[j].tagName == 'LABEL'){
+                                // Step2: 更改数字
+                                // 将此 div 中的 id 和 for 的"_"后面的部分（一个数字）改为 1160行 保存的数字 (modifyindex)
+                                split_id = major_inputs[j].id.split("_");
+                                major_inputs[j].id = split_id[0]+"_"+modifyindex;
+                                major_inputs[j].setAttribute("for",split_id[0]+"_"+modifyindex);
+                            }
+                            else if (major_inputs[j].tagName == 'DIV')
+                            {
+                                var final_section = major_inputs[j].children;
+                                // 遍历major_inputs[j].children
+                                for (let p = 0; p < final_section.length; p++) {
+                                    // 如果此children是input的话，将其中的 id 和 name 的"_"后面的部分（一个数字）改为 1150?行 保存的数字
+                                    if (final_section[p].tagName == 'INPUT'){
+                                        //console.log(final_section[p]);
+                                        split_id = final_section[p].id.split("_");
+                                        final_section[p].id = split_id[0]+"_"+modifyindex;
+                                        final_section[p].setAttribute("name",split_id[0]+"_"+modifyindex);
+                                        
+
+                                    }
+                                    // else (children是div):
+                                    else if (final_section[p].tagName == 'DIV'){
+                                        var gender_choice = final_section[p].children;
+                                        for(let t = 0; t < gender_choice.length; t++){
+                                            // 如果是input，那么将id 和 name 的"_"后面的部分（一个数字）改为 1150行 保存的数字
+                                            if(gender_choice[t].tagName == 'INPUT'){
+                                                split_id = gender_choice[t].id.split("_");
+                                                gender_choice[t].id = split_id[0]+"_"+modifyindex;
+                                                gender_choice[t].setAttribute("name",split_id[0]+"_"+modifyindex);
+                                            }
+                                            // 如果children是label，那么将for的"_"后面的部分（一个数字）改为 1150行 保存的数字
+                                            else if (gender_choice[t].tagName == 'LABEL'){
+                                                split_id = gender_choice[t].getAttribute("for").split("_");
+                                                
+                                                gender_choice[t].setAttribute("for",split_id[0]+"_"+modifyindex);
+                                            }
+                                            
+
+                                        }
+                                    }
+                                        
+                                }
+                            }
+
+
+                    }
+                }
+                // 尝试修改 delete button
+                else if (children[i].tagName == 'INPUT'){
+                    split_id = children[i].id.split("_");
+                    children[i].id = split_id[0]+"_"+modifyindex;
+                    children[i].setAttribute("name",split_id[0]+"_"+modifyindex);
+                }
+            }
+            
+            
+            exit_check=true;
+        }
+      
+        // 如果exit_check=true, 那么 离开loop
+        if(exit_check==true){
+            break;
+        }
+        
+      }
+      
+    });
+  }); 
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 
   // 确认添加新受保人 时 弹出新信息 的代码
   function unhide1(){
-    var added_insured=document.getElementById("added-insured");
+    var added_insured=document.getElementById("added-insured-container");
     added_insured.style.display="block";
   }
   
   // 确认"不"添加新受保人 时 隐藏新信息 的代码
   function rehide1(){
-    var added_insured=document.getElementById("added-insured");
+    var added_insured=document.getElementById("added-insured-container");
     added_insured.style.display="none";
   }
     // 针对 "目的地是否在美国" 下方的两个div进行隐藏和重现
@@ -1028,6 +1411,251 @@ function additional_insurance(){
   });
 }
 
+
+
+
+
+
+
+// 电话input 填写和删除的代码
+var phoneBlocks = document.querySelectorAll('.tel-input');
+
+phoneBlocks.forEach(function(phoneBlock, index) {
+  phoneBlock.addEventListener('input', function() {
+    // 如果当前输入框已经填满，则将光标自动移动到下一个输入框中
+    if (phoneBlock.value.length === phoneBlock.maxLength) {
+      if (index < phoneBlocks.length - 1) {
+        phoneBlocks[index + 1].focus();
+      }
+    }
+  });
+  
+  phoneBlock.addEventListener('keydown', function(event) {
+    // 如果当前输入框为空，且按下了退格键，则将光标自动移动到前一个输入框中，并删除其内容
+    if (phoneBlock.value.length === 0 && event.key === 'Backspace') {
+      if (index > 0) {
+        phoneBlocks[index - 1].focus();
+      }
+    }
+  });
+});
+
+
+
+
+
+// 邮编zip input 填写和删除的代码
+var zipBlocks = document.querySelectorAll('.zip-input');
+
+zipBlocks.forEach(function(zipBlock, index) {
+  zipBlock.addEventListener('input', function() {
+    // 如果当前输入框已经填满，则将光标自动移动到下一个输入框中
+    if (zipBlock.value.length === zipBlock.maxLength) {
+      if (index < zipBlocks.length - 1) {
+        zipBlocks[index + 1].focus();
+      }
+    }
+  });
+  
+  zipBlock.addEventListener('keydown', function(event) {
+    // 如果当前输入框为空，且按下了退格键，则将光标自动移动到前一个输入框中，并删除其内容
+    if (zipBlock.value.length === 0 && event.key === 'Backspace') {
+      if (index > 0) {
+        zipBlocks[index - 1].focus();
+      }
+    }
+  });
+});
+
+
+
+
+
+
+
+
+
+
+// 根据客户填写的信息显示价格
+
+// 计算生日的function
+function calculateAge(birthday) {
+  var today = new Date();
+  var birthDate = new Date(birthday);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var monthDiff = today.getMonth() - birthDate.getMonth();
+
+  // 如果当前月份小于生日月份，或者当前月份等于生日月份但是当前日期小于生日日期，则年龄减少1岁
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+
+  return age;
+}
+
+
+// 在点击了"访加旅客保险" 中 的“下一步”： page-button-10 后，触发下方的代码
+
+// “访加旅客保险”的“下一步”按钮（2个）
+var visitor_button_1 = document.getElementById('page-button-8');
+var visitor_button_2 = document.getElementById('page-button-10');
+
+
+
+// 预设“支付金额（CAD）”的值
+var payment_amount = 0.00;
+
+document.addEventListener('click', function() {
+    // 如果点击了" 访加旅客保险" 中 的“下一步”： page-button-8 和 page-button-10 后，触发下方的代码
+    if (event.target === visitor_button_1 || event.target === visitor_button_2){
+
+        // 测试结果: 生日、保险生效日期、保险结束日期 不选择时是 空字符串 ""
+        
+        // 获得生日
+        var insured_birthdate = document.getElementById("insured-birthdate").value;
+        
+        // Step 0: 特例：如果用户输入了生日 insured-birthdate，则执行下列命令，否则 payment_amount 默认是0
+        if (insured_birthdate != "") {
+            
+            // // 测试上述if是否有效
+            // document.getElementById("payment-amount").innerText = 10;
+        
+            // Step 1: 获得客户年龄
+            var age = calculateAge(insured_birthdate);
+            
+            
+            // Step 3 : 如果客户选择了"保险结束日期"，"保险生效日期"和"保额数量"，则
+            // “访加旅客保险”中的“保险结束日期”和“保险生效日期”
+            var end_date_visit = document.getElementById("end-date-visit").value;
+            var effective_date_visit = document.getElementById("effective-date-visit").value;
+            
+            if (end_date_visit != "" && effective_date_visit != "") {
+                
+            
+                // 获得保额数量 (是数字): selectedOption
+                
+                // 获取单选按钮的所有元素
+                var insurance_amount_choice = document.getElementsByName("insurance-amount-choice");
+                
+                // 循环遍历单选按钮，找到所选选项
+                let selectedOption = "";
+                for (let i = 0; i < insurance_amount_choice.length; i++) {
+                    if (insurance_amount_choice[i].checked) {
+                      selectedOption = insurance_amount_choice[i].value;
+                      break;
+                    }
+                }
+                
+                
+                
+                // 获得 "保险结束日期" - "保险生效日期"
+                  // 将日期字符串转换为 Date 对象
+                var startDate = new Date(effective_date_visit);
+                var endDate = new Date(end_date_visit);
+                
+                // 计算日期差异
+                var differenceInMilliseconds = endDate.getTime() - startDate.getTime();
+                
+                // 将差异转换为天数
+                var differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+
+                // // 测试 differenceInDays
+                // document.getElementById("payment-amount").innerText = differenceInDays;
+                
+                // 根据年龄（age）和保额（selectedOption），在一个excel表中找到相应的数字
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var data = xmlhttp.responseText;
+                        var rows = data.split('\n');
+                        var table = [];
+                        for (var i = 0; i < rows.length; i++) {
+                            var cells = rows[i].split(',');
+                            // 去掉最后一列数据中的\r
+                            const lastValue = cells[cells.length - 1].replace(/\r/g, '');
+                            cells[cells.length - 1] = lastValue;
+                            table[i] = cells;
+                        }
+                        var headers = table[0];
+                        var indexedTable = {};
+                        for (var i = 1; i < table.length; i++) {
+                            var row = table[i];
+                            var indexedRow = {};
+                            for (var j = 1; j < row.length; j++) {
+                                indexedRow[headers[j]] = row[j];
+                            }
+                            indexedTable[row[0]] = indexedRow;
+                        }
+                        // 使用indexedTable中的数据
+                        console.log(indexedTable);
+                        
+                        // 记得在html中改变保额的数字，符合mannual life标准
+                        var insurance_col = selectedOption;
+                        var age_row = '';
+                        
+                        // 根据年龄所在的区间来获取年龄索引
+                        if (age >= 0 && age <= 25) {
+                            age_row = '0-25';
+                        }
+                        else if (age >= 26 && age <= 34) {
+                            age_row = '26-34';
+                        }
+                        else if (age >= 35 && age <= 39) {
+                            age_row = '35-39';
+                        }
+                        else if (age >= 40 && age <= 54) {
+                            age_row = '40-54';
+                        }
+                        else if (age >= 55 && age <= 59) {
+                            age_row = '55-59';
+                        }
+                        else if (age >= 60 && age <= 64) {
+                            age_row = '60-64';
+                        }
+                        else if (age >= 65 && age <= 69) {
+                            age_row = '65-69';
+                        }
+                        else if (age >= 70 && age <= 74) {
+                            age_row = '70-74';
+                        }
+                        else if (age >= 75 && age <= 79) {
+                            age_row = '75-79';
+                        }
+                        else if (age >= 80 && age <= 85) {
+                            age_row = '80-85';
+                        }
+                        
+                        // 根据年龄和保额获取 表格中的 价格
+                        var price = indexedTable[insurance_col][age_row];
+                        
+                        // 测试：表格中的值是否准确
+                        // console.log("Age: ", age_row, "; Insurance: ", insurance_col, " get: ", price);
+                        
+                        // 根据 表格价格*旅行天数 计算 payment_amount
+                        // price * differenceInDays
+                        payment_amount = price * differenceInDays;
+                        
+                        document.getElementById("payment-amount").innerText = payment_amount.toFixed(2);
+                    }
+                };
+                
+                xmlhttp.open("GET", "https://travelinsurance.weplusfinancial.ca/travelinsurance/mannual_life_plan_A.csv", true);
+                xmlhttp.send();
+                
+                // // 随机测试
+                // document.getElementById("test").innerText = payment_amount.toFixed(2);
+
+                
+               
+                
+            }
+        }
+    }
+        
+        
+        
+
+});
 
 
 
