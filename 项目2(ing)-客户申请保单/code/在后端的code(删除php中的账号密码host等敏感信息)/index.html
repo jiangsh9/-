@@ -6,6 +6,7 @@
     <script src="js/jquery-ui.min.js"></script>
     <link href="css/geeks.css" rel="stylesheet" type="text/css">
     <script src="js/multi_step_form.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   
   
@@ -95,12 +96,42 @@
             <input id="insured-zip_2" name="insured-zip_2" type="text" class="zip-input" value="" size="3" placeholder="0A0" maxlength="3"><br>
           </div>
           <div>
-            <label>Province</label><br>
-            <input id="insured-province" name="insured-province" type="text" class="insured" value="" size="50"><br>
+            
+            
+            
+            
+            <label for="insured-province">省份</label><br>
+            <select id="insured-province" name="insured-province" onchange="updateCityDropdown()">
+              <option value="" disabled selected>--请选择--</option>
+              <option value="AB">艾伯塔省 (Alberta)</option>
+              <option value="BC">不列颠哥伦比亚省 (British Columbia)</option>
+              <option value="MB">曼尼托巴省 (Manitoba)</option>
+              <option value="NB">新不伦瑞克省 (New Brunswick)</option>
+              <option value="NL">纽芬兰与拉布拉多省 (Newfoundland and Labrador)</option>
+              <option value="NS">新斯科舍省 (Nova Scotia)</option>
+              <option value="ON">安大略省 (Ontario)</option>
+              <option value="PE">爱德华王子岛省 (Prince Edward Island)</option>
+              <option value="QC">魁北克省 (Quebec)</option>
+              <option value="SK">萨斯喀彻温省 (Saskatchewan)</option>
+            </select><br>
+            
+            <!--<label for="insured-city">城市</label><br>-->
+            <!--<select id="insured-city" name="insured-city">-->
+            <!--  <option value="" disabled selected>--请选择--</option>-->
+            <!--</select>-->
+
+
+
+
+
           </div>
           <div>
-            <label>City</label><br>
-            <input id="insured-city" name="insured-city" type="text" class="insured" value="" size="50"><br>
+            <!--<label>City</label><br>-->
+            <!--<input id="insured-city" name="insured-city" type="text" class="insured" value="" size="50"><br>-->
+            <label for="insured-city">城市</label><br>
+            <select id="insured-city" name="insured-city">
+              <option value="" disabled selected>--请选择--</option>
+            </select>
           </div>
         </div>
       
@@ -144,7 +175,7 @@
             联系邮箱
           </label>
           <div>
-            <input id="insured-mail" name="insured-mail" type="email" spellcheck="false" size="60" placeholder="google@gmail.com" value="" maxlength="255"> 
+            <input id="insured-mail" name="insured-mail" type="email" spellcheck="false" size="50" placeholder="google@gmail.com" value="" maxlength="255"> 
         </div>
         </div>
       
@@ -375,6 +406,11 @@
                 <input type="hidden" name="insured-condition-7-visit" value="0">
                 <input type="checkbox" id="insured-condition-7-visit" name="insured-condition-7-visit" value="1">日常生活无需因健康状况 导致的护理辅助
             </li>
+            <br>
+            <li>
+                <input type="hidden" name="insured-condition-total-visit" value="0">
+                <input type="checkbox" id="insured-condition-total-visit" name="insured-condition-total-visit" value="1" onclick="insured_condition_total_visit()">以上均符合
+            </li>
           </ul>
         </div>
     
@@ -483,10 +519,6 @@
               <input id="insurance-amount-5" name="insurance-amount-choice" type="radio" value="150000" >
               <label class="insurance" for="insurance-amount-5">$150,000</label>
             </div>
-            <!--<div>-->
-            <!--  <input id="insurance-amount-6" name="insurance-amount-choice" type="radio" value="300000" >-->
-            <!--  <label class="insurance" for="insurance-amount-6">$300,000</label>-->
-            <!--</div>-->
           </div>
         </div>
     
@@ -595,6 +627,11 @@
             <li>
                 <input type="hidden" name="insured-condition-8-study" value="0">
                 <input type="checkbox" id="insured-condition-8-study" name="insured-condition-8-study" value="1">在加拿大全职/兼职上学，或是其陪读父母
+            </li>
+            <br>
+            <li>
+                <input type="hidden" name="insured-condition-total-study" value="0">
+                <input type="checkbox" id="insured-condition-total-study" name="insured-condition-total-study" value="1" onclick="insured_condition_total_study()">以上均符合
             </li>
           </ul>
         </div>
@@ -743,6 +780,11 @@
                 <input type="hidden" name="insured-condition-7-travel" value="0">
                 <input type="checkbox" id="insured-condition-7-travel" name="insured-condition-7-travel" value="1">日常生活无需因健康状况 导致的护理辅助
             </li>
+            <br>
+            <li>
+                <input type="hidden" name="insured-condition-total-travel" value="0">
+                <input type="checkbox" id="insured-condition-total-travel" name="insured-condition-total-travel" value="1" onclick="insured_condition_total_travel()">以上均符合
+            </li>
           </ul>
         </div>
       
@@ -847,7 +889,7 @@
         <div id="america-yes-after" style="display:none;">
           <div id="america_state" >
             <label class="desc" id="america-state-label" for="america-state">
-              在美国哪个州 (如果上面目的地选择"是"，弹出此内容)
+              在美国哪个州
             </label><br>
             <input id="america-state" name="america-state" type="text" class="travel" value="" size="8" >
           </div>
@@ -941,16 +983,87 @@
           <h2>付款</h2>
         </div>
         <input id="page-button-19" name="page-button-backward" type="button" class="pre_btn_payment" value="上一页"> 
-        <input id="saveForm" name="saveForm" type="submit" value="提交">
+        <input id="saveForm_1" name="saveForm" type="submit" value="提交">
           
         <br><br>
         
         <section id="payment-section" name="payment-section">
             <!--<input id="payment-amount" name="payment-amount" type="hidden" value="0">-->
             <div id="payment-amount-div" name="payment-amount-div">
-                <text><b>支付金额（CAD）: </b>$<span id="payment-amount" name="payment-amount"></span></text>
+                <text><b>支付金额（CAD）: </b></text>
+                <div id="insurance-age-err" name="insurance-age-err" style="display: none;">矛盾：受保人的生日所生成的年龄不超过60岁，请返回检查
+                </div>
+                <div id="insurance-age-err-2" name="insurance-age-err-2" style="display: none;">矛盾：受保人的生日所生成的年龄达到或超过60岁，请返回检查
+                </div>
+                <div id="insurance-85-err" name="insurance-85-err" style="display: none;">受保人超过85岁，不适用于“访加旅客保险”
+                </div>
+                <div id="insurance-plan-A" name="insurance-plan-A" value="Plan A" style="display: none;">
+                    
+                    <label>
+                      <input type="checkbox" id="insurance-plan-A-choice" name="insurance-plan-choice" class="plan-type" value="Plan A" onchange="updateCheckbox('insurance-plan-A-choice')">
+                      Plan A: 
+                      <span id="payment-amount-A" name="payment-amount-A" value=0.00></span>
+                      <br>
+                      <div id="payment-amount-A-trip-type-div" name="payment-amount-A-trip-type-div">
+                        <div id="payment-amount-A-single-div" name="payment-amount-A-single-div" value="single-trip" style="display:none;">
+                          &nbsp;&nbsp;&nbsp;&nbsp;<input id="payment-amount-A-trip-type-single" name="payment-amount-trip-type-choice" type="radio" class="trip-type" value="Single-Trip" onchange="updateRadio('payment-amount-A-trip-type-single')">
+                          <label for="payment-amount-A-trip-type-single">Single-Trip:</label>
+                          <span id="payment-amount-A-single" name="payment-amount-A-single" value=0.00></span>
+                        </div>
+                        <div id="payment-amount-A-multiple-div" name="payment-amount-A-multiple-div" value="multi-trip" style="display:none;">
+                          &nbsp;&nbsp;&nbsp;&nbsp;<input id="payment-amount-A-trip-type-multiple" name="payment-amount-trip-type-choice" type="radio" class="trip-type" value="Multi-Trip" onchange="updateRadio('payment-amount-A-trip-type-multiple')">
+                          <label for="payment-amount-A-trip-type-multiple">Multi-Trip:</label>
+                          <span id="payment-amount-A-multiple" name="payment-amount-A-multiple" value=0.00></span>
+                        </div>
+                      </div>
+                    </label>
+                    
+                </div>
+                <div id="insurance-plan-B" name="insurance-plan-B"  value="Plan B" style="display: none;">
+                    
+                    <label>
+                      <input type="checkbox" id="insurance-plan-B-choice" name="insurance-plan-choice" class="plan-type" value="Plan B" onchange="updateCheckbox('insurance-plan-B-choice')">Plan B: 
+                      <span id="payment-amount-B" name="payment-amount-B" value="0.00"></span>
+                      <br>
+                      <div id="payment-amount-B-trip-type-div" name="payment-amount-B-trip-type-div">
+                        <div id="payment-amount-B-single-div" name="payment-amount-B-single-div" value="single-trip" style="display:none;">
+                          <label for="payment-amount-B-trip-type-single"></label>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<input id="payment-amount-B-trip-type-single" name="payment-amount-trip-type-choice" type="radio" class="trip-type" value="Single-Trip" onchange="updateRadio('payment-amount-B-trip-type-single')">Single-Trip: 
+                          <span id="payment-amount-B-single" name="payment-amount-B-single" value="0.00"></span>
+                        </div>
+                        <div id="payment-amount-B-multiple-div" name="payment-amount-B-multiple-div" value="multi-trip" style="display:none;">
+                          <label for="payment-amount-B-trip-type-multiple"></label>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<input id="payment-amount-B-trip-type-multiple" name="payment-amount-trip-type-choice" type="radio" class="trip-type" value="Multi-Trip" onchange="updateRadio('payment-amount-B-trip-type-multiple')">Multi-Trip: 
+                          <span id="payment-amount-B-multiple" name="payment-amount-B-multiple" value="0.00"></span>
+                        </div>
+                      </div>
+                    </label>
+
+                </div>
+                <div id="insurance-plan-C" name="insurance-plan-C" style="display: none;">
+                    
+                    <label>
+                      <input type="checkbox" id="insurance-plan-C-choice" name="insurance-plan-choice" class="plan-type" value="Plan C" onchange="updateCheckbox('insurance-plan-C-choice')">Plan C:
+                      <span id="payment-amount-C" name="payment-amount-C" value="0.00"></span>
+                      <br>
+                      <div id="payment-amount-C-trip-type-div" name="payment-amount-C-trip-type-div">
+                        <div id="payment-amount-C-single-div" name="payment-amount-C-single-div" style="display:none;">
+                          <label for="payment-amount-C-trip-type-single"></label>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<input id="payment-amount-C-trip-type-single" name="payment-amount-trip-type-choice" type="radio" class="trip-type" value="Single-Trip" onchange="updateRadio('payment-amount-C-trip-type-single')">Single-Trip:
+                          <span id="payment-amount-C-single" name="payment-amount-C-single" value="0.00"></span>
+                        </div>
+                        <div id="payment-amount-C-multiple-div" name="payment-amount-C-multiple-div" style="display:none;">
+                          <label for="payment-amount-C-trip-type-multiple"></label>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<input id="payment-amount-C-trip-type-multiple" name="payment-amount-trip-type-choice" type="radio" class="trip-type" value="Multi-Trip" onchange="updateRadio('payment-amount-C-trip-type-multiple')">Multi-Trip:
+                          <span id="payment-amount-C-multiple" name="payment-amount-C-multiple" value="0.00"></span>
+                        </div>
+                      </div>
+                    </label>
+
+                </div>
                 <br>
-                <text><b>测试: </b><span id="test" name="test"></span></text>
+                <input type="hidden" name="final_price" id="final_price" value="0">
+                <!--<text><b>测试: </b><span id="test" name="test"></span></text>-->
             </div>
             <br><br>
             <label class="payment"><b>Card Type</b></label>
@@ -974,7 +1087,7 @@
         <br><br>
     
         <input id="page-button-20" name="page-button-backward" type="button" class="pre_btn_payment" value="上一页">  
-        <input id="saveForm" name="saveForm" type="submit" value="提交">
+        <input id="saveForm_2" name="saveForm" type="submit" value="提交">
       </div>
     
     
@@ -1500,6 +1613,11 @@ function calculateAge(birthday) {
 var visitor_button_1 = document.getElementById('page-button-8');
 var visitor_button_2 = document.getElementById('page-button-10');
 
+// "在加居民出境旅游保险"的“下一步”按钮 (2个)
+var visitor_button_5 = document.getElementById('page-button-16');
+var visitor_button_6 = document.getElementById('page-button-18');
+
+
 
 
 // 预设“支付金额（CAD）”的值
@@ -1510,6 +1628,10 @@ document.addEventListener('click', function() {
     if (event.target === visitor_button_1 || event.target === visitor_button_2){
 
         // 测试结果: 生日、保险生效日期、保险结束日期 不选择时是 空字符串 ""
+        
+        // 隐藏Plan A 的 Single-Trip和Multiple-Trip选项
+        document.getElementById("payment-amount-A-single-div").style.display = 'none';
+        document.getElementById("payment-amount-A-multiple-div").style.display = 'none';
         
         // 获得生日
         var insured_birthdate = document.getElementById("insured-birthdate").value;
@@ -1524,138 +1646,1500 @@ document.addEventListener('click', function() {
             var age = calculateAge(insured_birthdate);
             
             
-            // Step 3 : 如果客户选择了"保险结束日期"，"保险生效日期"和"保额数量"，则
-            // “访加旅客保险”中的“保险结束日期”和“保险生效日期”
-            var end_date_visit = document.getElementById("end-date-visit").value;
-            var effective_date_visit = document.getElementById("effective-date-visit").value;
             
-            if (end_date_visit != "" && effective_date_visit != "") {
-                
             
-                // 获得保额数量 (是数字): selectedOption
+
+            
+            
+            
+            
+            
+            
+            
+            
+            // 如果年龄超过85岁，则显示错误
+                if (age > 85) {
+                    document.getElementById("insurance-age-err").style.display = "none";
+                    document.getElementById("insurance-plan-A").style.display = "none";
+                    document.getElementById("insurance-plan-B").style.display = "none";
+                    document.getElementById("insurance-plan-C").style.display = "none";
+                    document.getElementById("insurance-85-err").style.display = "block";
+                    document.getElementById("insurance-age-err-2").style.display = "none";
+                    document.getElementById("payment-amount-A-single-div").style.display = "none";
+                    document.getElementById("payment-amount-A-multiple-div").style.display = 'none';
+                    
+                }
+                else{
                 
-                // 获取单选按钮的所有元素
-                var insurance_amount_choice = document.getElementsByName("insurance-amount-choice");
-                
-                // 循环遍历单选按钮，找到所选选项
-                let selectedOption = "";
-                for (let i = 0; i < insurance_amount_choice.length; i++) {
-                    if (insurance_amount_choice[i].checked) {
-                      selectedOption = insurance_amount_choice[i].value;
-                      break;
+                   
+                if (((document.getElementById('insured-condition-3-visit').checked && document.getElementById('insured-condition-4-visit').checked && document.getElementById('insured-condition-5-visit').checked && document.getElementById('insured-condition-6-visit').checked && document.getElementById('insured-condition-7-visit').checked) && (document.getElementById('insured-elder-visitor-no').checked)) || ((document.getElementById('insured-condition-3-visit').checked && document.getElementById('insured-condition-4-visit').checked && document.getElementById('insured-condition-5-visit').checked && document.getElementById('insured-condition-6-visit').checked && document.getElementById('insured-condition-7-visit').checked) && (!document.getElementById('insured-elder-visitor-no').checked && !document.getElementById('heart-bypass-visit').checked && !document.getElementById('diabetes-visit').checked && !document.getElementById('organ-transplant-visit').checked && !document.getElementById('biuretics-visit').checked && !document.getElementById('stroke-visit').checked && !document.getElementById('cancer-visit').checked && !document.getElementById('digestive-tract-visit').checked))) {
+                    
+                    
+                    console.log(age);
+                    console.log(document.getElementById('insured-elder-visitor-no').checked);
+
+                    
+                    // 如果age<60，而勾选了“受保人是否超过60岁”中的“是”，那么显示错误（insurance-age-err）并隐藏plan ABC，否则执行之后的代码
+                    
+                    if (age < 60 && !document.getElementById('insured-elder-visitor-no').checked){
+                        document.getElementById("insurance-age-err").style.display = "block";
+                        document.getElementById("insurance-plan-A").style.display = "none";
+                        document.getElementById("insurance-plan-B").style.display = "none";
+                        document.getElementById("insurance-plan-C").style.display = "none";
+                        document.getElementById("insurance-85-err").style.display = "none";
+                        document.getElementById("insurance-age-err-2").style.display = "none";
+                    }
+                    
+                    
+                    // 如果age>60，而勾选了“受保人是否超过60岁”中的“否”，那么显示错误（insurance-age-err-2）并隐藏plan ABC，否则执行之后的代码
+                    else if (age > 60 && document.getElementById('insured-elder-visitor-no').checked){
+                        document.getElementById("insurance-age-err").style.display = "none";
+                        document.getElementById("insurance-plan-A").style.display = "none";
+                        document.getElementById("insurance-plan-B").style.display = "none";
+                        document.getElementById("insurance-plan-C").style.display = "none";
+                        document.getElementById("insurance-85-err").style.display = "none";
+                        document.getElementById("insurance-age-err-2").style.display = "block";
+                    }
+
+                    
+                    
+                    // else
+                    else {
+                        
+                        // 将 insurance-plan-A 设为可见，将insurance-plan-B和insurance-plan-C设为不可见
+                        document.getElementById("insurance-plan-A").style.display = "block";
+                        document.getElementById("insurance-plan-B").style.display = "none";
+                        document.getElementById("insurance-plan-C").style.display = "none";
+                        document.getElementById("insurance-age-err").style.display = "none";
+                        document.getElementById("insurance-85-err").style.display = "none";
+                        document.getElementById("insurance-age-err-2").style.display = "none";
+                        
+                        
+                        // Step 3 : 如果客户选择了"保险结束日期"，"保险生效日期"和"保额数量"，则
+                        // “访加旅客保险”中的“保险结束日期”和“保险生效日期”
+                        var end_date_visit = document.getElementById("end-date-visit").value;
+                        var effective_date_visit = document.getElementById("effective-date-visit").value;
+                        
+                        if (end_date_visit != "" && effective_date_visit != "") {
+                            
+                        
+                            // 获得保额数量 (是数字): selectedOption
+                            
+                            // 获取单选按钮的所有元素
+                            var insurance_amount_choice = document.getElementsByName("insurance-amount-choice");
+                            
+                            // 循环遍历单选按钮，找到所选选项
+                            let selectedOption = "";
+                            for (let i = 0; i < insurance_amount_choice.length; i++) {
+                                if (insurance_amount_choice[i].checked) {
+                                  selectedOption = insurance_amount_choice[i].value;
+                                  break;
+                                }
+                            }
+                            
+                            
+                            
+                            // 获得 "保险结束日期" - "保险生效日期"
+                              // 将日期字符串转换为 Date 对象
+                            var startDate = new Date(effective_date_visit);
+                            var endDate = new Date(end_date_visit);
+                            
+                            // 计算日期差异
+                            var differenceInMilliseconds = endDate.getTime() - startDate.getTime();
+                            
+                            // 将差异转换为天数
+                            var differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+            
+                            // // 测试 differenceInDays
+                            // document.getElementById("payment-amount").innerText = differenceInDays;
+                            
+                            // “访加客户保险”中的价格
+                            // “访加客户保险”中Plan A的价格
+                            // 根据年龄（age）和保额（selectedOption），在一个excel表中找到相应的数字
+                            var xmlhttp_visit_A = new XMLHttpRequest();
+                            xmlhttp_visit_A.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    var data = xmlhttp_visit_A.responseText;
+                                    var rows = data.split('\n');
+                                    var table = [];
+                                    for (var i = 0; i < rows.length; i++) {
+                                        var cells = rows[i].split(',');
+                                        // 去掉最后一列数据中的\r
+                                        const lastValue = cells[cells.length - 1].replace(/\r/g, '');
+                                        cells[cells.length - 1] = lastValue;
+                                        table[i] = cells;
+                                    }
+                                    var headers = table[0];
+                                    var indexedTable = {};
+                                    for (var i = 1; i < table.length; i++) {
+                                        var row = table[i];
+                                        var indexedRow = {};
+                                        for (var j = 1; j < row.length; j++) {
+                                            indexedRow[headers[j]] = row[j];
+                                        }
+                                        indexedTable[row[0]] = indexedRow;
+                                    }
+                                    // // 测试：显示indexedTable中的数据
+                                    // console.log(indexedTable);
+                                    
+                                    // 记得在html中改变保额的数字，符合mannual life标准
+                                    var insurance_col = selectedOption;
+                                    var age_row = '';
+                                    
+                                    // 根据年龄所在的区间来获取年龄索引
+                                    if (age >= 0 && age <= 25) {
+                                        age_row = '0-25';
+                                    }
+                                    else if (age >= 26 && age <= 34) {
+                                        age_row = '26-34';
+                                    }
+                                    else if (age >= 35 && age <= 39) {
+                                        age_row = '35-39';
+                                    }
+                                    else if (age >= 40 && age <= 54) {
+                                        age_row = '40-54';
+                                    }
+                                    else if (age >= 55 && age <= 59) {
+                                        age_row = '55-59';
+                                    }
+                                    else if (age >= 60 && age <= 64) {
+                                        age_row = '60-64';
+                                    }
+                                    else if (age >= 65 && age <= 69) {
+                                        age_row = '65-69';
+                                    }
+                                    else if (age >= 70 && age <= 74) {
+                                        age_row = '70-74';
+                                    }
+                                    else if (age >= 75 && age <= 79) {
+                                        age_row = '75-79';
+                                    }
+                                    else if (age >= 80 && age <= 85) {
+                                        age_row = '80-85';
+                                    }
+                                    
+                                    // 根据年龄和保额获取 表格中的 价格
+                                    var price = indexedTable[insurance_col][age_row];
+                                    
+                                    // 测试：表格中的值是否准确
+                                    // console.log("Age: ", age_row, "; Insurance: ", insurance_col, " get: ", price);
+                                    
+                                    // 根据 表格价格*旅行天数 计算 payment_amount
+                                    payment_amount = price * differenceInDays;
+                                    
+                                    document.getElementById("payment-amount-A").innerText = payment_amount.toFixed(2);
+                                }
+                            };
+                            
+                            xmlhttp_visit_A.open("GET", "https://travelinsurance.weplusfinancial.ca/travelinsurance/data/mannual_life_plan_A.csv", true);
+                            xmlhttp_visit_A.send();
+                            
+                            // // 随机测试
+                            // document.getElementById("test").innerText = payment_amount.toFixed(2);
+                            
+                            
+                            
+                            
+                            
+            
+                            
+                           
+                            
+                        }
                     }
                 }
                 
                 
-                
-                // 获得 "保险结束日期" - "保险生效日期"
-                  // 将日期字符串转换为 Date 对象
-                var startDate = new Date(effective_date_visit);
-                var endDate = new Date(end_date_visit);
-                
-                // 计算日期差异
-                var differenceInMilliseconds = endDate.getTime() - startDate.getTime();
-                
-                // 将差异转换为天数
-                var differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
 
-                // // 测试 differenceInDays
-                // document.getElementById("payment-amount").innerText = differenceInDays;
+
+
+
+
+
+
                 
-                // 根据年龄（age）和保额（selectedOption），在一个excel表中找到相应的数字
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var data = xmlhttp.responseText;
-                        var rows = data.split('\n');
-                        var table = [];
-                        for (var i = 0; i < rows.length; i++) {
-                            var cells = rows[i].split(',');
-                            // 去掉最后一列数据中的\r
-                            const lastValue = cells[cells.length - 1].replace(/\r/g, '');
-                            cells[cells.length - 1] = lastValue;
-                            table[i] = cells;
-                        }
-                        var headers = table[0];
-                        var indexedTable = {};
-                        for (var i = 1; i < table.length; i++) {
-                            var row = table[i];
-                            var indexedRow = {};
-                            for (var j = 1; j < row.length; j++) {
-                                indexedRow[headers[j]] = row[j];
-                            }
-                            indexedTable[row[0]] = indexedRow;
-                        }
-                        // 使用indexedTable中的数据
-                        console.log(indexedTable);
-                        
-                        // 记得在html中改变保额的数字，符合mannual life标准
-                        var insurance_col = selectedOption;
-                        var age_row = '';
-                        
-                        // 根据年龄所在的区间来获取年龄索引
-                        if (age >= 0 && age <= 25) {
-                            age_row = '0-25';
-                        }
-                        else if (age >= 26 && age <= 34) {
-                            age_row = '26-34';
-                        }
-                        else if (age >= 35 && age <= 39) {
-                            age_row = '35-39';
-                        }
-                        else if (age >= 40 && age <= 54) {
-                            age_row = '40-54';
-                        }
-                        else if (age >= 55 && age <= 59) {
-                            age_row = '55-59';
-                        }
-                        else if (age >= 60 && age <= 64) {
-                            age_row = '60-64';
-                        }
-                        else if (age >= 65 && age <= 69) {
-                            age_row = '65-69';
-                        }
-                        else if (age >= 70 && age <= 74) {
-                            age_row = '70-74';
-                        }
-                        else if (age >= 75 && age <= 79) {
-                            age_row = '75-79';
-                        }
-                        else if (age >= 80 && age <= 85) {
-                            age_row = '80-85';
-                        }
-                        
-                        // 根据年龄和保额获取 表格中的 价格
-                        var price = indexedTable[insurance_col][age_row];
-                        
-                        // 测试：表格中的值是否准确
-                        // console.log("Age: ", age_row, "; Insurance: ", insurance_col, " get: ", price);
-                        
-                        // 根据 表格价格*旅行天数 计算 payment_amount
-                        // price * differenceInDays
-                        payment_amount = price * differenceInDays;
-                        
-                        document.getElementById("payment-amount").innerText = payment_amount.toFixed(2);
+                // "访加"的Plan B
+                else {
+                    
+                    
+                    // 如果age<60，而勾选了“受保人是否超过60岁”中的“是”，那么显示错误（insurance-age-err）并隐藏plan ABC，否则执行之后的代码
+                    if (age < 60 && !document.getElementById('insured-elder-visitor-no').checked){
+                        document.getElementById("insurance-age-err").style.display = "block";
+                        document.getElementById("insurance-plan-A").style.display = "none";
+                        document.getElementById("insurance-plan-B").style.display = "none";
+                        document.getElementById("insurance-plan-C").style.display = "none";
+                        document.getElementById("insurance-85-err").style.display = "none";
+                        document.getElementById("insurance-age-err-2").style.display = "none";
+                        document.getElementById("payment-amount-B-single-div").style.display = 'none';
+                        document.getElementById("payment-amount-B-multiple-div").style.display = 'none';
                     }
-                };
-                
-                xmlhttp.open("GET", "https://travelinsurance.weplusfinancial.ca/travelinsurance/mannual_life_plan_A.csv", true);
-                xmlhttp.send();
-                
-                // // 随机测试
-                // document.getElementById("test").innerText = payment_amount.toFixed(2);
-
-                
-               
-                
+                    
+                    
+                    // 如果age>60，而勾选了“受保人是否超过60岁”中的“否”，那么显示错误（insurance-age-err-2）并隐藏plan ABC，否则执行之后的代码
+                    else if (age > 60 && document.getElementById('insured-elder-visitor-no').checked){
+                        document.getElementById("insurance-age-err").style.display = "none";
+                        document.getElementById("insurance-plan-A").style.display = "none";
+                        document.getElementById("insurance-plan-B").style.display = "none";
+                        document.getElementById("insurance-plan-C").style.display = "none";
+                        document.getElementById("insurance-85-err").style.display = "none";
+                        document.getElementById("insurance-age-err-2").style.display = "block";
+                        document.getElementById("payment-amount-B-single-div").style.display = 'none';
+                        document.getElementById("payment-amount-B-multiple-div").style.display = 'none';
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    else{
+                        // 将 insurance-plan-B 设为可见，将insurance-plan-A和insurance-plan-C设为不可见
+                        document.getElementById("insurance-plan-A").style.display = "none";
+                        document.getElementById("insurance-plan-B").style.display = "block";
+                        document.getElementById("insurance-plan-C").style.display = "none";
+                        document.getElementById("insurance-age-err").style.display = "none";
+                        document.getElementById("insurance-85-err").style.display = "none";
+                        document.getElementById("insurance-age-err-2").style.display = "none";
+                        document.getElementById("payment-amount-B-single-div").style.display = 'none';
+                        document.getElementById("payment-amount-B-multiple-div").style.display = 'none';
+                        
+                        var end_date_visit = document.getElementById("end-date-visit").value;
+                        var effective_date_visit = document.getElementById("effective-date-visit").value;
+                        
+                        console.log(end_date_visit);
+                        
+                        if (end_date_visit != "" && effective_date_visit != "") {
+                            
+                        
+                            // 获得保额数量 (是数字): selectedOption
+                            
+                            // 获取单选按钮的所有元素
+                            var insurance_amount_choice = document.getElementsByName("insurance-amount-choice");
+                            
+                            // 循环遍历单选按钮，找到所选选项
+                            let selectedOption = "";
+                            for (let i = 0; i < insurance_amount_choice.length; i++) {
+                                if (insurance_amount_choice[i].checked) {
+                                  selectedOption = insurance_amount_choice[i].value;
+                                  break;
+                                }
+                            }
+                            
+                            
+                            
+                            // 获得 "保险结束日期" - "保险生效日期"
+                              // 将日期字符串转换为 Date 对象
+                            var startDate = new Date(effective_date_visit);
+                            var endDate = new Date(end_date_visit);
+                            
+                            
+                            // 计算日期差异
+                            var differenceInMilliseconds = endDate.getTime() - startDate.getTime();
+                            
+                            // 将差异转换为天数
+                            var differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+            
+                            // // 测试 differenceInDays
+                            // document.getElementById("payment-amount").innerText = differenceInDays;
+                            
+                            // “访加客户保险”中Plan B的价格
+                            // 根据年龄（age）和保额（selectedOption），在一个excel表中找到相应的数字
+                            var xmlhttp_visit_B = new XMLHttpRequest();
+                            xmlhttp_visit_B.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    var data = xmlhttp_visit_B.responseText;
+                                    var rows = data.split('\n');
+                                    var table = [];
+                                    for (var i = 0; i < rows.length; i++) {
+                                        var cells = rows[i].split(',');
+                                        // 去掉最后一列数据中的\r
+                                        const lastValue = cells[cells.length - 1].replace(/\r/g, '');
+                                        cells[cells.length - 1] = lastValue;
+                                        table[i] = cells;
+                                    }
+                                    var headers = table[0];
+                                    var indexedTable = {};
+                                    for (var i = 1; i < table.length; i++) {
+                                        var row = table[i];
+                                        var indexedRow = {};
+                                        for (var j = 1; j < row.length; j++) {
+                                            indexedRow[headers[j]] = row[j];
+                                        }
+                                        indexedTable[row[0]] = indexedRow;
+                                    }
+                                    // 测试：显示indexedTable中的数据
+                                    console.log(indexedTable);
+                                    
+                                    // 记得在html中改变保额的数字，符合mannual life标准
+                                    var insurance_col = selectedOption;
+                                    var age_row = '';
+                                    
+                                    // 根据年龄所在的区间来获取年龄索引
+                                    if (age >= 0 && age <= 25) {
+                                        age_row = '0-25';
+                                    }
+                                    else if (age >= 26 && age <= 34) {
+                                        age_row = '26-34';
+                                    }
+                                    else if (age >= 35 && age <= 39) {
+                                        age_row = '35-39';
+                                    }
+                                    else if (age >= 40 && age <= 54) {
+                                        age_row = '40-54';
+                                    }
+                                    else if (age >= 55 && age <= 59) {
+                                        age_row = '55-59';
+                                    }
+                                    else if (age >= 60 && age <= 64) {
+                                        age_row = '60-64';
+                                    }
+                                    else if (age >= 65 && age <= 69) {
+                                        age_row = '65-69';
+                                    }
+                                    else if (age >= 70 && age <= 74) {
+                                        age_row = '70-74';
+                                    }
+                                    else if (age >= 75 && age <= 79) {
+                                        age_row = '75-79';
+                                    }
+                                    else if (age >= 80 && age <= 85) {
+                                        age_row = '80-85';
+                                    }
+                                    
+                                    // 根据年龄和保额获取 表格中的 价格
+                                    var price = indexedTable[insurance_col][age_row];
+                                    
+                                    // 测试：表格中的值是否准确
+                                    console.log("Age: ", age_row, "; Insurance: ", insurance_col, " get: ", price);
+                                    
+                                    // 根据 表格价格*旅行天数 计算 payment_amount
+                                    payment_amount = price * differenceInDays;
+                                    
+                                    console.log(differenceInDays);
+                                    
+                                    document.getElementById("payment-amount-B").innerText = payment_amount.toFixed(2);
+                                }
+                            };
+                            
+                            xmlhttp_visit_B.open("GET", "https://travelinsurance.weplusfinancial.ca/travelinsurance/data/mannual_life_plan_B.csv", true);
+                            xmlhttp_visit_B.send();
+                            
+                        }
+                    }
+                    
+                }
             }
         }
     }
         
         
         
+    // 以下关于计算“在加居民旅游保险”的报价
+    if (event.target === visitor_button_5 || event.target === visitor_button_6){
+        // 获得生日
+        var insured_birthdate = document.getElementById("insured-birthdate").value;
+        
+        // Step 0: 特例：如果用户输入了生日 insured-birthdate，则执行下列命令，否则 payment_amount 默认是0
+        if (insured_birthdate != "") {
+        
+            // Step 1: 获得客户年龄
+            var age = calculateAge(insured_birthdate);
+            
+            // 测试：显示年龄
+            console.log(age > 60);
+            
+            // 测试：insured-elder-travel-no 的值
+            console.log(document.getElementById('insured-elder-travel-no').checked);
+
+
+            
+            // 如果age不到60岁,但“受保人是否超过60岁”的选项选了“是”，则显示错误
+            if (age < 60 && !document.getElementById('insured-elder-travel-no').checked){
+                document.getElementById("insurance-age-err").style.display = "block";
+                document.getElementById("insurance-plan-A").style.display = "none";
+                document.getElementById("insurance-plan-B").style.display = "none";
+                document.getElementById("insurance-plan-C").style.display = "none";
+                document.getElementById("insurance-85-err").style.display = "none";
+                document.getElementById("insurance-age-err-2").style.display = "none";
+            }
+            
+            // 如果age>60，而勾选了“受保人是否超过60岁”中的“否”，那么显示错误（insurance-age-err-2）并隐藏plan ABC，否则执行之后的代码
+            else if (age > 60 && document.getElementById('insured-elder-travel-no').checked){
+                document.getElementById("insurance-age-err").style.display = "none";
+                document.getElementById("insurance-plan-A").style.display = "none";
+                document.getElementById("insurance-plan-B").style.display = "none";
+                document.getElementById("insurance-plan-C").style.display = "none";
+                document.getElementById("insurance-85-err").style.display = "none";
+                document.getElementById("insurance-age-err-2").style.display = "block";
+            }
+        
+            
+            
+            
+            
+            else{
+            
+                // 下方的代码是关于Plan A，请根据以下条件筛选
+                    // Plan A 条件：60岁以下 (insured-elder-travel-choice)、60岁以上并且在medical questions(heart-bypass-travel等7个选项)中选择 全部“否”
+                if (document.getElementById('insured-elder-travel-no').checked || (!document.getElementById('insured-elder-travel-no').checked && !document.getElementById('heart-bypass-travel').checked && !document.getElementById('diabetes-travel').checked && !document.getElementById('organ-transplant-travel').checked && !document.getElementById('biuretics-travel').checked && !document.getElementById('stroke-travel').checked && !document.getElementById('cancer-travel').checked && !document.getElementById('digestive-tract-travel').checked)) {
+                
+                    // 将 insurance-plan-A 设为可见，将insurance-plan-B和insurance-plan-C设为不可见
+                    document.getElementById("insurance-plan-A").style.display = "block";
+                    document.getElementById("insurance-plan-B").style.display = "none";
+                    document.getElementById("insurance-plan-C").style.display = "none";
+                    document.getElementById("insurance-age-err").style.display = "none";
+                    document.getElementById("insurance-85-err").style.display = "none";
+                    document.getElementById("insurance-age-err-2").style.display = "none";
+    
+                    
+                    // Step 3 : 如果客户选择了"保险结束日期"，"保险生效日期"和"保额数量"，则
+                    // “在加居民旅游保险”中的“保险结束日期”和“保险生效日期”
+                    var end_date_visit = document.getElementById("end-date-travel").value;
+                    var effective_date_visit = document.getElementById("effective-date-travel").value;
+                    
+                    if (end_date_visit != "" && effective_date_visit != "") {
+                        
+                    
+                        
+                        
+                        
+                        // 获得 "保险结束日期" - "保险生效日期"
+                          // 将日期字符串转换为 Date 对象
+                        var startDate = new Date(effective_date_visit);
+                        var endDate = new Date(end_date_visit);
+                        
+                        // 计算日期差异
+                        var differenceInMilliseconds = endDate.getTime() - startDate.getTime();
+                        
+                        // 将差异转换为天数
+                        var differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+        
+                        // 测试 differenceInDays
+                        console.log(differenceInDays);
+                        // document.getElementById("payment-amount-A").innerText = differenceInDays;
+                        
+                        // 根据年龄（age）和天数（differenceInDays, not selectedOption），在一个Plan A表中找到相应的数字
+                        var xmlhttp_travel_single_A = new XMLHttpRequest();
+                        xmlhttp_travel_single_A.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                var data = xmlhttp_travel_single_A.responseText;
+                                var rows = data.split('\n');
+                                var table = [];
+                                for (var i = 0; i < rows.length; i++) {
+                                    var cells = rows[i].split(',');
+                                    // 去掉最后一列数据中的\r
+                                    const lastValue = cells[cells.length - 1].replace(/\r/g, '');
+                                    cells[cells.length - 1] = lastValue;
+                                    table[i] = cells;
+                                }
+                                var headers = table[0];
+                                var indexedTable = {};
+                                for (var i = 1; i < table.length; i++) {
+                                    var row = table[i];
+                                    var indexedRow = {};
+                                    for (var j = 1; j < row.length; j++) {
+                                        indexedRow[headers[j]] = row[j];
+                                    }
+                                    indexedTable[row[0]] = indexedRow;
+                                }
+                                // // 使用indexedTable中的数据
+                                // console.log(indexedTable);
+                                
+                                // 获得保险天数区间和年龄区间
+                                var travel_day_col = '';
+                                var age_row = '';
+                                
+                                // 根据保险天数所在的区间来获取保险天数索引
+                                if (differenceInDays >= 1 && differenceInDays <= 17) {
+                                    travel_day_col = '1-17 days';
+                                }
+                                else if (differenceInDays >= 18 && differenceInDays <= 30) {
+                                    travel_day_col = '18-30 days';
+                                }
+                                else if (differenceInDays >= 31 && differenceInDays <= 60) {
+                                    travel_day_col = '31-60 days';
+                                }
+                                else if (differenceInDays >= 61 && differenceInDays <= 90) {
+                                    travel_day_col = '61-90 days';
+                                }
+                                else if (differenceInDays >= 91 && differenceInDays <= 120) {
+                                    travel_day_col = '91-120 days';
+                                }
+                                else if (differenceInDays >= 121 && differenceInDays <= 150) {
+                                    travel_day_col = '121-150 days';
+                                }
+                                else if (differenceInDays >= 151 && differenceInDays <= 212) {
+                                    travel_day_col = '151-212 days';
+                                }
+                                else if (differenceInDays >= 213 && differenceInDays <= 365) {
+                                    travel_day_col = '213-365 days';
+                                }
+                                
+                                
+                                // 根据年龄所在的区间来获取年龄索引
+                                if (age >= 0 && age <= 25) {
+                                    age_row = '0-25';
+                                }
+                                else if (age >= 26 && age <= 39) {
+                                    age_row = '26-39';
+                                }
+                                else if (age >= 40 && age <= 54) {
+                                    age_row = '40-54';
+                                }
+                                else if (age >= 55 && age <= 59) {
+                                    age_row = '55-59';
+                                }
+                                else if (age >= 60 && age <= 64) {
+                                    age_row = '60-64';
+                                }
+                                else if (age >= 65 && age <= 69) {
+                                    age_row = '65-69';
+                                }
+                                else if (age >= 70 && age <= 74) {
+                                    age_row = '70-74';
+                                }
+                                else if (age >= 75 && age <= 79) {
+                                    age_row = '75-79';
+                                }
+                                else if (age >= 80 && age <= 84) {
+                                    age_row = '80-84';
+                                }
+                                else if (age >= 85) {
+                                    age_row = '85+';
+                                }
+                                
+                                // 根据年龄和保额获取 表格中的 价格
+                                var price = indexedTable[age_row][travel_day_col];
+                                
+                                // 测试：表格中的值是否准确
+                                // console.log("Age: ", age_row, "; Insurance: ", travel_day_col, " get: ", price);
+                                
+                                // 根据 表格价格*旅行天数 计算 payment_amount
+                                payment_amount = price * differenceInDays;
+                                document.getElementById("payment-amount-A-single-div").style.display = 'block';
+                                document.getElementById("payment-amount-A-single").innerText = payment_amount.toFixed(2);
+                            }
+                        };
+                        
+                        xmlhttp_travel_single_A.open("GET", "https://travelinsurance.weplusfinancial.ca/travelinsurance/data/single_trip_emergency_medical_A.csv", true);
+                        xmlhttp_travel_single_A.send();
+                        
+                        // // 随机测试
+                        // document.getElementById("test").innerText = payment_amount.toFixed(2);
+        
+        
+                        // 写“在加居民出境保险”Plan A 的 Multiple Trip 部分
+                        var xmlhttp_travel_multiple_A = new XMLHttpRequest();
+                        xmlhttp_travel_multiple_A.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                var data = xmlhttp_travel_multiple_A.responseText;
+                                var rows = data.split('\n');
+                                var table = [];
+                                for (var i = 0; i < rows.length; i++) {
+                                    var cells = rows[i].split(',');
+                                    // 去掉最后一列数据中的\r
+                                    const lastValue = cells[cells.length - 1].replace(/\r/g, '');
+                                    cells[cells.length - 1] = lastValue;
+                                    table[i] = cells;
+                                }
+                                var headers = table[0];
+                                var indexedTable = {};
+                                for (var i = 1; i < table.length; i++) {
+                                    var row = table[i];
+                                    var indexedRow = {};
+                                    for (var j = 1; j < row.length; j++) {
+                                        indexedRow[headers[j]] = row[j];
+                                    }
+                                    indexedTable[row[0]] = indexedRow;
+                                }
+                                // // 使用indexedTable中的数据
+                                // console.log(indexedTable);
+                                
+                                // 获得保险天数区间和年龄区间
+                                var travel_day_col = '';
+                                var age_row = '';
+                                
+                                // 根据保险天数所在的区间来获取保险天数索引
+                                if (differenceInDays >= 0 && differenceInDays <= 4) {
+                                    travel_day_col = '4 days';
+                                }
+                                else if (differenceInDays >= 5 && differenceInDays <= 10) {
+                                    travel_day_col = '10 days';
+                                }
+                                else if (differenceInDays >= 11 && differenceInDays <= 18) {
+                                    travel_day_col = '18 days';
+                                }
+                                else if (differenceInDays >= 19 && differenceInDays <= 30) {
+                                    travel_day_col = '30 days';
+                                }
+                                else if (differenceInDays >= 31 && differenceInDays <= 60) {
+                                    travel_day_col = '60 days';
+                                }
+                                
+                                
+                                
+                                // 根据年龄所在的区间来获取年龄索引
+                                if (age >= 0 && age <= 25) {
+                                    age_row = '0-25';
+                                }
+                                else if (age >= 26 && age <= 39) {
+                                    age_row = '26-39';
+                                }
+                                else if (age >= 40 && age <= 54) {
+                                    age_row = '40-54';
+                                }
+                                else if (age >= 55 && age <= 59) {
+                                    age_row = '55-59';
+                                }
+                                else if (age >= 60 && age <= 64) {
+                                    age_row = '60-64';
+                                }
+                                else if (age >= 65 && age <= 69) {
+                                    age_row = '65-69';
+                                }
+                                else if (age >= 70 && age <= 74) {
+                                    age_row = '70-74';
+                                }
+                                else if (age >= 75 && age <= 79) {
+                                    age_row = '75-79';
+                                }
+                                else if (age >= 80 && age <= 84) {
+                                    age_row = '80-84';
+                                }
+                                else if (age >= 85) {
+                                    age_row = '85+';
+                                }
+                                
+                                // 根据年龄和保额获取 表格中的 价格
+                                var price = indexedTable[age_row][travel_day_col];
+                                
+                                // 测试：表格中的值是否准确
+                                // console.log("Age: ", age_row, "; Insurance: ", travel_day_col, " get: ", price);
+                                
+                                // 根据 表格价格*旅行天数 计算 payment_amount
+                                
+                                // 假设Multi-Trip的表格中的价格是 所有天数 而不是 每天，因为如果是每天的话价格显得过于高昂
+                                payment_amount = price * 1;
+                                document.getElementById("payment-amount-A-multiple-div").style.display = 'block';
+                                document.getElementById("payment-amount-A-multiple").innerText = payment_amount.toFixed(2);
+                            }
+                        };
+                        
+                        xmlhttp_travel_multiple_A.open("GET", "https://travelinsurance.weplusfinancial.ca/travelinsurance/data/multiple_trip_emergency_medical_A.csv", true);
+                        xmlhttp_travel_multiple_A.send();
+                        
+                    }
+                }
+                // 下方显示Rate Category B和C，这次只显示Single-Trip，以后包括Multi-Trip
+                else{
+                    
+                    // 如果age不到60岁，则显示错误
+                    if (age < 60 && !document.getElementById('insured-elder-visitor-no').checked){
+                        document.getElementById("insurance-age-err").style.display = "block";
+                        document.getElementById("insurance-plan-A").style.display = "none";
+                        document.getElementById("insurance-plan-B").style.display = "none";
+                        document.getElementById("insurance-plan-C").style.display = "none";
+                        document.getElementById("insurance-85-err").style.display = "none";
+                        document.getElementById("insurance-age-err-2").style.display = "none";
+                    }
+                    
+                    // // 如果age>60，而勾选了“受保人是否超过60岁”中的“否”，那么显示错误（insurance-age-err-2）并隐藏plan ABC，否则执行之后的代码
+                    // else if (age > 60 && document.getElementById('insured-elder-visitor-no').checked){
+                    //     document.getElementById("insurance-age-err").style.display = "none";
+                    //     document.getElementById("insurance-plan-A").style.display = "none";
+                    //     document.getElementById("insurance-plan-B").style.display = "none";
+                    //     document.getElementById("insurance-plan-C").style.display = "none";
+                    //     document.getElementById("insurance-85-err").style.display = "none";
+                    //     document.getElementById("insurance-age-err-2").style.display = "block";
+                    // }
+                    
+                    
+                    
+                    
+                    else {
+                        // 将 insurance-plan-B和insurance-plan-C 设为可见，将insurance-plan-A设为不可见
+                        document.getElementById("insurance-plan-A").style.display = "none";
+                        document.getElementById("insurance-plan-B").style.display = "block";
+                        document.getElementById("insurance-plan-C").style.display = "block";
+                        document.getElementById("insurance-age-err").style.display = "none";
+                        document.getElementById("insurance-85-err").style.display = "none";
+                        document.getElementById("insurance-age-err-2").style.display = "none";
+                        
+                        
+                        
+                        
+                        
+                        // Step 3 : 如果客户选择了"保险结束日期"，"保险生效日期"和"保额数量"，则
+                        // “在加居民旅游保险”中的“保险结束日期”和“保险生效日期”
+                        var end_date_visit = document.getElementById("end-date-travel").value;
+                        var effective_date_visit = document.getElementById("effective-date-travel").value;
+                        
+                        if (end_date_visit != "" && effective_date_visit != "") {
+                            
+                        
+                            
+                            
+                            
+                            // 获得 "保险结束日期" - "保险生效日期"
+                              // 将日期字符串转换为 Date 对象
+                            var startDate = new Date(effective_date_visit);
+                            var endDate = new Date(end_date_visit);
+                            
+                            // 计算日期差异
+                            var differenceInMilliseconds = endDate.getTime() - startDate.getTime();
+                            
+                            // 将差异转换为天数
+                            var differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+            
+                            // 测试 differenceInDays
+                            console.log(differenceInDays);
+                            // document.getElementById("payment-amount-A").innerText = differenceInDays;
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            // “在加” 的Plan B的显示
+                            
+                            // 下方是“在加” 的Plan B的Single-Trip部分的显示
+                            var xmlhttp_travel_single_B = new XMLHttpRequest();
+                            xmlhttp_travel_single_B.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    var data = xmlhttp_travel_single_B.responseText;
+                                    var rows = data.split('\n');
+                                    var table = [];
+                                    for (var i = 0; i < rows.length; i++) {
+                                        var cells = rows[i].split(',');
+                                        // 去掉最后一列数据中的\r
+                                        const lastValue = cells[cells.length - 1].replace(/\r/g, '');
+                                        cells[cells.length - 1] = lastValue;
+                                        table[i] = cells;
+                                    }
+                                    var headers = table[0];
+                                    var indexedTable = {};
+                                    for (var i = 1; i < table.length; i++) {
+                                        var row = table[i];
+                                        var indexedRow = {};
+                                        for (var j = 1; j < row.length; j++) {
+                                            indexedRow[headers[j]] = row[j];
+                                        }
+                                        indexedTable[row[0]] = indexedRow;
+                                    }
+                                    // 使用indexedTable中的数据
+                                    console.log(indexedTable);
+                                    
+                                    // 获得保险天数区间和年龄区间
+                                    var travel_day_col = '';
+                                    var age_row = '';
+                                    
+                                    // 根据保险天数所在的区间来获取保险天数索引
+                                    if (differenceInDays >= 1 && differenceInDays <= 17) {
+                                        travel_day_col = '1-17 days';
+                                    }
+                                    else if (differenceInDays >= 18 && differenceInDays <= 30) {
+                                        travel_day_col = '18-30 days';
+                                    }
+                                    else if (differenceInDays >= 31 && differenceInDays <= 60) {
+                                        travel_day_col = '31-60 days';
+                                    }
+                                    else if (differenceInDays >= 61 && differenceInDays <= 90) {
+                                        travel_day_col = '61-90 days';
+                                    }
+                                    else if (differenceInDays >= 91 && differenceInDays <= 120) {
+                                        travel_day_col = '91-120 days';
+                                    }
+                                    else if (differenceInDays >= 121 && differenceInDays <= 150) {
+                                        travel_day_col = '121-150 days';
+                                    }
+                                    else if (differenceInDays >= 151 && differenceInDays <= 212) {
+                                        travel_day_col = '151-212 days';
+                                    }
+                                    else if (differenceInDays >= 213 && differenceInDays <= 365) {
+                                        travel_day_col = '213-365 days';
+                                    }
+                                    
+                                    
+                                    // 根据年龄所在的区间来获取年龄索引
+                                    if (age >= 60 && age <= 64) {
+                                        age_row = '60-64';
+                                    }
+                                    else if (age >= 65 && age <= 69) {
+                                        age_row = '65-69';
+                                    }
+                                    else if (age >= 70 && age <= 74) {
+                                        age_row = '70-74';
+                                    }
+                                    else if (age >= 75 && age <= 79) {
+                                        age_row = '75-79';
+                                    }
+                                    else if (age >= 80 && age <= 84) {
+                                        age_row = '80-84';
+                                    }
+                                    else if (age >= 85) {
+                                        age_row = '85+';
+                                    }
+                                    
+                                    // 测试：显示age
+                                    console.log(age);
+                                    
+                                    // 测试：显示travel_day_col
+                                    console.log(travel_day_col);
+                                    
+                                    // 测试：显示age_row
+                                    console.log(age_row);
+                                    
+                                    // 测试：显示differenceInDays
+                                    console.log(differenceInDays);
+                                    
+                                    // 根据年龄和保额获取 表格中的 价格
+                                    var price = indexedTable[age_row][travel_day_col];
+                                    
+                                    // 测试：表格中的值是否准确
+                                    console.log("Age: ", age_row, "; Insurance: ", travel_day_col, " get: ", price);
+                                    
+                                    // 根据 表格价格*旅行天数 计算 payment_amount
+                                    payment_amount = price * differenceInDays;
+                                    
+                                    // document.getElementById("payment-amount-B").innerText = payment_amount.toFixed(2);
+                                    document.getElementById("payment-amount-B-single-div").style.display = 'block';
+                                    document.getElementById("payment-amount-B-single").innerText = payment_amount.toFixed(2);
+                                }
+                            };
+                            
+                            xmlhttp_travel_single_B.open("GET", "https://travelinsurance.weplusfinancial.ca/travelinsurance/data/single_trip_emergency_medical_B.csv", true);
+                            xmlhttp_travel_single_B.send();
+                            
+                            // // 随机测试
+                            // document.getElementById("test").innerText = payment_amount.toFixed(2);
+                            
+                            
+                            
+                            // “在加”的Plan B的Multi-Trip部分的数据
+                            var xmlhttp_travel_multiple_B = new XMLHttpRequest();
+                            xmlhttp_travel_multiple_B.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    var data = xmlhttp_travel_multiple_B.responseText;
+                                    var rows = data.split('\n');
+                                    var table = [];
+                                    for (var i = 0; i < rows.length; i++) {
+                                        var cells = rows[i].split(',');
+                                        // 去掉最后一列数据中的\r
+                                        const lastValue = cells[cells.length - 1].replace(/\r/g, '');
+                                        cells[cells.length - 1] = lastValue;
+                                        table[i] = cells;
+                                    }
+                                    var headers = table[0];
+                                    var indexedTable = {};
+                                    for (var i = 1; i < table.length; i++) {
+                                        var row = table[i];
+                                        var indexedRow = {};
+                                        for (var j = 1; j < row.length; j++) {
+                                            indexedRow[headers[j]] = row[j];
+                                        }
+                                        indexedTable[row[0]] = indexedRow;
+                                    }
+                                    // 使用indexedTable中的数据
+                                    console.log(indexedTable);
+                                    
+                                    // 获得保险天数区间和年龄区间
+                                    var travel_day_col = '';
+                                    var age_row = '';
+                                    
+                                    // 根据保险天数所在的区间来获取保险天数索引
+                                    if (differenceInDays >= 0 && differenceInDays <= 4) {
+                                        travel_day_col = '4 days';
+                                    }
+                                    else if (differenceInDays >= 5 && differenceInDays <= 10) {
+                                        travel_day_col = '10 days';
+                                    }
+                                    else if (differenceInDays >= 11 && differenceInDays <= 18) {
+                                        travel_day_col = '18 days';
+                                    }
+                                    else if (differenceInDays >= 19 && differenceInDays <= 30) {
+                                        travel_day_col = '30 days';
+                                    }
+                                    else if (differenceInDays >= 31 && differenceInDays <= 60) {
+                                        travel_day_col = '60 days';
+                                    }
+                                    
+                                    
+                                    // 根据年龄所在的区间来获取年龄索引
+                                    if (age >= 60 && age <= 64) {
+                                        age_row = '60-64';
+                                    }
+                                    else if (age >= 65 && age <= 69) {
+                                        age_row = '65-69';
+                                    }
+                                    else if (age >= 70 && age <= 74) {
+                                        age_row = '70-74';
+                                    }
+                                    else if (age >= 75 && age <= 79) {
+                                        age_row = '75-79';
+                                    }
+                                    else if (age >= 80 && age <= 84) {
+                                        age_row = '80-84';
+                                    }
+                                    else if (age >= 85) {
+                                        age_row = '85+';
+                                    }
+                                    
+                                    // 测试：显示age
+                                    console.log(age);
+                                    
+                                    // 测试：显示travel_day_col
+                                    console.log(travel_day_col);
+                                    
+                                    // 测试：显示age_row
+                                    console.log(age_row);
+                                    
+                                    // 测试：显示differenceInDays
+                                    console.log(differenceInDays);
+                                    
+                                    // 根据年龄和保额获取 表格中的 价格
+                                    var price = indexedTable[age_row][travel_day_col];
+                                    
+                                    // 测试：表格中的值是否准确
+                                    console.log("Age: ", age_row, "; Insurance: ", travel_day_col, " get: ", price);
+                                    
+                                    // 根据 表格价格*旅行天数 计算 payment_amount
+                                    payment_amount = price * 1;
+                                    
+                                    // document.getElementById("payment-amount-B").innerText = payment_amount.toFixed(2);
+                                    document.getElementById("payment-amount-B-multiple-div").style.display = 'block';
+                                    document.getElementById("payment-amount-B-multiple").innerText = payment_amount.toFixed(2);
+                                }
+                            };
+                            
+                            xmlhttp_travel_multiple_B.open("GET", "https://travelinsurance.weplusfinancial.ca/travelinsurance/data/multiple_trip_emergency_medical_B.csv", true);
+                            xmlhttp_travel_multiple_B.send();
+                            
+                            
+                            
+                            
+                            
+                            // “在加” 的Plan C的显示
+                            // 下方的部分是 “在加” 的Plan C的Single-Trip部分的显示
+                            var xmlhttp_travel_single_C = new XMLHttpRequest();
+                            xmlhttp_travel_single_C.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    var data = xmlhttp_travel_single_C.responseText;
+                                    var rows = data.split('\n');
+                                    var table = [];
+                                    for (var i = 0; i < rows.length; i++) {
+                                        var cells = rows[i].split(',');
+                                        // 去掉最后一列数据中的\r
+                                        const lastValue = cells[cells.length - 1].replace(/\r/g, '');
+                                        cells[cells.length - 1] = lastValue;
+                                        table[i] = cells;
+                                    }
+                                    var headers = table[0];
+                                    var indexedTable = {};
+                                    for (var i = 1; i < table.length; i++) {
+                                        var row = table[i];
+                                        var indexedRow = {};
+                                        for (var j = 1; j < row.length; j++) {
+                                            indexedRow[headers[j]] = row[j];
+                                        }
+                                        indexedTable[row[0]] = indexedRow;
+                                    }
+                                    // 使用indexedTable中的数据
+                                    console.log(indexedTable);
+                                    
+                                    // 获得保险天数区间和年龄区间
+                                    var travel_day_col = '';
+                                    var age_row = '';
+                                    
+                                    // 根据保险天数所在的区间来获取保险天数索引
+                                    if (differenceInDays >= 1 && differenceInDays <= 17) {
+                                        travel_day_col = '1-17 days';
+                                    }
+                                    else if (differenceInDays >= 18 && differenceInDays <= 30) {
+                                        travel_day_col = '18-30 days';
+                                    }
+                                    else if (differenceInDays >= 31 && differenceInDays <= 60) {
+                                        travel_day_col = '31-60 days';
+                                    }
+                                    else if (differenceInDays >= 61 && differenceInDays <= 90) {
+                                        travel_day_col = '61-90 days';
+                                    }
+                                    else if (differenceInDays >= 91 && differenceInDays <= 120) {
+                                        travel_day_col = '91-120 days';
+                                    }
+                                    else if (differenceInDays >= 121 && differenceInDays <= 150) {
+                                        travel_day_col = '121-150 days';
+                                    }
+                                    else if (differenceInDays >= 151 && differenceInDays <= 212) {
+                                        travel_day_col = '151-212 days';
+                                    }
+                                    else if (differenceInDays >= 213 && differenceInDays <= 365) {
+                                        travel_day_col = '213-365 days';
+                                    }
+                                    
+                                    
+                                    // 根据年龄所在的区间来获取年龄索引
+                                    if (age >= 60 && age <= 64) {
+                                        age_row = '60-64';
+                                    }
+                                    else if (age >= 65 && age <= 69) {
+                                        age_row = '65-69';
+                                    }
+                                    else if (age >= 70 && age <= 74) {
+                                        age_row = '70-74';
+                                    }
+                                    else if (age >= 75 && age <= 79) {
+                                        age_row = '75-79';
+                                    }
+                                    else if (age >= 80 && age <= 84) {
+                                        age_row = '80-84';
+                                    }
+                                    else if (age >= 85) {
+                                        age_row = '85+';
+                                    }
+                                    
+                                    // 测试：显示age
+                                    console.log(age);
+                                    
+                                    // 测试：显示travel_day_col
+                                    console.log(travel_day_col);
+                                    
+                                    // 测试：显示age_row
+                                    console.log(age_row);
+                                    
+                                    // 测试：显示differenceInDays
+                                    console.log(differenceInDays);
+                                    
+                                    // 根据年龄和保额获取 表格中的 价格
+                                    var price = indexedTable[age_row][travel_day_col];
+                                    
+                                    // 测试：表格中的值是否准确
+                                    console.log("Age: ", age_row, "; Insurance: ", travel_day_col, " get: ", price);
+                                    
+                                    // 根据 表格价格*旅行天数 计算 payment_amount
+                                    payment_amount = price * differenceInDays;
+                                    
+                                    // document.getElementById("payment-amount-C").innerText = payment_amount.toFixed(2);
+                                    document.getElementById("payment-amount-C-single-div").style.display = 'block';
+                                    document.getElementById("payment-amount-C-single").innerText = payment_amount.toFixed(2);
+                                }
+                            };
+                            
+                            xmlhttp_travel_single_C.open("GET", "https://travelinsurance.weplusfinancial.ca/travelinsurance/data/single_trip_emergency_medical_C.csv", true);
+                            xmlhttp_travel_single_C.send();
+                            
+                            
+                            
+                            
+                            // 下方的部分是 “在加” 的Plan C的Multiple-Trip部分的显示
+                            var xmlhttp_travel_multiple_C = new XMLHttpRequest();
+                            xmlhttp_travel_multiple_C.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    var data = xmlhttp_travel_multiple_C.responseText;
+                                    var rows = data.split('\n');
+                                    var table = [];
+                                    for (var i = 0; i < rows.length; i++) {
+                                        var cells = rows[i].split(',');
+                                        // 去掉最后一列数据中的\r
+                                        const lastValue = cells[cells.length - 1].replace(/\r/g, '');
+                                        cells[cells.length - 1] = lastValue;
+                                        table[i] = cells;
+                                    }
+                                    var headers = table[0];
+                                    var indexedTable = {};
+                                    for (var i = 1; i < table.length; i++) {
+                                        var row = table[i];
+                                        var indexedRow = {};
+                                        for (var j = 1; j < row.length; j++) {
+                                            indexedRow[headers[j]] = row[j];
+                                        }
+                                        indexedTable[row[0]] = indexedRow;
+                                    }
+                                    // 使用indexedTable中的数据
+                                    console.log(indexedTable);
+                                    
+                                    // 获得保险天数区间和年龄区间
+                                    var travel_day_col = '';
+                                    var age_row = '';
+                                    
+                                    // 根据保险天数所在的区间来获取保险天数索引
+                                    if (differenceInDays >= 0 && differenceInDays <= 4) {
+                                        travel_day_col = '4 days';
+                                    }
+                                    else if (differenceInDays >= 5 && differenceInDays <= 10) {
+                                        travel_day_col = '10 days';
+                                    }
+                                    else if (differenceInDays >= 11 && differenceInDays <= 18) {
+                                        travel_day_col = '18 days';
+                                    }
+                                    else if (differenceInDays >= 19 && differenceInDays <= 30) {
+                                        travel_day_col = '30 days';
+                                    }
+                                    else if (differenceInDays >= 31 && differenceInDays <= 60) {
+                                        travel_day_col = '60 days';
+                                    }
+                                    
+                                    // 根据年龄所在的区间来获取年龄索引
+                                    if (age >= 60 && age <= 64) {
+                                        age_row = '60-64';
+                                    }
+                                    else if (age >= 65 && age <= 69) {
+                                        age_row = '65-69';
+                                    }
+                                    else if (age >= 70 && age <= 74) {
+                                        age_row = '70-74';
+                                    }
+                                    else if (age >= 75 && age <= 79) {
+                                        age_row = '75-79';
+                                    }
+                                    else if (age >= 80 && age <= 84) {
+                                        age_row = '80-84';
+                                    }
+                                    else if (age >= 85) {
+                                        age_row = '85+';
+                                    }
+                                    
+                                    // 测试：显示age
+                                    console.log(age);
+                                    
+                                    // 测试：显示travel_day_col
+                                    console.log(travel_day_col);
+                                    
+                                    // 测试：显示age_row
+                                    console.log(age_row);
+                                    
+                                    // 测试：显示differenceInDays
+                                    console.log(differenceInDays);
+                                    
+                                    // 根据年龄和保额获取 表格中的 价格
+                                    var price = indexedTable[age_row][travel_day_col];
+                                    
+                                    // 测试：表格中的值是否准确
+                                    console.log("Age: ", age_row, "; Insurance: ", travel_day_col, " get: ", price);
+                                    
+                                    // 根据 表格价格*旅行天数 计算 payment_amount
+                                    payment_amount = price * 1;
+                                    
+                                    // document.getElementById("payment-amount-C").innerText = payment_amount.toFixed(2);
+                                    document.getElementById("payment-amount-C-multiple-div").style.display = 'block';
+                                    document.getElementById("payment-amount-C-multiple").innerText = payment_amount.toFixed(2);
+                                }
+                            };
+                            
+                            xmlhttp_travel_multiple_C.open("GET", "https://travelinsurance.weplusfinancial.ca/travelinsurance/data/multiple_trip_emergency_medical_C.csv", true);
+                            xmlhttp_travel_multiple_C.send();
+                            
+                            
+                           
+                            
+                        }
+                    }  
+                }
+            }
+        }
+    }
+    
+        
 
 });
+
+
+
+
+// 关于 “访加旅客保险” 请确保受保人是否满足以下条件
+// 选一个checkbox就连带着选其他所有checkbox（checkbox的id="insured-condition-total-visit"）
+function insured_condition_total_visit(){
+  var checkbox = document.getElementById("insured-condition-total-visit");
+  checkbox.addEventListener( "change", () => {
+    if ( checkbox.checked ){
+        document.getElementById("insured-condition-1-visit").checked = true;
+        document.getElementById("insured-condition-2-visit").checked = true;
+        document.getElementById("insured-condition-3-visit").checked = true;
+        document.getElementById("insured-condition-4-visit").checked = true;
+        document.getElementById("insured-condition-5-visit").checked = true;
+        document.getElementById("insured-condition-6-visit").checked = true;
+        document.getElementById("insured-condition-7-visit").checked = true;
+    }
+    else{
+        document.getElementById("insured-condition-1-visit").checked = false;
+        document.getElementById("insured-condition-2-visit").checked = false;
+        document.getElementById("insured-condition-3-visit").checked = false;
+        document.getElementById("insured-condition-4-visit").checked = false;
+        document.getElementById("insured-condition-5-visit").checked = false;
+        document.getElementById("insured-condition-6-visit").checked = false;
+        document.getElementById("insured-condition-7-visit").checked = false;
+    }
+  });
+}
+
+
+
+
+
+// 关于 “留学生/陪读父母保险” 请确保受保人是否满足以下条件
+// 选一个checkbox就连带着选其他所有checkbox（checkbox的id="insured-condition-total-study"）
+function insured_condition_total_study(){
+  var checkbox = document.getElementById("insured-condition-total-study");
+  checkbox.addEventListener( "change", () => {
+    if ( checkbox.checked ){
+        document.getElementById("insured-condition-1-study").checked = true;
+        document.getElementById("insured-condition-2-study").checked = true;
+        document.getElementById("insured-condition-3-study").checked = true;
+        document.getElementById("insured-condition-4-study").checked = true;
+        document.getElementById("insured-condition-5-study").checked = true;
+        document.getElementById("insured-condition-6-study").checked = true;
+        document.getElementById("insured-condition-7-study").checked = true;
+        document.getElementById("insured-condition-8-study").checked = true;
+    }
+    else{
+        document.getElementById("insured-condition-1-study").checked = false;
+        document.getElementById("insured-condition-2-study").checked = false;
+        document.getElementById("insured-condition-3-study").checked = false;
+        document.getElementById("insured-condition-4-study").checked = false;
+        document.getElementById("insured-condition-5-study").checked = false;
+        document.getElementById("insured-condition-6-study").checked = false;
+        document.getElementById("insured-condition-7-study").checked = false;
+        document.getElementById("insured-condition-8-study").checked = false;
+    }
+  });
+}
+
+
+
+
+
+// 关于 “在加居民出境旅游保险” 请确保受保人是否满足以下条件
+// 选一个checkbox就连带着选其他所有checkbox（checkbox的id="insured-condition-total-travel"）
+function insured_condition_total_travel(){
+  var checkbox = document.getElementById("insured-condition-total-travel");
+  checkbox.addEventListener( "change", () => {
+    if ( checkbox.checked ){
+        document.getElementById("insured-condition-1-travel").checked = true;
+        document.getElementById("insured-condition-2-travel").checked = true;
+        document.getElementById("insured-condition-3-travel").checked = true;
+        document.getElementById("insured-condition-4-travel").checked = true;
+        document.getElementById("insured-condition-5-travel").checked = true;
+        document.getElementById("insured-condition-6-travel").checked = true;
+        document.getElementById("insured-condition-7-travel").checked = true;
+    }
+    else{
+        document.getElementById("insured-condition-1-travel").checked = false;
+        document.getElementById("insured-condition-2-travel").checked = false;
+        document.getElementById("insured-condition-3-travel").checked = false;
+        document.getElementById("insured-condition-4-travel").checked = false;
+        document.getElementById("insured-condition-5-travel").checked = false;
+        document.getElementById("insured-condition-6-travel").checked = false;
+        document.getElementById("insured-condition-7-travel").checked = false;
+    }
+  });
+}
+
+
+
+
+
+
+function updateCheckbox(checkboxId) {
+  var checkboxes = document.getElementsByClassName("plan-type");
+  var radios = document.getElementsByClassName("trip-type");
+  var checkbox = document.getElementById(checkboxId);
+  
+  // 遍历所有的checkboxes
+  for (var i = 0; i < checkboxes.length; i++) {
+    // 如果存在已经选择的checkbox(es)：A，但不是这次选择的checkbox，那么取消A
+    if (checkboxes[i].id !== checkboxId) {
+      checkboxes[i].checked = false;
+    }
+  }
+
+  // 选择checkbox后，所有的radios都清空
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].checked = false;
+  }
+    
+  //更改
+//       checkbox.checked = false;
+
+}
+
+// 选择一个radio后，取消其他的radios
+function updateRadio(radioId) {
+  // 获得所有radios
+  var radios = document.getElementsByClassName('trip-type');
+  // 获得当前选择的radio
+  var radio = document.getElementById(radioId);
+
+
+  // 遍历所有的radios
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].id !== radioId) {
+      radios[i].checked = false;
+    }
+    
+    // 如果选择的radio的对应的checkbox没有被选，则选择这个checkbox （并取消之前选择的checkbox）
+    if (radioId == 'payment-amount-A-trip-type-single' || radioId == 'payment-amount-A-trip-type-multiple') {
+        // 选择对应的checkbox
+        document.getElementById('insurance-plan-A-choice').checked = true;
+        // 遍历将另外两个checkox取消
+        document.getElementById('insurance-plan-B-choice').checked = false;
+        document.getElementById('insurance-plan-C-choice').checked = false;
+    }
+    else if (radioId == 'payment-amount-B-trip-type-single' || radioId == 'payment-amount-B-trip-type-multiple') {
+        document.getElementById('insurance-plan-B-choice').checked = true;
+        // 遍历将另外两个checkox取消
+        document.getElementById('insurance-plan-A-choice').checked = false;
+        document.getElementById('insurance-plan-C-choice').checked = false;
+    }
+    else if (radioId == 'payment-amount-C-trip-type-single' || radioId == 'payment-amount-C-trip-type-multiple') {
+        document.getElementById('insurance-plan-C-choice').checked = true;
+        // 遍历将另外两个checkox取消
+        document.getElementById('insurance-plan-B-choice').checked = false;
+        document.getElementById('insurance-plan-A-choice').checked = false;
+    }
+  }
+
+}
+
+
+
+
+// 下方的代码将指定的span提交至php中
+// var text = $('span').text();
+
+// 获取提交按钮和输入字段
+var submitButton_1 = document.getElementById('saveForm_1');
+var submitButton_2 = document.getElementById('saveForm_2');
+
+var text = "";
+
+// 添加点击事件处理程序
+var handleClick = function() {
+    
+    // 检查所选的表单是否是“访加”
+    // 如果是“访加”，则检查哪个checkbox plan 被选择
+    if (document.getElementById("insurance-type-visitor").checked){
+    
+        // 如果选得checkbox是。。。Plan A，则将其对应的span中的innerTex赋予“text”变量
+        if (document.getElementById('insurance-plan-A-choice').checked) {
+            // payment-amount-A
+            text = document.getElementById('payment-amount-A').innerText;
+        }
+        
+        // 如果选得checkbox是。。。Plan B，则将其对应的span中的innerTex赋予“text”变量
+        if (document.getElementById('insurance-plan-B-choice').checked) {
+            // payment-amount-B
+            text = document.getElementById('payment-amount-B').innerText;
+        }
+        
+        // 如果选得checkbox是。。。Plan C，则将其对应的span中的innerTex赋予“text”变量
+        if (document.getElementById('insurance-plan-C-choice').checked) {
+            // payment-amount-C
+            text = document.getElementById('payment-amount-C').innerText;
+        }
+    }
+    
+    // 如果不是，则else if检测所选的表单是否是“在加”
+    // 如果是“在加”，则检查哪个checkbox plan 被选择
+    else if (document.getElementById("insurance-type-travelor").checked){
+    
+        // 如果选得checkbox是。。。Plan A，则检查是哪个trip-type被选择
+        if (document.getElementById('insurance-plan-A-choice').checked) {
+
+            // 如果是 single-trip，则将其对应的span中的innerTex赋予“text”变量
+            if (document.getElementById('payment-amount-A-trip-type-single').checked){
+                text = document.getElementById('payment-amount-A-single').innerText;
+            }
+            
+            // 如果是 multi-trip，则将其对应的span中的innerTex赋予“text”变量
+            if (document.getElementById('payment-amount-A-trip-type-multiple').checked){
+                text = document.getElementById('payment-amount-A-multiple').innerText;
+            }
+        }
+        
+        // 如果选得checkbox是。。。Plan B，则检查是哪个trip-type被选择
+        if (document.getElementById('insurance-plan-B-choice').checked) {
+        
+            // 如果是 single-trip，则将其对应的span中的innerTex赋予“text”变量
+            if (document.getElementById('payment-amount-B-trip-type-single').checked){
+                text = document.getElementById('payment-amount-B-single').innerText;
+            }
+            
+            // 如果是 multi-trip，则将其对应的span中的innerTex赋予“text”变量
+            if (document.getElementById('payment-amount-B-trip-type-multiple').checked){
+                text = document.getElementById('payment-amount-B-multiple').innerText;
+            }
+            
+        }
+        
+        // 如果选得checkbox是。。。Plan C，则检查是哪个trip-type被选择
+        if (document.getElementById('insurance-plan-C-choice').checked) {
+        
+            // 如果是 single-trip，则将其对应的span中的innerTex赋予“text”变量
+            if (document.getElementById('payment-amount-C-trip-type-single').checked){
+                text = document.getElementById('payment-amount-C-single').innerText;
+            }
+            
+            // 如果是 multi-trip，则将其对应的span中的innerTex赋予“text”变量
+            if (document.getElementById('payment-amount-C-trip-type-multiple').checked){
+                text = document.getElementById('payment-amount-C-multiple').innerText;
+            }
+        }
+    }
+
+    var num = parseFloat(text); // 或者使用 parseFloat(text) 转换为浮点数
+    
+    
+    
+    document.getElementById('final_price').value=num;
+    
+
+    
+
+};
+
+
+submitButton_1.addEventListener('click', handleClick);
+submitButton_2.addEventListener('click', handleClick);
+
+
+
+
+
+
+
+// 下面的代码创建两个下拉菜单，一个是加拿大省份，一个是加拿大城市，城市根据省份的变化而变化
+const citiesByProvince = {
+  AB: ["艾尔德里", "布鲁克斯", "卡尔加里", "卡姆罗斯", "冷湖", "埃德蒙顿", "萨斯喀彻温堡", "Grande Prairie", "勒杜克", "Lethbridge", "Lloydminster", "梅迪辛哈特", "红鹿市", "Spruce Grove", "圣阿尔伯特", "Wetaskiwin"],
+  BC: ["阿伯茨福德", "阿姆斯特朗", "本那比", "坎贝尔河", "卡斯尔加", "奇利瓦克", "科尔伍德", "高贵林市", "库特尼", "克兰布鲁克", "道森克里克", "邓肯", "恩德比", "弗尼", "圣约翰堡", "大福克斯", "格林伍德", "坎卢普斯", "基隆拿", "金伯利", "卡提玛特", "朗福德", "兰利", "梅利特", "纳奈莫", "纳尔逊", "新威斯敏斯特", "北温哥华", "帕克斯维尔", "彭蒂克顿", "Pitt Meadows", "艾伯尼港", "高桂林港", "穆迪港", "鲍威尔河", "乔治王子城", "鲁珀特王子港", "奎斯内尔", "雷夫尔斯托克", "列治文市", "罗斯兰", "萨蒙阿姆", "素里市", "Terrace", "Trail", "溫哥華", "弗农", "维多利亚市", "白石镇", "威廉姆斯湖"],
+  MB: ["布兰登", "布羅切", "丘吉尔港", "多芬", "弗林弗伦", "焦林", "林湖", "些吉", "些里登", "湯普森", "華博登", "温尼伯", "皮康吉肯"],
+  NB: ["圣约翰", "蒙克顿", "弗雷德里克顿", "袋村"],
+  NL: ["卡特赖特", "角落卜克", "戴维斯因莱特", "鵝灣", "希望帶", "印第安港", "圣安东尼", "圣约翰斯", "甘德", "内恩", "巴斯克港"],
+  NS: ["安提格尼斯", "格莱斯灣", "夏里法斯", "达特茅斯", "喬治王子城", "狼村", "雅茅斯", "悉尼"],
+  ON: ["阿積士", "歐若拉", "大湖", "賓頓", "巴里", "布灵敦", "沙普洛", "貴湖市", "哈密爾頓", "王城镇", "京士顿", "吉蘭湖", "基秦拿", "尼亞加拉瀑布城", "尼皮贡", "北灣", "奧克維爾", "伦敦", "密西沙加", "纳基纳", "万锦", "穆索尼", "新市", "奥沙瓦", "渥太华", "彼得堡", "皮克宁市", "皮克尔湖", "桑迪湖", "珊尼亞", "滑铁卢", "怀特比", "温莎", "實貝利", "雷灣", "天明", "多伦多", "旺市", "威尼斯克", "苏瞭望", "圣凯瑟琳市", "高堡", "伊格纳斯", "斯特勒福", "苏圣玛丽"],
+  PE: ["夏洛特敦", "萨姆塞德"],
+  QC: ["艾瑪", "沙托盖", "希布加莫", "詩古提米", "加斯佩", "加蒂诺", "伊努朱亞克", "伊武吉维克", "康吉克苏華克", "七岛", "谢尔布鲁克", "萨格纳", "谢弗村", "古朱华克", "库朱瓦拉皮克", "伊斯特梅恩", "蒙特利尔", "纳塔詩昆", "狼河", "三河市", "魁北克市"],
+  SK: ["湖溶", "勒紅斯", "穆斯乔", "北战堡", "艾伯特王子城", "里贾纳", "萨斯卡通", "激流市", "南結", "克里湖"]
+};
+
+function updateCityDropdown() {
+  const provinceDropdown = document.getElementById("insured-province");
+  const cityDropdown = document.getElementById("insured-city");
+  const selectedProvince = provinceDropdown.value;
+
+  // 清空城市下拉菜单
+  cityDropdown.innerHTML = "";
+  cityDropdown.options.add(new Option("--请选择--", ""));
+
+  // 根据所选省份添加城市选项
+  citiesByProvince[selectedProvince].forEach(function(city) {
+    cityDropdown.options.add(new Option(city, city));
+  });
+}
+
+
+
+
+
 
 
 
